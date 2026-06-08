@@ -1,0 +1,10 @@
+.DS_Store
+__pycache__/
+*.py[cod]
+.env
+.env.*
+tina_recovery_dashboard_dark.pdf
+
+# Local snapshots (not part of canonical repo)
+baseline/
+experimental/

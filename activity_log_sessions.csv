@@ -1,0 +1,46 @@
+date,period,feelings,feelings_detail,activity_count,session_notes
+2025-05-23,day,RED,,5,
+2025-05-24,day,GREEN/YELLOW,,3,
+2025-05-25,day,GREEN/YELLOW,,4,
+2025-05-26,AM,YELLOW,,9,
+2025-05-26,Evening,RED/YELLOW,,0,
+2025-05-26,PM,GREEN,,5,
+2025-05-27,AM,GREEN,,7,
+2025-05-27,Evening,YELLOW,,0,
+2025-05-27,PM,GREEN/YELLOW,,6,
+2025-05-27,incident,RED,Double knee drops,0,marked RED separately from PM session rating
+2025-05-28,AM,YELLOW,,7,
+2025-05-28,Evening,YELLOW,,0,
+2025-05-28,PM,GREEN/YELLOW,,5,
+2025-05-29,AM,GREEN/YELLOW,,6,
+2025-05-29,Evening,RED/YELLOW,,0,
+2025-05-29,PM,GREEN,,2,
+2025-05-29,incident,RED,ultrasound,0,pressure on pelvis/lower abs from ultrasound
+2025-05-29,incident,RED,>pressure on pelvis/lower abs from ultrasound,0,
+2025-05-30,AM,YELLOW,,7,
+2025-05-30,Evening,YELLOW,,0,
+2025-05-30,PM,GREEN/YELLOW,,6,
+2025-05-31,AM,GREEN/YELLOW,,8,
+2025-05-31,Evening,GREEN/YELLOW,,0,
+2025-05-31,PM,GREEN,,6,
+2025-06-01,AM,GREEN/YELLOW,,8,
+2025-06-01,Evening,YELLOW,,0,
+2025-06-01,PM,GREEN/YELLOW,~60% GREEN,4,"Some burning sensation on lower right back after work all day; no consistent guarding; symptoms before evening routine; ibuprofen only before bed; some burning sensation on lower right back Evening all day, no consistent guarding, was feeling symptoms before I did my evening routine, ibuprofen only taken before bed; some burning sensation on lower right back Evening all day, no consistent guarding, was feeling symptoms before I did my evening routine, ibuprofen only taken before bed"
+2025-06-02,AM,GREEN/YELLOW,~70% GREEN,9,
+2025-06-02,Evening,YELLOW,,0,
+2025-06-02,PM,GREEN,,4,No ibuprofen; No ibuprofen; No ibuprofen
+2025-06-03,AM,GREEN/YELLOW,,9,1 ibuprofen for headache; felt some back pain when stressed but fine after
+2025-06-03,Evening,GREEN/YELLOW,,0,
+2025-06-03,PM,GREEN,,4,No ibuprofen; No ibuprofen; No ibuprofen
+2025-06-04,AM,GREEN/YELLOW,,9,
+2025-06-04,Evening,GREEN,,0,
+2025-06-04,PM,GREEN,,4,
+2025-06-05,AM,GREEN,,11,
+2025-06-05,Evening,GREEN,,0,
+2025-06-05,PM,GREEN,,5,
+2025-06-06,AM,GREEN,,9,
+2025-06-06,Evening,GREEN,,0,
+2025-06-06,PM,GREEN,,4,
+2025-06-07,AM,GREEN/YELLOW,,9,Some right glute/hamstring irritation (noted with AM GREEN/YELLOW rating); some right glute/hamstring irritation; some right glute/hamstring irritation
+2025-06-07,Evening,GREEN/YELLOW,,0,
+2025-06-07,PM,,,3,

@@ -1,0 +1,2308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Recovery activity log — PT summary</title>
+  <meta name="color-scheme" content="dark" />
+  <style>
+    :root {
+      --bg: #0c0e12;
+      --card: #161a22;
+      --card-hover: #1c212c;
+      --text: #e8ecf1;
+      --muted: #8b95a8;
+      --border: #2a3140;
+      --green: #39d353;
+      --yellow: #ffcc33;
+      --orange: #fb8c00;
+      --red: #ff4d4d;
+      --feel-gradient: linear-gradient(to right, #39d353, #d4e157, #ffcc33, #fb8c00, #ff4d4d);
+      --accent: #5b9cf5;
+      --chart-walk: #4db8e8;
+      --chart-strength: #b794f6;
+      --chart-ma: #8b95a8;
+      --pm-dot-ring: #2e4059;
+      --afternoon-dot-ring: #94a3b8;
+      --select-bg: #1e2430;
+      --btn-active-bg: #243044;
+      --btn-active-border: #5b9cf5;
+      --row-selected: #1e2a3d;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.45;
+      color-scheme: dark;
+    }
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 24px 20px 48px; }
+    h1 { font-size: 1.5rem; margin: 0 0 6px; font-weight: 650; }
+    .page-intro {
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.55;
+      margin: 0 0 20px;
+      max-width: 52rem;
+    }
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .stat {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px 14px;
+    }
+    .stat .v { font-size: 1.35rem; font-weight: 650; }
+    .stat .l { font-size: 0.78rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; }
+    .panel {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px 18px;
+      margin-bottom: 16px;
+    }
+    .panel h2 { font-size: 1rem; margin: 0 0 4px; }
+    .caption { font-size: 0.8rem; color: var(--muted); margin-bottom: 12px; }
+    .chart-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin: -4px 0 12px;
+      cursor: pointer;
+      user-select: none;
+    }
+    .chart-toggle input {
+      width: 15px;
+      height: 15px;
+      cursor: pointer;
+      accent-color: var(--btn-active-border);
+    }
+    .chart-trend-controls {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 12px 22px;
+      margin: -4px 0 12px;
+    }
+    .chart-trend-slider input[type="range"] {
+      width: min(148px, 42vw);
+      vertical-align: middle;
+      accent-color: var(--btn-active-border);
+      cursor: pointer;
+    }
+    .chart-trend-slider output {
+      font-size: 0.82rem;
+      color: var(--muted);
+      min-width: 3.5rem;
+    }
+    .chart-row { display: grid; grid-template-columns: 1fr; gap: 16px; }
+    @media (min-width: 900px) {
+      .chart-row.two { grid-template-columns: 1fr 1fr; }
+    }
+    .chart-row.three {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .feeling-sub-panel {
+      min-width: 0;
+    }
+    svg.chart { width: 100%; height: auto; display: block; }
+    .legend {
+      display: block;
+      width: 100%;
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-top: 0;
+    }
+    .legend span { display: inline-flex; align-items: center; gap: 6px; }
+    .all-ratings-meta-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(240px, 340px);
+      gap: 16px 24px;
+      align-items: start;
+      margin-bottom: 8px;
+    }
+    .all-ratings-panel-intro {
+      min-width: 0;
+    }
+    .all-ratings-chart-block {
+      margin-top: 0;
+    }
+    .all-ratings-chart-block .mobile-only {
+      margin: 0 0 4px;
+    }
+    .all-ratings-panel-intro .caption {
+      margin-bottom: 8px;
+    }
+    .all-ratings-panel-intro .chart-trend-controls {
+      margin: 0;
+    }
+    .all-ratings-legend {
+      flex: 0 1 340px;
+      min-width: min(100%, 280px);
+      max-width: 380px;
+      margin: 0;
+    }
+    .all-ratings-legend-bar,
+    .all-ratings-legend-labels {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+    }
+    .all-ratings-legend-bar {
+      min-height: 44px;
+      align-items: center;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      background: linear-gradient(
+        180deg,
+        #ff4d4d 0%,
+        #fb8c00 30%,
+        #ffcc33 55%,
+        #39d353 100%
+      );
+    }
+    .all-ratings-legend-cell {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 44px;
+      border-right: 1px solid rgba(0, 0, 0, 0.12);
+    }
+    .all-ratings-legend-cell:last-child {
+      border-right: none;
+    }
+    .all-ratings-legend-cell--high {
+      align-items: flex-start;
+      padding-top: 5px;
+    }
+    .legend-mark {
+      flex-shrink: 0;
+      border-radius: 50%;
+      background: #ffcc33;
+      box-sizing: border-box;
+    }
+    .legend-mark--morning {
+      width: 12px;
+      height: 12px;
+      border: 2px solid #ffffff;
+      box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.4);
+    }
+    .legend-mark--afternoon {
+      width: 9px;
+      height: 9px;
+      border: 1.5px solid #c5d0e0;
+      box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.35);
+    }
+    .legend-mark--evening {
+      width: 12px;
+      height: 12px;
+      border: 2.5px solid #0a121c;
+      box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.35);
+    }
+    .legend-mark--incident {
+      width: 12px;
+      height: 12px;
+      background: #fb8c00;
+      border: 2px dashed #ffffff;
+    }
+    .legend-range-mark {
+      width: 10px;
+      height: 28px;
+      border-radius: 3px;
+      background: rgba(255, 255, 255, 0.14);
+      border: 1.5px solid rgba(255, 255, 255, 0.5);
+      box-sizing: border-box;
+    }
+    .all-ratings-legend-labels {
+      gap: 2px;
+      margin-top: 6px;
+      text-align: center;
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.2;
+    }
+    .swatch { width: 12px; height: 12px; border-radius: 2px; }
+    .legend-panel {
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .panel.is-hidden {
+      display: none;
+    }
+    .feel-scale-wrap {
+      width: 100%;
+      max-width: none;
+      box-sizing: border-box;
+    }
+    .feel-scale-bar {
+      width: 100%;
+      height: clamp(12px, 1.8vw, 18px);
+      border-radius: 999px;
+      background: var(--feel-gradient);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .feel-scale-ticks {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      margin-top: 6px;
+      font-size: clamp(0.65rem, 1.4vw, 0.78rem);
+      font-weight: 650;
+      letter-spacing: 0.03em;
+    }
+    .feel-scale-ticks span:nth-child(1) { color: var(--green); }
+    .feel-scale-ticks span:nth-child(2) { color: var(--yellow); }
+    .feel-scale-ticks span:nth-child(3) { color: var(--red); }
+    .feel-scale-desc {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 8px;
+      margin-top: 12px;
+      font-size: clamp(0.78rem, 1.6vw, 0.88rem);
+      color: var(--muted);
+    }
+    @media (min-width: 640px) {
+      .feel-scale-desc {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px 16px;
+      }
+    }
+    .feeling-trend-panel {
+      margin-bottom: 16px;
+    }
+    .feeling-chart-wrap {
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: var(--card);
+    }
+    .feeling-chart-wrap .chart {
+      display: block;
+      width: 100%;
+      vertical-align: top;
+    }
+    .feeling-chart-wrap {
+      cursor: pointer;
+    }
+    .feel-dot {
+      pointer-events: none;
+    }
+    .feel-col-hit {
+      cursor: pointer;
+    }
+    .feeling-trend-panel .feeling-chart-wrap {
+      min-height: 200px;
+    }
+    .feeling-trend-panel:has(#chartFeelingAll) .feeling-chart-wrap {
+      min-height: 200px;
+    }
+    .feeling-sub-panel h2 {
+      margin-bottom: 8px;
+    }
+    .feeling-sub-panel .feeling-chart-wrap {
+      min-height: 0;
+    }
+    .controls {
+      display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-bottom: 16px;
+    }
+    select, button {
+      font: inherit;
+      padding: 8px 12px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--select-bg);
+      color: var(--text);
+    }
+    button { cursor: pointer; }
+    button:hover { background: var(--card-hover); }
+    button.active { background: var(--btn-active-bg); border-color: var(--btn-active-border); }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+    }
+    #dayTable {
+      table-layout: fixed;
+      width: 100%;
+    }
+    .day-table-scroll {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      width: 100%;
+    }
+    #dayTable col.col-date { width: 7.25rem; }
+    #dayTable col.col-walk { width: 3.25rem; }
+    th, td {
+      text-align: left;
+      padding: 8px 10px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    #dayTable th.col-date,
+    #dayTable td.col-date {
+      width: 7.25rem;
+      white-space: nowrap;
+    }
+    #dayTable td.col-date {
+      vertical-align: middle;
+    }
+    #dayTable th.col-center .table-cell-center,
+    #dayTable td.col-center .table-cell-center {
+      display: inline-block;
+      text-align: center;
+    }
+    #dayTable th.col-walk,
+    #dayTable td.col-walk {
+      width: 3.25rem;
+      text-align: center;
+      white-space: nowrap;
+      padding-left: 4px;
+      padding-right: 4px;
+      vertical-align: middle;
+    }
+    #dayTable th.col-walk {
+      line-height: 1.25;
+      white-space: normal;
+    }
+    #dayTable th.col-walk .th-unit {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      opacity: 0.92;
+    }
+    #dayTable th.col-log,
+    #dayTable td.col-log {
+      width: auto;
+      min-width: 0;
+      overflow-wrap: break-word;
+      word-break: break-word;
+    }
+    th { color: var(--muted); font-weight: 600; font-size: 0.75rem; text-transform: uppercase; }
+    #dayTable th {
+      vertical-align: bottom;
+    }
+    tr.selected { background: var(--row-selected); }
+    tr:hover { background: var(--card-hover); }
+    .pill {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+    .feeling-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      vertical-align: middle;
+    }
+    .feeling-chip-dot {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(255, 255, 255, 0.92);
+      box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.35);
+      flex-shrink: 0;
+    }
+    .feeling-chip-label {
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+    .log-activities-cell,
+    #dayTable .col-log {
+      font-size: 0.82rem;
+      line-height: 1.45;
+      vertical-align: top;
+    }
+    .log-session { margin-bottom: 8px; }
+    .log-session:last-child { margin-bottom: 0; }
+    .log-session-head {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 4px;
+      font-weight: 600;
+      font-size: 0.8rem;
+    }
+    .log-act-list { margin: 0; padding-left: 18px; }
+    .log-act-list li { margin: 2px 0; }
+    .log-session-meta {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin: 0 0 4px;
+    }
+    .log-incident-block {
+      margin-top: 8px;
+      padding-left: 10px;
+      border-left: 3px solid var(--red);
+    }
+    .detail { font-size: 0.88rem; }
+    .detail h3 { margin: 0 0 8px; font-size: 0.95rem; }
+    ul { margin: 6px 0; padding-left: 18px; }
+    .incident { border-left: 3px solid var(--red); padding-left: 10px; margin: 8px 0; }
+    #dayDetail { display: none; }
+    .day-modal-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      background: rgba(8, 10, 14, 0.62);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.18s ease;
+    }
+    .day-modal-backdrop.is-open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .day-modal {
+      width: min(560px, 100%);
+      max-height: min(85vh, 720px);
+      overflow: auto;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 24px 64px rgba(0, 0, 0, 0.45);
+    }
+    .day-modal-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 16px 18px 12px;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      background: var(--card);
+      z-index: 1;
+    }
+    .day-modal-header h3 {
+      margin: 0;
+      font-size: 1.05rem;
+      line-height: 1.35;
+    }
+    .day-modal-close {
+      flex-shrink: 0;
+      font: inherit;
+      font-size: 1.35rem;
+      line-height: 1;
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--select-bg);
+      color: var(--text);
+      cursor: pointer;
+    }
+    .day-modal-close:hover { background: var(--card-hover); }
+    .day-modal-body { padding: 14px 18px 18px; font-size: 0.88rem; }
+    .day-modal-summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .day-modal-stat {
+      padding: 8px 10px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.03);
+    }
+    .day-modal-stat .v { font-weight: 650; font-size: 1rem; }
+    .day-modal-stat .l { font-size: 0.72rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; }
+    .day-modal-session {
+      margin-top: 14px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+    }
+    .day-modal-session h4 {
+      margin: 0 0 8px;
+      font-size: 0.92rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .day-modal-session ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+    .day-modal-session li { margin: 4px 0; }
+    .day-modal-session .session-meta {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin: 0 0 6px;
+    }
+    .mobile-only { display: none; }
+    .chart-scroll-x {
+      display: block;
+      width: 100%;
+      max-width: 100%;
+    }
+    .chart-mount {
+      display: block;
+      width: 100%;
+    }
+    .day-log-cards { display: none; }
+    .day-log-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px 14px;
+      cursor: pointer;
+    }
+    .day-log-card.selected {
+      border-color: var(--btn-active-border);
+      background: var(--row-selected);
+    }
+    .day-log-card-head {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 6px 12px;
+      margin-bottom: 10px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+    }
+    .day-log-card-head strong { font-size: 1rem; }
+    .day-log-card-meta {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+    .day-log-card-section {
+      margin-top: 10px;
+    }
+    .day-log-card-section h3 {
+      margin: 0 0 6px;
+      font-size: 0.72rem;
+      font-weight: 650;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--muted);
+    }
+    @media (min-width: 768px) {
+      .all-ratings-meta-row {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px 28px;
+        margin-bottom: 12px;
+      }
+      .all-ratings-panel-intro {
+        flex: 1 1 260px;
+        max-width: 520px;
+      }
+      .all-ratings-legend {
+        flex: 0 1 340px;
+        min-width: min(100%, 280px);
+        max-width: 380px;
+      }
+      .chart-scroll-x,
+      .feeling-chart-wrap.chart-scroll-x {
+        overflow: visible;
+      }
+      .chart-scroll-x svg.chart,
+      .chart-scroll-x--bar .chart-mount svg.chart,
+      .feeling-chart-wrap.chart-scroll-x svg.chart {
+        width: 100%;
+        min-width: 0;
+        max-width: 100%;
+      }
+      .feeling-trend-panel .feeling-chart-wrap,
+      .feeling-trend-panel:has(#chartFeelingAll) .feeling-chart-wrap {
+        min-height: 200px;
+      }
+    }
+    @media (max-width: 767px) {
+      .chart-scroll-x {
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        overscroll-behavior-x: contain;
+      }
+      .chart-scroll-x--bar .chart-mount {
+        display: inline-block;
+        vertical-align: top;
+      }
+      .wrap {
+        padding: 14px 12px 28px;
+        overflow-x: hidden;
+        max-width: 100%;
+      }
+      h1 { font-size: 1.2rem; }
+      .page-intro { font-size: 0.88rem; margin-bottom: 14px; }
+      .panel {
+        padding: 12px 14px;
+        min-width: 0;
+        max-width: 100%;
+        overflow: hidden;
+      }
+      .chart-row.two .panel,
+      .chart-row.three .panel {
+        min-width: 0;
+      }
+      .all-ratings-meta-row {
+        grid-template-columns: 1fr;
+        gap: 8px;
+        margin-bottom: 0;
+      }
+      .all-ratings-meta-row .all-ratings-panel-intro {
+        order: 1;
+      }
+      .all-ratings-meta-row .all-ratings-legend {
+        order: 2;
+      }
+      .all-ratings-chart-block {
+        margin-top: 6px;
+      }
+      .chart-row.two .caption {
+        margin-bottom: 6px;
+      }
+      .mobile-only { display: block; }
+      .desktop-only { display: none !important; }
+      .controls {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .controls label,
+      .controls select,
+      .controls button {
+        width: 100%;
+      }
+      .chart-row.three {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+      .chart-row.two {
+        grid-template-columns: 1fr;
+      }
+      .feeling-trend-panel .feeling-chart-wrap,
+      .feeling-trend-panel:has(#chartFeelingAll) .feeling-chart-wrap,
+      .feeling-sub-panel .feeling-chart-wrap {
+        min-height: 0;
+      }
+      .feeling-chart-wrap.chart-scroll-x svg.chart {
+        display: block;
+        min-width: 800px;
+        width: 800px;
+        max-width: none;
+      }
+      .chart-scroll-x--sub svg.chart {
+        min-width: 100%;
+        width: 100%;
+      }
+      .chart-scroll-x--bar .chart-mount svg.chart,
+      .chart-scroll-x--bar svg.chart {
+        display: block;
+        min-width: 520px;
+        width: 520px;
+        max-width: none;
+      }
+      .all-ratings-legend {
+        max-width: none;
+        width: 100%;
+        margin-bottom: 0;
+      }
+      .all-ratings-legend-labels {
+        font-size: 0.68rem;
+      }
+      .day-table-scroll.desktop-only {
+        display: none;
+      }
+      .day-log-cards {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+      .log-activities-cell {
+        font-size: 0.86rem;
+      }
+    }
+    @media print {
+      html, body {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+        color-adjust: exact;
+      }
+      body {
+        background: var(--bg) !important;
+        color: var(--text) !important;
+        color-scheme: dark;
+      }
+      .wrap, .panel, .stat, .feeling-chart-wrap, .day-log-card {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      .panel { break-inside: avoid; }
+      .controls button { display: none; }
+      .chart-toggle { display: none; }
+      .chart-trend-controls { display: none; }
+      .day-modal-backdrop { display: none; }
+      .mobile-only { display: none !important; }
+      .day-table-scroll.desktop-only {
+        display: block !important;
+      }
+      .day-log-cards {
+        display: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Back recovery — activity &amp; symptom log</h1>
+    <p class="page-intro" id="headerMeta"></p>
+
+    <div class="stats" id="stats"></div>
+
+    <div class="controls">
+      <label>Focus day:
+        <select id="daySelect"></select>
+      </label>
+      <button type="button" id="btnAll" class="active">All days</button>
+      <button type="button" id="btnPrint">Print / save PDF</button>
+    </div>
+
+    <div class="panel legend-panel">
+      <h2>Symptom color scale</h2>
+      <p class="caption" style="margin-bottom:10px">Chart colors use this scale · lower on the charts = better (GREEN)</p>
+      <div class="legend" id="legendScale"></div>
+    </div>
+
+    <div class="panel feeling-trend-panel is-hidden" id="panelFeelingOverall" aria-hidden="true">
+      <h2>Each day (overall)</h2>
+      <p class="caption">RED (worse) at top → GREEN (better) at bottom · Dots = that day’s rating · Smooth line = 2-day trend</p>
+      <div class="feeling-chart-wrap"><div id="chartFeelingOverall"></div></div>
+    </div>
+    <div class="panel feeling-trend-panel">
+      <h2>Each day — all ratings</h2>
+      <div class="all-ratings-meta-row">
+        <div class="all-ratings-panel-intro">
+          <p class="caption">Dot fill = symptom color on the scale above · Vertical bar = that day’s spread (best to worst) · Incidents sit by log order</p>
+          <div class="chart-trend-controls">
+            <label class="chart-toggle"><input type="checkbox" id="toggleAllRatingsTrend" checked> Show trend line (white)</label>
+            <label class="chart-toggle chart-trend-slider" id="allRatingsTrendSliderWrap" hidden>
+              Trend smoothing
+              <input type="range" id="allRatingsTrendWindow" min="1" max="3" step="1" value="2"
+                aria-valuemin="1" aria-valuemax="3" aria-label="Trend averaging window in days">
+              <output id="allRatingsTrendWindowVal" for="allRatingsTrendWindow">2 days</output>
+            </label>
+          </div>
+        </div>
+        <div class="all-ratings-legend" role="group" aria-label="Chart symbol legend">
+          <div class="all-ratings-legend-bar" role="img" aria-label="Symptom scale with sample markers">
+            <div class="all-ratings-legend-cell" title="Prior day PM · left of range bar">
+              <span class="legend-mark legend-mark--morning" aria-hidden="true"></span>
+            </div>
+            <div class="all-ratings-legend-cell" title="Same day AM · center · smaller dot">
+              <span class="legend-mark legend-mark--afternoon" aria-hidden="true"></span>
+            </div>
+            <div class="all-ratings-legend-cell" title="Log Evening · right of range bar">
+              <span class="legend-mark legend-mark--evening" aria-hidden="true"></span>
+            </div>
+            <div class="all-ratings-legend-cell" title="Best to worst rating that day">
+              <span class="legend-range-mark" aria-hidden="true"></span>
+            </div>
+            <div class="all-ratings-legend-cell all-ratings-legend-cell--high" title="Dashed ring · by log order">
+              <span class="legend-mark legend-mark--incident" aria-hidden="true"></span>
+            </div>
+          </div>
+          <div class="all-ratings-legend-labels">
+            <span>Morning</span>
+            <span>Afternoon</span>
+            <span>Evening</span>
+            <span>Range</span>
+            <span>Incident</span>
+          </div>
+        </div>
+      </div>
+      <div class="all-ratings-chart-block">
+        <p class="caption mobile-only">Swipe the chart sideways to read dates and dots.</p>
+        <div class="feeling-chart-wrap chart-scroll-x"><div id="chartFeelingAll" class="chart-mount"></div></div>
+      </div>
+    </div>
+    <div class="panel feeling-trend-panel is-hidden" id="panelFeelingAllTrend" aria-hidden="true">
+      <h2>Each day — all ratings (2-day trend)</h2>
+      <p class="caption">Same ratings and daily range bars · White = Morning · Grey = Afternoon · Dark = Evening · Smooth 2-day average uses the symptom color scale (RED up, GREEN down)</p>
+      <div class="feeling-chart-wrap"><div id="chartFeelingAllTrend"></div></div>
+    </div>
+    <div class="chart-row three">
+      <div class="panel feeling-sub-panel">
+        <h2>Morning</h2>
+        <div class="feeling-chart-wrap chart-scroll-x chart-scroll-x--sub"><div id="chartFeelingAm"></div></div>
+      </div>
+      <div class="panel feeling-sub-panel">
+        <h2>Afternoon</h2>
+        <div class="feeling-chart-wrap chart-scroll-x chart-scroll-x--sub"><div id="chartFeelingPm"></div></div>
+      </div>
+      <div class="panel feeling-sub-panel">
+        <h2>Evening</h2>
+        <div class="feeling-chart-wrap chart-scroll-x chart-scroll-x--sub"><div id="chartFeelingEvening"></div></div>
+      </div>
+    </div>
+
+    <div class="chart-row two">
+      <div class="panel">
+        <h2>Walking duration per day</h2>
+        <p class="caption">Sum of logged walks (minutes)</p>
+        <div class="chart-scroll-x chart-scroll-x--bar">
+          <div id="chartWalk" class="chart-mount"></div>
+        </div>
+      </div>
+      <div class="panel">
+        <h2>Activity volume per day</h2>
+        <p class="caption">Timed non-walk exercise (minutes) and estimated strength reps (sets × reps, both sides when noted)</p>
+        <div class="chart-scroll-x chart-scroll-x--bar">
+          <div id="chartVolume" class="chart-mount"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h2>Day-by-day log</h2>
+      <p class="caption desktop-only">Click a row to highlight charts · Cortisone shot: <span id="shotDate"></span></p>
+      <p class="caption mobile-only">Tap a day to highlight charts · Cortisone shot: <span id="shotDateMobile"></span></p>
+      <div class="day-table-scroll desktop-only">
+      <table id="dayTable">
+        <colgroup>
+          <col class="col-date">
+          <col class="col-walk">
+          <col class="col-log">
+          <col class="col-log">
+        </colgroup>
+        <thead>
+          <tr>
+            <th class="col-date">Date</th>
+            <th class="col-walk col-center" title="Walk (minutes)"><span class="table-cell-center">Walk<br><span class="th-unit">min</span></span></th>
+            <th class="col-log log-activities-cell">Morning log</th>
+            <th class="col-log log-activities-cell">Evening log</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+      </div>
+      <div id="dayLogCards" class="day-log-cards" aria-label="Day by day log"></div>
+    </div>
+
+    <div class="panel detail" id="dayDetail"></div>
+  </div>
+
+  <div class="day-modal-backdrop" id="dayModalBackdrop" aria-hidden="true">
+    <div class="day-modal" role="dialog" aria-modal="true" aria-labelledby="dayModalTitle" id="dayModal">
+      <div class="day-modal-header">
+        <h3 id="dayModalTitle">Day detail</h3>
+        <button type="button" class="day-modal-close" id="dayModalClose" aria-label="Close">×</button>
+      </div>
+      <div class="day-modal-body" id="dayModalBody"></div>
+    </div>
+  </div>
+
+  <script>
+    const METRICS = {"cortisone_shot_date":"2025-05-13","log_start":"2025-05-23","log_end":"2025-06-07","feeling_scale":{"GREEN":"No symptoms; felt great without pain","YELLOW":"Some symptoms; somewhat uncomfortable but went away fairly quickly","RED":"Significant symptoms; really feeling it"},"scoring_note":"GREEN = no symptoms \u00b7 YELLOW = mild, brief symptoms \u00b7 RED = significant symptoms. Combined labels (e.g. GREEN/YELLOW) appear when both apply. Dashboard Morning = previous calendar day\u2019s log PM color (next-morning feeling). Dashboard Afternoon = same day\u2019s log AM color (after morning routine). Dashboard Evening = same day\u2019s log Evening color (end of day, no activities).","days":[{"date":"2025-05-23","day_score":1.0,"am_score":null,"pm_score":null,"whole_day_score":1.0,"walk_minutes":30.0,"timed_exercise_minutes":0.75,"strength_reps":10,"activity_count":5,"sessions":[{"period":"day","feelings":["RED"],"feelings_label":"RED","score":1.0,"feelings_detail":null,"session_notes":null,"activity_count":5,"walk_minutes":30.0,"timed_exercise_minutes":0.75,"strength_reps":10,"activities":[{"name":"walk","duration":"20min","sets":null,"reps":null,"reps_per_side":null,"notes":null},{"name":"walk","duration":"10min","sets":null,"reps":null,"reps_per_side":null,"notes":null},{"name":"full glute bridges","duration":null,"sets":1,"reps":10,"reps_per_side":null,"notes":null},{"name":"plank","duration":"15sec","sets":null,"reps":null,"reps_per_side":null,"notes":null},{"name":"dead hang","duration":"30sec","sets":null,"reps":null,"reps_per_side":null,"notes":null}]}],"incidents":[],"pm_feelings_label":null,"evening_score":null,"evening_feelings_label":null,"am_feelings_label":null,"am_source_date":null,"day_score_ma2":1.0,"am_score_ma2":null,"pm_score_ma2":null,"evening_score_ma2":null},{"date":"2025-05-24","day_score":0.25,"am_score":null,"pm_score":null,"whole_day_score":0.25,"walk_minutes":35.0,"timed_exercise_minutes":2.0,"strength_reps":0,"activity_count":8,"sessions":[{"period":"day","feelings":["GREEN","YELLOW"],"feelings_label":"GREEN/YELLOW","score":0.25,"feelings_detail":null,"session_notes":null,"activity_count":8,"walk_minutes":35.0,"timed_exercise_minutes":2.0,"strength_reps":0,"activities":[{"name":"walk","duration":"20min","sets":null,"reps":null,"reps_per_side":null,"notes":null},{"name":"walk","duration":"15min","sets":null,"reps":null,"reps_per_side":null,"notes":"hip circles throughout walk \u2014 helpful"},{"name":"mobility block (2\u20133 sets spread through day)","duration":null,"sets":"2-3","reps":null,"reps_per_side":null,"notes":"grouped routine"},{"name":"90/90 supine diaphragmatic breathing","duration":"2min","sets":null,"reps":null,"reps_per_side":null,"notes":null},{"name":"cow neutral","duration":null,"sets":null,"reps":"8-10","reps_per_side":null,"notes":null},{"name":"rock back","duration":null,"sets":null,"reps":"5-10","reps_per_side":null,"notes":null},{"name":"single knee drops","duration":null,"sets":null,"reps":"5-10","reps_per_side":null,"notes":null},{"name":"nerve glides","duration":null,"sets":null,"reps":10,"reps_per_side":true,"notes":null}]}],"incidents":[],"pm_feelings_label":null,"evening_score":null,"evening_feelings_label":null,"am_feelings_label":null,"am_source_date":null,"day_score_ma2":0.625,"am_score_ma2":null,"pm_score_ma2":null,"evening_score_ma2":null},{"date":"2025-05-25","day_score":0.25,"am_score":null,"pm_score":null,"whole_day_score":0.25,"walk_minutes":60.0,"timed_exercise_minutes":2.0,"strength_reps":0,"activity_count":10,"sessions":[{"period":"day","feelings":["GREEN","YELLOW"],"feelings_label":"GREEN/YELLOW","score":0.25,"feelings_detail":null,"session_notes":null,"activity_count":10,"walk_minutes":60.0,"timed_exercise_minutes":2.0,"strength_reps":0,"activities":[{"name":"walk","duration":"25min","sets":null,"reps":null,"reps_per_side":null,"notes":null},{"name":"walk","duration":"20min","sets":null,"reps":null,"reps_per_side":null,"notes":null},{"name":"walk","duration":"15min","sets":null,"reps":null,"reps_per_side":null,"notes":null},{"name":"mobility block (2\u20133 sets spread through day)","duration":null,"sets":"2-3","reps":null,"reps_per_side":null,"notes":"grouped routine"},{"name":"90/90 supine diaphragmatic breathing","duration":"2min","sets":null,"reps":null,"reps_per_side":null,"notes":null},{"name":"cow neutral","duration":null,"sets":null,"reps":"8-10","reps_per_side":null,"notes":null},{"name":"rock back","duration":null,"sets":null,"reps":"5-10","reps_per_side":null,"notes":null},{"name":"single knee drops","duration":null,"sets":null,"reps":"5-10","reps_per_side":null,"notes":null},{"name":"nerve glides","duration":null,"sets":null,"reps":10,"reps_per_side":true,"notes":null},{"name":"full bird dogs","duration":null,"sets":2,"reps":"5-10","reps_per_side":null,"notes":null}]}],"incidents":[],"pm_feelings_label":null,"evening_score":null,"evening_feelings_label":null,"am_feelings_label":null,"am_source_date":null,"day_score_ma2":0.25,"am_score_ma2":null,"pm_score_ma2":null,"evening_score_ma2":null},{"date":"2025-05-26","day_score":0.625,"am_score":null,"pm_score":0.5,"whole_day_score":null,"walk_minutes":28.0,"timed_exercise_minutes":12.0,"strength_reps":101,"activity_count":14,"sessions":[{"period":"AM","feelings":["YELLOW"],"feelings_label":"YELLOW","score":0.5,"feelings_detail":null,"session_notes":null,"activity_count":9,"walk_minutes":28.0,"timed_exercise_minutes":2.0,"strength_reps":69,"activities":[{"name":"supine 90/90","duration":"2min","sets":null,"reps":null,"reps_per_side":null,"notes":null},{"name":"cow neutral","duration":null,"sets":2,"reps":8,"reps_per_side":null,"notes":null},{"name":"rock back","duration":null,"sets":2,"reps":8,"reps_per_side":null,"notes":null},{"name":"single knee drops","duration":null,"sets":1,"reps":5,"reps_per_side":null,"notes":null},{"name":"mini glute bridges","duration":null,"sets":2,"reps":8,"reps_per_side":null,"notes":null},{"name":"bird dog","duration":null,"sets":2,"reps":8,"reps_per_side":null,"notes":"with foot sliding"},{"name":"walk","duration":"28min","sets":null,"reps":null,"reps_per_side":null,"notes":"2x5 hip circles in the middle"},{"name":"cow neutral","duration":null,"sets":null,"reps":null,"reps_per_side":null,"notes":"after walk"},{"name":"supine 90/90","duration":null,"sets":null,"reps":null,"reps_per_side":null,"notes":"after walk"}]},{"period":"Evening","feelings":["RED","YELLOW"],"feelings_label":"RED/YELLOW","score":0.75,"feelings_detail":null,"session_notes":null,"activity_count":0,"walk_minutes":0.0,"timed_exercise_minutes":0.0,"strength_reps":0,"activities":[]},{"period":"PM","feelings":["GREEN"],"feelings_label":"GREEN","score":0.0,"feelings_detail":null,"session_notes":null,"activity_count":5,"walk_minutes":0.0,"timed_exercise_minutes":10.0,"strength_reps":32,"activities":[{"name":"supine 90/90","duration":"10min","sets":null,"reps":null,"reps_per_side":null,"notes":null},{"name":"rock back","duration":null,"sets":1,"reps":8,"reps_per_side":null,"notes":null},{"name":"cow neutral","duration":null,"sets":1,"reps":8,"reps_per_side":null,"notes":null},{"name":"mini glute bridges","duration":null,"sets":1,"reps":8,"reps_per_side":null,"notes":null},{"name":"bird dog","duration":null,"sets":1,"reps":8,"reps_per_side":null,"notes":"with foot sliding"}]}],"incidents":[],"pm_feelings_label":"YELLOW","evening_score":0.75,"evening_feelings_label":"RED/YELLOW","am_feelings_label":null,"am_source_date":null,"day_score_ma2":0.438,"am_score_ma2":null,"pm_score_ma2":0.5,"evening_score_ma2":0.75},{"date":"2025-05-27","day_score":0.167,"am_score":0.0,"pm_score":0.0,"whole_day_score":null,"walk_minutes":35.0,"timed_exercise_minutes":4.0,"strength_reps":69,"activity_count":13,"sessions":[{"period":"AM","feelings":["GREEN"],"feelings_label":"GREEN","score":0.0,"feelings_detail":null,"session_notes":null,"activity_count":7,"walk_minutes":20.0,"timed_exercise_minutes":2.0,"strength_reps":37,"activities":[{"name":"supine 90/90","duration":"2min","sets":null,"reps":null,"reps_per_side":null,"notes":null},{"name":"cow neutral","duration":null,"sets":1,"reps":8,"reps_per_side":null,"notes":null},{"name":"rock back","duration":null,"sets":1,"reps":8,"reps_per_side":null,"notes":null},{"name":"single knee drops","duration":null,"sets":1,"reps":5,"reps_per_side":null,"notes":null},{"name":"half range glute bridges","duration":null,"sets":1,"reps":8,"reps_per_side":null,"notes":null},{"name":"bird dog","duration":null,"sets":1,"reps":8,"reps_per_side":null,"notes":"no mods"},{"name":"walk","duration":"20min","sets":null,"reps":null,"reps_per_side":null,"notes":"2x5 hip circles in the middle; repeated mobility routine after walk"}]},{"period":"Evening","feelings":["YELLOW"],"feelings_label":"YELLOW","score":0.5,"feelings_detail":null,"session_notes":null,"activity_count":0,"walk_minutes":0.0,"timed_exercise_minutes":0.0,"strength_reps":0,"activities":[]},{"period":"PM","feelings":["GREEN","YELLOW"],"feelings_label":"GREEN/YELLOW","score":0.25,"feelings_detail":null,"session_notes":null,"activity_count":6,"walk_minutes":15.0,"timed_exercise_minutes":2.0,"strength_reps":32,"activities":[{"name":"90/90","duration":"2min","sets":null,"reps":null,"reps_per_side":null,"notes":null},{"name":"cow neutral","duration":null,"sets":1,"reps":8,"reps_per_side":null,"notes":null},{"name":"rock back","duration":null,"sets":1,"reps":8,"reps_per_side":null,"notes":null},{"name":"half range glute bridges","duration":null,"sets":1,"reps":8,"reps_per_side":null,"notes":null},{"name":"bird dog","duration":null,"sets":1,"reps":8,"reps_per_side":null,"notes":"no mods"},{"name":"walk","duration":"15min","sets":null,"reps":null,"reps_per_side":null,"notes":null}]}],"incidents":[{"feelings":["RED"],"description":"Double knee drops","notes":"marked RED separately from PM session rating","score":1.0,"after_session":"PM"}],"pm_feelings_label":"GREEN","evening_score":0.5,"evening_feelings_label":"YELLOW","am_feelings_label":"GREEN","am_source_date":"2025-05-26","day_score_ma2":0.396,"am_score_ma2":0.0,"pm_score_ma2":0.25,"evening_score_ma2":0.625},{"date":"2025-05-28","day_score":0.417,"am_score":0.25,"pm_score":0.5,"whole_day_score":null,"walk_minutes":0.0,"timed_exercise_minutes":4.5,"strength_reps":156,"activity_count":12,"sessions":[{"period":"AM","feelings":["YELLOW"],"feelings_label":"YELLOW","score":0.5,"feelings_detail":null,"session_notes":null,"activity_count":7,"walk_minutes":0.0,"timed_exercise_minutes":2.5,"strength_reps":88,"activities":[{"name":"supine 90/90","duration":"2min","sets":null,"reps":null,"reps_per_side":null,"notes":null},{"name":"rock back","duration":null,"sets":2,"reps":8,"reps_per_side":null,"notes":null},{"name":"cow neutral","duration":null,"sets":2,"reps":8,"reps_per_side":null,"notes":null},{"name":"supine marches","duration":null,"sets":2,"reps":10,"reps_per_side":null,"notes":null},{"name":"half range glute bridges","duration":null,"sets":2,"reps":10,"reps_per_side":null,"notes":null},{"name":"bird dog","duration":null,"sets":2,"reps":8,"reps_per_side":null,"notes":"got easier as I did them"},{"name":"modified front plank (desk)","duration":"15sec","sets":2,"reps":null,"reps_per_side":null,"notes":null}]},{"period":"Evening","feelings":["YELLOW"],"feelings_label":"YELLOW","score":0.5,"feelings_detail":null,"session_notes":null,"activity_count":0,"walk_minutes":0.0,"timed_exercise_minutes":0.0,"strength_reps":0,"activities":[]},{"period":"PM","feelings":["GREEN","YELLOW"],"feelings_label":"GREEN/YELLOW","score":0.25,"feelings_detail":null,"session_notes":null,"activity_count":5,"walk_minutes":0.0,"timed_exercise_minutes":2.0,"strength_reps":68,"activities":[{"name":"supine 90/90","duration":"2min","sets":null,"reps":null,"reps_per_side":null,"notes":null},{"name":"cow neutral","duration":null,"sets":2,"reps":8,"reps_per_side":null,"notes":null},{"name":"rock back","duration":null,"sets":2,"reps":8,"reps_per_side":null,"notes":null},{"name":"half-range glute bridges","duration":null,"sets":2,"reps":10,"reps_per_side":null,"notes":null},{"name":"bird dog","duration":null,"sets":2,"reps":8,"reps_per_side":null,"notes":null}]}],"incidents":[],"pm_feelings_label":"YELLOW","evening_score":0.5,"evening_feelings_label":"YELLOW","am_feelings_label":"GREEN/YELLOW","am_source_date":"2025-05-27","day_score_ma2":0.292,"am_score_ma2":0.125,"pm_score_ma2":0.25,"evening_score_ma2":0.5},{"date":"2025-05-29","day_score":0.417,"am_score":0.25,"pm_score":0.25,"whole_day_score":null,"walk_minutes":40.0,"timed_exercise_minutes":2.0,"strength_reps":68,"activity_count":8,"sessions":[{"period":"AM","feelings":["GREEN","YELLOW"],"feelings_label":"GREEN/YELLOW","score":0.25,"feelings_detail":null,"session_notes":null,"activity_count":6,"walk_minutes":20.0,"timed_exercise_minutes":2.0,"strength_reps":68,"activities":[{"name":"supine 90/90","duration":"2min","sets":null,"reps":null,"reps_per_side":null,"notes":null},{"name":"rock back","duration":null,"sets":2,"reps":8,"reps_per_side":null,"notes":null},{"name":"cow neutral","duration":null,"sets":2,"reps":8,"reps_per_side":null,"notes":null},{"name":"half range glute bridges","duration":null,"sets":2,"reps":10,"reps_per_side":null,"notes":null},{"name":"bird dog","duration":null,"sets":2,"reps":8,"reps_per_side":null,"notes":null},{"name":"walk","duration":"20min","sets":null,"reps":null,"reps_per_side":null,"notes":"2x5 hip circles in the middle; after ultrasound, pain during ultrasound"}]},{"period":"Evening","feelings":["RED","YELLOW"],"feelings_label":"RED/YELLOW","score":0.75,"feelings_detail":null,"session_notes":null,"activity_count":0,"walk_minutes":0.0,"timed_exercise_minutes":0.0,"strength_reps":0,"activities":[]},{"period":"PM","feelings":["GREEN"],"feelings_label":"GREEN","score":0.0,"feelings_detail":null,"session_notes":null,"activity_count":2,"walk_minutes":20.0,"timed_exercise_minutes":0.0,"strength_reps":0,"activities":[{"name":"walk","duration":"20min","sets":null,"reps":null,"reps_per_side":null,"notes":null},{"name":"supine 90/90 diaphragmatic breathing","duration":null,"sets":null,"reps":null,"reps_per_side":null,"notes":null}]}],"incidents":[{"feelings":["RED"],"description":"pressure on pelvis/lower abs from ultrasound","notes":null,"score":1.0,"after_session":"AM"}],"pm_feelings_label":"GREEN/YELLOW","evening_score":0.75,"evening_feelings_label":"RED/YELLOW","am_feelings_label":"GREEN/YELLOW","am_source_date":"2025-05-28","day_score_ma2":0.417,"am_score_ma2":0.25,"pm_score_ma2":0.375,"evening_score_ma2":0.625},{"date":"2025-05-30","day_score":0.333,"am_score":0.0,"pm_score":0.5,"whole_day_score":null,"walk_minutes":60.0,"timed_exercise_minutes":4.75,"strength_reps":100,"activity_count":13,"sessions":[{"period":"AM","feelings":["YELLOW"],"feelings_label":"YELLOW","score":0.5,"feelings_detail":null,"session_notes":null,"activity_count":7,"walk_minutes":40.0,"timed_exercise_minutes":2.75,"strength_reps":68,"activities":[{"name":"supine 90/90","duration":"2min","sets":null,"reps":null,"reps_per_side":null,"notes":null},{"name":"rock back","duration":null,"sets":2,"reps":8,"reps_per_side":null,"notes":null},{"name":"cow neutral","duration":null,"sets":2,"reps":8,"reps_per_side":null,"notes":null},{"name":"half range glute bridges","duration":null,"sets":2,"reps":10,"reps_per_side":null,"notes":null},{"name":"bird dog","duration":null,"sets":2,"reps":8,"reps_per_side":null,"notes":null},{"name":"desk plank","duration":"15sec","sets":3,"reps":null,"reps_per_side":null,"notes":null},{"name":"walk","duration":"40min","sets":null,"reps":null,"reps_per_side":null,"notes":"2x5 hip circles at the end"}]},{"period":"Evening","feelings":["YELLOW"],"feelings_label":"YELLOW","score":0.5,"feelings_detail":null,"session_notes":null,"activity_count":0,"walk_minutes":0.0,"timed_exercise_minutes":0.0,"strength_reps":0,"activities":[]},{"period":"PM","feelings":["GREEN","YELLOW"],"feelings_label":"GREEN/YELLOW","score":0.25,"feelings_detail":null,"session_notes":null,"activity_count":6,"walk_minutes":20.0,"timed_exercise_minutes":2.0,"strength_reps":32,"activities":[{"name":"90/90","duration":"2min","sets":null,"reps":null,"reps_per_side":null,"notes":null},{"name":"cow neutral","duration":null,"sets":1,"reps":8,"reps_per_side":null,"notes":null},{"name":"rock back","duration":null,"sets":1,"reps":8,"reps_per_side":null,"notes":null},{"name":"half range glute bridges","duration":null,"sets":1,"reps":8,"reps_per_side":null,"notes":null},{"name":"bird dog","duration":null,"sets":1,"reps":8,"reps_per_side":null,"notes":null},{"name":"walk","duration":"20min","sets":null,"reps":null,"reps_per_side":null,"notes":null}]}],"incidents":[],"pm_feelings_label":"YELLOW","evening_score":0.5,"evening_feelings_label":"YELLOW","am_feelings_label":"GREEN","am_source_date":"2025-05-29","day_score_ma2":0.375,"am_score_ma2":0.125,"pm_score_ma2":0.375,"evening_score_ma2":0.625},{"date":"2025-05-31","day_score":0.25,"am_score":0.25,"pm_score":0.25,"whole_day_score":null,"walk_minutes":55.0,"timed_exercise_minutes":4.75,"strength_reps":105,"activity_count":14,"sessions":[{"period":"AM","feelings":["GREEN","YELLOW"],"feelings_label":"GREEN/YELLOW","score":0.25,"feelings_detail":null,"session_notes":null,"activity_count":8,"walk_minutes":35.0,"timed_exercise_minutes":2.75,"strength_reps":73,"activities":[{"name":"supine 90/90","duration":"2min","sets":null,"reps":null,"reps_per_side":null,"notes":null},{"name":"single knee drop","duration":null,"sets":1,"reps":5,"reps_per_side":null,"notes":null},{"name":"rock back","duration":null,"sets":2,"reps":8,"reps_per_side":null,"notes":null},{"name":"cow neutral","duration":null,"sets":2,"reps":8,"reps_per_side":null,"notes":null},{"name":"half range glute bridges","duration":null,"sets":2,"reps":10,"reps_per_side":null,"notes":null},{"name":"bird dog","duration":null,"sets":2,"reps":8,"reps_per_side":null,"notes":null},{"name":"desk plank","duration":"15sec","sets":3,"reps":null,"reps_per_side":null,"notes":null},{"name":"walk","duration":"35min","sets":null,"reps":null,"reps_per_side":null,"notes":"2x5 hip circles at the end"}]},{"period":"Evening","feelings":["GREEN","YELLOW"],"feelings_label":"GREEN/YELLOW","score":0.25,"feelings_detail":null,"session_notes":null,"activity_count":0,"walk_minutes":0.0,"timed_exercise_minutes":0.0,"strength_reps":0,"activities":[]},{"period":"PM","feelings":["GREEN"],"feelings_label":"GREEN","score":0.0,"feelings_detail":null,"session_notes":null,"activity_count":6,"walk_minutes":20.0,"timed_exercise_minutes":2.0,"strength_reps":32,"activities":[{"name":"90/90","duration":"2min","sets":null,"reps":null,"reps_per_side":null,"notes":null},{"name":"cow neutral","duration":null,"sets":1,"reps":8,"reps_per_side":null,"notes":null},{"name":"rock back","duration":null,"sets":1,"reps":8,"reps_per_side":null,"notes":null},{"name":"half range glute bridges","duration":null,"sets":1,"reps":8,"reps_per_side":null,"notes":null},{"name":"bird dog","duration":null,"sets":1,"reps":8,"reps_per_side":null,"notes":null},{"name":"walk","duration":"20min","sets":null,"reps":null,"reps_per_side":null,"notes":null}]}],"incidents":[],"pm_feelings_label":"GREEN/YELLOW","evening_score":0.25,"evening_feelings_label":"GREEN/YELLOW","am_feelings_label":"GREEN/YELLOW","am_source_date":"2025-05-30","day_score_ma2":0.291,"am_score_ma2":0.125,"pm_score_ma2":0.375,"evening_score_ma2":0.375},{"date":"2025-06-01","day_score":0.25,"am_score":0.0,"pm_score":0.25,"whole_day_score":null,"walk_minutes":60.0,"timed_exercise_minutes":4.75,"strength_reps":93,"activity_count":12,"sessions":[{"period":"AM","feelings":["GREEN","YELLOW"],"feelings_label":"GREEN/YELLOW","score":0.25,"feelings_detail":null,"session_notes":null,"activity_count":8,"walk_minutes":40.0,"timed_exercise_minutes":2.75,"strength_reps":77,"activities":[{"name":"supine 90/90","duration":"2min","sets":null,"reps":null,"reps_per_side":null,"notes":null},{"name":"single knee drop","duration":null,"sets":1,"reps":5,"reps_per_side":null,"notes":null},{"name":"rock back","duration":null,"sets":2,"reps":8,"reps_per_side":null,"notes":null},{"name":"cow neutral","duration":null,"sets":2,"reps":8,"reps_per_side":null,"notes":null},{"name":"75% range glute bridges","duration":null,"sets":2,"reps":10,"reps_per_side":null,"notes":null},{"name":"bird dog","duration":null,"sets":2,"reps":10,"reps_per_side":null,"notes":null},{"name":"incline plank","duration":"15sec","sets":3,"reps":null,"reps_per_side":null,"notes":"half height of desk"},{"name":"walk","duration":"40min","sets":null,"reps":null,"reps_per_side":null,"notes":null}]},{"period":"Evening","feelings":["YELLOW"],"feelings_label":"YELLOW","score":0.5,"feelings_detail":null,"session_notes":null,"activity_count":0,"walk_minutes":0.0,"timed_exercise_minutes":0.0,"strength_reps":0,"activities":[]},{"period":"PM","feelings":["GREEN","YELLOW"],"feelings_label":"GREEN/YELLOW","score":0.2,"feelings_detail":"~60% GREEN","session_notes":"some burning sensation on lower right back Evening all day, no consistent guarding, was feeling symptoms before I did my evening routine, ibuprofen only taken before bed","activity_count":4,"walk_minutes":20.0,"timed_exercise_minutes":2.0,"strength_reps":16,"activities":[{"name":"supine 90/90","duration":"2min","sets":null,"reps":null,"reps_per_side":null,"notes":null},{"name":"rock back","duration":null,"sets":1,"reps":8,"reps_per_side":null,"notes":null},{"name":"cow neutral","duration":null,"sets":1,"reps":8,"reps_per_side":null,"notes":null},{"name":"walk","duration":"20min","sets":null,"reps":null,"reps_per_side":null,"notes":null}]}],"incidents":[],"pm_feelings_label":"GREEN/YELLOW","evening_score":0.5,"evening_feelings_label":"YELLOW","am_feelings_label":"GREEN","am_source_date":"2025-05-31","day_score_ma2":0.25,"am_score_ma2":0.125,"pm_score_ma2":0.25,"evening_score_ma2":0.375},{"date":"2025-06-02","day_score":0.283,"am_score":0.2,"pm_score":0.15,"whole_day_score":null,"walk_minutes":65.0,"timed_exercise_minutes":2.75,"strength_reps":98,"activity_count":13,"sessions":[{"period":"AM","feelings":["GREEN","YELLOW"],"feelings_label":"GREEN/YELLOW","score":0.15,"feelings_detail":"~70% GREEN","session_notes":null,"activity_count":9,"walk_minutes":45.0,"timed_exercise_minutes":2.75,"strength_reps":82,"activities":[{"name":"supine 90/90","duration":"2min","sets":null,"reps":null,"reps_per_side":null,"notes":null},{"name":"dead bug","duration":null,"sets":1,"reps":5,"reps_per_side":null,"notes":null},{"name":"single knee drop","duration":null,"sets":1,"reps":5,"reps_per_side":null,"notes":null},{"name":"rock back","duration":null,"sets":2,"reps":8,"reps_per_side":null,"notes":null},{"name":"cow neutral","duration":null,"sets":2,"reps":8,"reps_per_side":null,"notes":null},{"name":"75% range glute bridges","duration":null,"sets":2,"reps":10,"reps_per_side":null,"notes":null},{"name":"bird dog","duration":null,"sets":2,"reps":10,"reps_per_side":null,"notes":null},{"name":"incline plank","duration":"15sec","sets":3,"reps":null,"reps_per_side":null,"notes":"half height of desk"},{"name":"walk","duration":"45min","sets":null,"reps":null,"reps_per_side":null,"notes":null}]},{"period":"Evening","feelings":["YELLOW"],"feelings_label":"YELLOW","score":0.5,"feelings_detail":null,"session_notes":null,"activity_count":0,"walk_minutes":0.0,"timed_exercise_minutes":0.0,"strength_reps":0,"activities":[]},{"period":"PM","feelings":["GREEN"],"feelings_label":"GREEN","score":0.0,"feelings_detail":null,"session_notes":"No ibuprofen","activity_count":4,"walk_minutes":20.0,"timed_exercise_minutes":0.0,"strength_reps":16,"activities":[{"name":"90/90","duration":null,"sets":null,"reps":null,"reps_per_side":null,"notes":null},{"name":"rock back","duration":null,"sets":1,"reps":8,"reps_per_side":null,"notes":null},{"name":"cow neutral","duration":null,"sets":1,"reps":8,"reps_per_side":null,"notes":null},{"name":"walk","duration":"20min","sets":null,"reps":null,"reps_per_side":null,"notes":null}]}],"incidents":[],"pm_feelings_label":"GREEN/YELLOW","evening_score":0.5,"evening_feelings_label":"YELLOW","am_feelings_label":"GREEN/YELLOW","am_source_date":"2025-06-01","day_score_ma2":0.266,"am_score_ma2":0.1,"pm_score_ma2":0.2,"evening_score_ma2":0.5},{"date":"2025-06-03","day_score":0.167,"am_score":0.0,"pm_score":0.25,"whole_day_score":null,"walk_minutes":50.0,"timed_exercise_minutes":3.5,"strength_reps":103,"activity_count":13,"sessions":[{"period":"AM","feelings":["GREEN","YELLOW"],"feelings_label":"GREEN/YELLOW","score":0.25,"feelings_detail":null,"session_notes":"1 ibuprofen for headache, felt some back pain when stressed but fine after","activity_count":9,"walk_minutes":10.0,"timed_exercise_minutes":3.5,"strength_reps":87,"activities":[{"name":"supine 90/90","duration":"2min","sets":null,"reps":null,"reps_per_side":null,"notes":null},{"name":"dead bug","duration":null,"sets":2,"reps":5,"reps_per_side":null,"notes":null},{"name":"single knee drop","duration":null,"sets":1,"reps":5,"reps_per_side":null,"notes":null},{"name":"rock back","duration":null,"sets":2,"reps":8,"reps_per_side":null,"notes":null},{"name":"cow neutral","duration":null,"sets":2,"reps":8,"reps_per_side":null,"notes":null},{"name":"75% range glute bridges","duration":null,"sets":2,"reps":10,"reps_per_side":null,"notes":null},{"name":"bird dog","duration":null,"sets":2,"reps":10,"reps_per_side":null,"notes":null},{"name":"incline plank","duration":"30sec","sets":3,"reps":null,"reps_per_side":null,"notes":"half height of desk"},{"name":"walk","duration":"10min","sets":null,"reps":null,"reps_per_side":null,"notes":null}]},{"period":"Evening","feelings":["GREEN","YELLOW"],"feelings_label":"GREEN/YELLOW","score":0.25,"feelings_detail":null,"session_notes":null,"activity_count":0,"walk_minutes":0.0,"timed_exercise_minutes":0.0,"strength_reps":0,"activities":[]},{"period":"PM","feelings":["GREEN"],"feelings_label":"GREEN","score":0.0,"feelings_detail":null,"session_notes":"No ibuprofen","activity_count":4,"walk_minutes":40.0,"timed_exercise_minutes":0.0,"strength_reps":16,"activities":[{"name":"90/90","duration":null,"sets":null,"reps":null,"reps_per_side":null,"notes":null},{"name":"rock back","duration":null,"sets":1,"reps":8,"reps_per_side":null,"notes":null},{"name":"cow neutral","duration":null,"sets":1,"reps":8,"reps_per_side":null,"notes":null},{"name":"walk","duration":"40min","sets":null,"reps":null,"reps_per_side":null,"notes":null}]}],"incidents":[],"pm_feelings_label":"GREEN/YELLOW","evening_score":0.25,"evening_feelings_label":"GREEN/YELLOW","am_feelings_label":"GREEN","am_source_date":"2025-06-02","day_score_ma2":0.225,"am_score_ma2":0.1,"pm_score_ma2":0.2,"evening_score_ma2":0.375},{"date":"2025-06-04","day_score":0.083,"am_score":0.0,"pm_score":0.25,"whole_day_score":null,"walk_minutes":60.0,"timed_exercise_minutes":3.5,"strength_reps":109,"activity_count":13,"sessions":[{"period":"AM","feelings":["GREEN","YELLOW"],"feelings_label":"GREEN/YELLOW","score":0.25,"feelings_detail":null,"session_notes":null,"activity_count":9,"walk_minutes":40.0,"timed_exercise_minutes":3.5,"strength_reps":93,"activities":[{"name":"supine 90/90","duration":"2min","sets":null,"reps":null,"reps_per_side":null,"notes":null},{"name":"dead bug","duration":null,"sets":2,"reps":8,"reps_per_side":null,"notes":null},{"name":"single knee drop","duration":null,"sets":1,"reps":5,"reps_per_side":null,"notes":null},{"name":"rock back","duration":null,"sets":2,"reps":8,"reps_per_side":null,"notes":null},{"name":"cow neutral","duration":null,"sets":2,"reps":8,"reps_per_side":null,"notes":null},{"name":"75% range glute bridges","duration":null,"sets":2,"reps":10,"reps_per_side":null,"notes":null},{"name":"bird dog","duration":null,"sets":2,"reps":10,"reps_per_side":null,"notes":null},{"name":"incline plank","duration":"30sec","sets":3,"reps":null,"reps_per_side":null,"notes":null},{"name":"walk","duration":"40min","sets":null,"reps":null,"reps_per_side":null,"notes":null}]},{"period":"Evening","feelings":["GREEN"],"feelings_label":"GREEN","score":0.0,"feelings_detail":null,"session_notes":null,"activity_count":0,"walk_minutes":0.0,"timed_exercise_minutes":0.0,"strength_reps":0,"activities":[]},{"period":"PM","feelings":["GREEN"],"feelings_label":"GREEN","score":0.0,"feelings_detail":null,"session_notes":null,"activity_count":4,"walk_minutes":20.0,"timed_exercise_minutes":0.0,"strength_reps":16,"activities":[{"name":"90/90","duration":null,"sets":null,"reps":null,"reps_per_side":null,"notes":null},{"name":"rock back","duration":null,"sets":1,"reps":8,"reps_per_side":null,"notes":null},{"name":"cow neutral","duration":null,"sets":1,"reps":8,"reps_per_side":null,"notes":null},{"name":"walk","duration":"20min","sets":null,"reps":null,"reps_per_side":null,"notes":null}]}],"incidents":[],"pm_feelings_label":"GREEN/YELLOW","evening_score":0.0,"evening_feelings_label":"GREEN","am_feelings_label":"GREEN","am_source_date":"2025-06-03","day_score_ma2":0.125,"am_score_ma2":0.0,"pm_score_ma2":0.25,"evening_score_ma2":0.125},{"date":"2025-06-05","day_score":0.0,"am_score":0.0,"pm_score":0.0,"whole_day_score":null,"walk_minutes":65.0,"timed_exercise_minutes":4.5,"strength_reps":109,"activity_count":16,"sessions":[{"period":"AM","feelings":["GREEN"],"feelings_label":"GREEN","score":0.0,"feelings_detail":null,"session_notes":null,"activity_count":11,"walk_minutes":45.0,"timed_exercise_minutes":3.5,"strength_reps":93,"activities":[{"name":"supine 90/90","duration":"2min","sets":null,"reps":null,"reps_per_side":null,"notes":null},{"name":"dead bug","duration":null,"sets":2,"reps":8,"reps_per_side":null,"notes":null},{"name":"single knee drop","duration":null,"sets":1,"reps":5,"reps_per_side":null,"notes":null},{"name":"rock back","duration":null,"sets":2,"reps":8,"reps_per_side":null,"notes":null},{"name":"cow neutral","duration":null,"sets":2,"reps":8,"reps_per_side":null,"notes":null},{"name":"glute bridges","duration":null,"sets":2,"reps":10,"reps_per_side":null,"notes":null},{"name":"bird dog","duration":null,"sets":2,"reps":10,"reps_per_side":null,"notes":null},{"name":"incline plank","duration":"30sec","sets":3,"reps":null,"reps_per_side":null,"notes":null},{"name":"walk","duration":"45min","sets":null,"reps":null,"reps_per_side":null,"notes":null},{"name":"legs against wall","duration":null,"sets":null,"reps":null,"reps_per_side":null,"notes":"laid with legs against wall"},{"name":"supported dead hang","duration":null,"sets":null,"reps":null,"reps_per_side":null,"notes":"very light"}]},{"period":"Evening","feelings":["GREEN"],"feelings_label":"GREEN","score":0.0,"feelings_detail":null,"session_notes":null,"activity_count":0,"walk_minutes":0.0,"timed_exercise_minutes":0.0,"strength_reps":0,"activities":[]},{"period":"PM","feelings":["GREEN"],"feelings_label":"GREEN","score":0.0,"feelings_detail":null,"session_notes":null,"activity_count":5,"walk_minutes":20.0,"timed_exercise_minutes":1.0,"strength_reps":16,"activities":[{"name":"90/90","duration":null,"sets":null,"reps":null,"reps_per_side":null,"notes":null},{"name":"rock back","duration":null,"sets":1,"reps":8,"reps_per_side":null,"notes":null},{"name":"cow neutral","duration":null,"sets":1,"reps":8,"reps_per_side":null,"notes":null},{"name":"walk","duration":"20min","sets":null,"reps":null,"reps_per_side":null,"notes":null},{"name":"knees to chest hug","duration":"1min","sets":null,"reps":null,"reps_per_side":null,"notes":null}]}],"incidents":[],"pm_feelings_label":"GREEN","evening_score":0.0,"evening_feelings_label":"GREEN","am_feelings_label":"GREEN","am_source_date":"2025-06-04","day_score_ma2":0.042,"am_score_ma2":0.0,"pm_score_ma2":0.125,"evening_score_ma2":0.0},{"date":"2025-06-06","day_score":0.0,"am_score":0.0,"pm_score":0.0,"whole_day_score":null,"walk_minutes":80.0,"timed_exercise_minutes":3.5,"strength_reps":132,"activity_count":13,"sessions":[{"period":"AM","feelings":["GREEN"],"feelings_label":"GREEN","score":0.0,"feelings_detail":null,"session_notes":null,"activity_count":9,"walk_minutes":60.0,"timed_exercise_minutes":3.5,"strength_reps":116,"activities":[{"name":"supine 90/90","duration":"2min","sets":null,"reps":null,"reps_per_side":null,"notes":"and a few times during stabilization sets"},{"name":"dead bug","duration":null,"sets":2,"reps":8,"reps_per_side":null,"notes":null},{"name":"single knee drop","duration":null,"sets":2,"reps":5,"reps_per_side":null,"notes":null},{"name":"rock back","duration":null,"sets":2,"reps":10,"reps_per_side":null,"notes":null},{"name":"cow neutral","duration":null,"sets":2,"reps":10,"reps_per_side":null,"notes":null},{"name":"glute bridges","duration":null,"sets":3,"reps":10,"reps_per_side":null,"notes":"last set difficult"},{"name":"bird dog","duration":null,"sets":2,"reps":10,"reps_per_side":null,"notes":null},{"name":"high plank","duration":"30sec","sets":3,"reps":null,"reps_per_side":null,"notes":null},{"name":"walk","duration":"60min","sets":null,"reps":null,"reps_per_side":null,"notes":null}]},{"period":"Evening","feelings":["GREEN"],"feelings_label":"GREEN","score":0.0,"feelings_detail":null,"session_notes":null,"activity_count":0,"walk_minutes":0.0,"timed_exercise_minutes":0.0,"strength_reps":0,"activities":[]},{"period":"PM","feelings":["GREEN"],"feelings_label":"GREEN","score":0.0,"feelings_detail":null,"session_notes":null,"activity_count":4,"walk_minutes":20.0,"timed_exercise_minutes":0.0,"strength_reps":16,"activities":[{"name":"90/90","duration":null,"sets":null,"reps":null,"reps_per_side":null,"notes":null},{"name":"rock back","duration":null,"sets":1,"reps":8,"reps_per_side":null,"notes":null},{"name":"cow neutral","duration":null,"sets":1,"reps":8,"reps_per_side":null,"notes":null},{"name":"walk","duration":"20min","sets":null,"reps":null,"reps_per_side":null,"notes":null}]}],"incidents":[],"pm_feelings_label":"GREEN","evening_score":0.0,"evening_feelings_label":"GREEN","am_feelings_label":"GREEN","am_source_date":"2025-06-05","day_score_ma2":0.0,"am_score_ma2":0.0,"pm_score_ma2":0.0,"evening_score_ma2":0.0},{"date":"2025-06-07","day_score":0.167,"am_score":0.0,"pm_score":0.25,"whole_day_score":null,"walk_minutes":60.0,"timed_exercise_minutes":3.5,"strength_reps":146,"activity_count":12,"sessions":[{"period":"AM","feelings":["GREEN","YELLOW"],"feelings_label":"GREEN/YELLOW","score":0.25,"feelings_detail":null,"session_notes":"Some right glute/hamstring irritation (noted with AM GREEN/YELLOW rating)","activity_count":9,"walk_minutes":60.0,"timed_exercise_minutes":3.5,"strength_reps":130,"activities":[{"name":"supine 90/90","duration":"2min","sets":null,"reps":null,"reps_per_side":null,"notes":"and a few times during stabilization sets"},{"name":"single knee drop","duration":null,"sets":2,"reps":5,"reps_per_side":null,"notes":null},{"name":"dead bug","duration":null,"sets":3,"reps":8,"reps_per_side":null,"notes":null},{"name":"rock back","duration":null,"sets":3,"reps":8,"reps_per_side":null,"notes":null},{"name":"cow neutral","duration":null,"sets":3,"reps":8,"reps_per_side":null,"notes":null},{"name":"glute bridges","duration":null,"sets":3,"reps":8,"reps_per_side":null,"notes":null},{"name":"bird dog","duration":null,"sets":3,"reps":8,"reps_per_side":null,"notes":null},{"name":"high plank","duration":"30sec","sets":3,"reps":null,"reps_per_side":null,"notes":null},{"name":"walk","duration":"60min","sets":null,"reps":null,"reps_per_side":null,"notes":null}]},{"period":"Evening","feelings":["GREEN","YELLOW"],"feelings_label":"GREEN/YELLOW","score":0.25,"feelings_detail":null,"session_notes":null,"activity_count":0,"walk_minutes":0.0,"timed_exercise_minutes":0.0,"strength_reps":0,"activities":[]},{"period":"PM","feelings":null,"feelings_label":null,"score":null,"feelings_detail":null,"session_notes":null,"activity_count":3,"walk_minutes":0.0,"timed_exercise_minutes":0.0,"strength_reps":16,"activities":[{"name":"90/90","duration":null,"sets":null,"reps":null,"reps_per_side":null,"notes":null},{"name":"rock back","duration":null,"sets":1,"reps":8,"reps_per_side":null,"notes":null},{"name":"cow neutral","duration":null,"sets":1,"reps":8,"reps_per_side":null,"notes":null}]}],"incidents":[],"pm_feelings_label":"GREEN/YELLOW","evening_score":0.25,"evening_feelings_label":"GREEN/YELLOW","am_feelings_label":"GREEN","am_source_date":"2025-06-06","day_score_ma2":0.084,"am_score_ma2":0.0,"pm_score_ma2":0.125,"evening_score_ma2":0.125}],"totals":{"days_logged":16,"total_walk_minutes":783.0,"avg_walk_minutes":48.9}};
+
+    const FEEL_CHART_DOT_R = 3;
+    const FEEL_CHART_DOT_R_AFTERNOON = 2.25;
+    const FEEL_RANGE_BAR_W = 10;
+    const ALL_RATINGS_SCALE = 1.5;
+    const ALL_RATINGS_VIEW_W = 880;
+    const ALL_RATINGS_VIEW_H = 248;
+
+    /** Morning / afternoon / evening sub-charts — same 1.5× geometry as all-ratings dots. */
+    function subFeelChartGeo() {
+      const s = ALL_RATINGS_SCALE;
+      return {
+        scale: s,
+        dotR: FEEL_CHART_DOT_R * s,
+        dotRPm: FEEL_CHART_DOT_R_AFTERNOON * s,
+        strokeSession: 1.5 * s,
+        strokeSessionPm: 1.25 * s,
+        trendStroke: 1.75 * s,
+        guideDash: `${(3 * s).toFixed(1)} ${(6 * s).toFixed(1)}`,
+        plotRx: 12 * s,
+        frameStroke: 1 * s,
+        yMargin: 10,
+      };
+    }
+
+    function feelingSeriesDotStyle(seriesKey, geo) {
+      if (seriesKey === 'pm') {
+        return {
+          r: geo.dotRPm,
+          stroke: cssVar('--afternoon-dot-ring'),
+          strokeW: geo.strokeSessionPm,
+        };
+      }
+      if (seriesKey === 'evening') {
+        return {
+          r: geo.dotR,
+          stroke: cssVar('--pm-dot-ring'),
+          strokeW: geo.strokeSession,
+        };
+      }
+      return {
+        r: geo.dotR,
+        stroke: '#ffffff',
+        strokeW: geo.strokeSession,
+      };
+    }
+
+    /** Scales dots, range bars, strokes, labels — not the SVG viewBox (that would cancel at width:100%). */
+    function allRatingsGeo() {
+      const s = ALL_RATINGS_SCALE;
+      return {
+        scale: s,
+        dotR: FEEL_CHART_DOT_R * s,
+        dotRPm: FEEL_CHART_DOT_R_AFTERNOON * s,
+        rangeW: FEEL_RANGE_BAR_W * s,
+        rangeRx: 5 * s,
+        rangeMinH: 6 * s,
+        yMargin: 10,
+        strokeSession: 1.5 * s,
+        strokeSessionPm: 1.25 * s,
+        strokeIncident: 1.75 * s,
+        trendStroke: 1.75 * s,
+        guideDash: `${(3 * s).toFixed(1)} ${(6 * s).toFixed(1)}`,
+        incidentDash: `${(4 * s).toFixed(1)} ${(3 * s).toFixed(1)}`,
+      };
+    }
+
+    function cssVar(name) {
+      return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+    }
+
+    function isNarrowMobile() {
+      return window.matchMedia('(max-width: 767px)').matches;
+    }
+
+    function chartPreserveAspect() {
+      return isNarrowMobile() ? 'xMinYMid meet' : 'xMidYMid meet';
+    }
+
+    function chartDateLabelFontSize() {
+      return isNarrowMobile() ? 12 : 10;
+    }
+
+    function chartSubDateLabelFontSize() {
+      return isNarrowMobile() ? 13 : 12;
+    }
+
+    function shouldShowSubChartDateLabel(dayCount, index) {
+      if (isNarrowMobile()) return true;
+      return dayCount <= 18 || index % 2 === 0;
+    }
+
+    function shouldShowChartDateLabel(dayCount, index) {
+      if (isNarrowMobile()) return true;
+      return dayCount <= 24 ? true : index % 2 === 0;
+    }
+
+    function scaleColors() {
+      return {
+        green: cssVar('--green'),
+        yellow: cssVar('--yellow'),
+        red: cssVar('--red'),
+        missing: cssVar('--muted'),
+        muted: cssVar('--muted'),
+        grid: cssVar('--border'),
+        ma: cssVar('--chart-ma'),
+        walk: cssVar('--chart-walk'),
+        strength: cssVar('--chart-strength'),
+        am: cssVar('--green'),
+        pm: cssVar('--accent'),
+      };
+    }
+
+    function parseHex(h) {
+      const x = h.replace('#','');
+      return [parseInt(x.slice(0,2),16), parseInt(x.slice(2,4),16), parseInt(x.slice(4,6),16)];
+    }
+    function toHex(rgb) {
+      return '#' + rgb.map(v => Math.round(v).toString(16).padStart(2,'0')).join('');
+    }
+    function lerpColor(a, b, t) {
+      const A = parseHex(a), B = parseHex(b);
+      return toHex(A.map((v,i) => v + (B[i]-v)*t));
+    }
+
+    /**
+     * Score anchors: GREEN=0, YELLOW=0.5, RED=1 · lime/orange at 0.25 and 0.75 for blends.
+     */
+    const FEEL = {
+      green: '#39d353',
+      greenYellow: '#d4e157',
+      yellow: '#ffcc33',
+      orange: '#fb8c00',
+      red: '#ff4d4d',
+    };
+
+    const FEELING_SCALE_STOPS = [
+      { t: 0, c: FEEL.green },
+      { t: 0.25, c: FEEL.greenYellow },
+      { t: 0.5, c: FEEL.yellow },
+      { t: 0.75, c: FEEL.orange },
+      { t: 1, c: FEEL.red },
+    ];
+
+    function colorAtFeelingScore(x) {
+      const v = Math.max(0, Math.min(1, x));
+      let i = 0;
+      while (i < FEELING_SCALE_STOPS.length - 1 && v > FEELING_SCALE_STOPS[i + 1].t) i++;
+      const a = FEELING_SCALE_STOPS[i];
+      const b = FEELING_SCALE_STOPS[i + 1];
+      const span = b.t - a.t;
+      const local = span > 0 ? (v - a.t) / span : 0;
+      return lerpColor(a.c, b.c, local);
+    }
+
+    function feelingScaleGradientStopsRedTop() {
+      const steps = 32;
+      const lines = [];
+      for (let i = 0; i <= steps; i++) {
+        const pct = ((i / steps) * 100).toFixed(2);
+        const score = 1 - i / steps;
+        lines.push(`<stop offset="${pct}%" stop-color="${colorAtFeelingScore(score)}"/>`);
+      }
+      return lines.join('');
+    }
+
+    function feelingScaleGradientStopsGreenBottom() {
+      const steps = 32;
+      const lines = [];
+      for (let i = 0; i <= steps; i++) {
+        const pct = ((i / steps) * 100).toFixed(2);
+        const score = i / steps;
+        lines.push(`<stop offset="${pct}%" stop-color="${colorAtFeelingScore(score)}"/>`);
+      }
+      return lines.join('');
+    }
+
+    function scoreToYExact(score, padTop, innerH, margin = 10) {
+      const s = Math.max(0, Math.min(1, score));
+      const usable = Math.max(1, innerH - margin * 2);
+      return padTop + margin + (1 - s) * usable;
+    }
+
+    const FEELING_SERIES = {
+      day: {
+        label: 'Overall',
+        point: d => d.day_score,
+        trend: d => d.day_score_ma2,
+      },
+      am: {
+        label: 'Morning',
+        point: d => d.am_score,
+        trend: d => d.am_score_ma2,
+      },
+      pm: {
+        label: 'Afternoon',
+        point: d => d.pm_score,
+        trend: d => d.pm_score_ma2,
+      },
+      evening: {
+        label: 'Evening',
+        point: d => d.evening_score,
+        trend: d => d.evening_score_ma2,
+      },
+    };
+
+    const TREND_STYLES = {
+      day: { stroke: 'rgba(255, 255, 255, 0.92)', width: 2 },
+      am: { stroke: 'rgba(240, 253, 250, 0.9)', width: 1.75 },
+      pm: { stroke: 'rgba(219, 234, 254, 0.9)', width: 1.75 },
+      evening: { stroke: 'rgba(226, 232, 240, 0.88)', width: 1.75 },
+      morning: { stroke: 'rgba(240, 253, 250, 0.9)', width: 1.75 },
+    };
+
+    function smoothLinePath(points) {
+      if (points.length < 2) return '';
+      let d = `M ${points[0].x.toFixed(2)} ${points[0].y.toFixed(2)}`;
+      const t = 0.32;
+      for (let i = 0; i < points.length - 1; i++) {
+        const p0 = points[Math.max(0, i - 1)];
+        const p1 = points[i];
+        const p2 = points[i + 1];
+        const p3 = points[Math.min(points.length - 1, i + 2)];
+        const cp1x = p1.x + (p2.x - p0.x) * t;
+        const cp1y = p1.y + (p2.y - p0.y) * t;
+        const cp2x = p2.x - (p3.x - p1.x) * t;
+        const cp2y = p2.y - (p3.y - p1.y) * t;
+        d += ` C ${cp1x.toFixed(2)} ${cp1y.toFixed(2)} ${cp2x.toFixed(2)} ${cp2y.toFixed(2)} ${p2.x.toFixed(2)} ${p2.y.toFixed(2)}`;
+      }
+      return d;
+    }
+
+    function maSegments(days, accessor) {
+      const segments = [];
+      let current = [];
+      days.forEach((d, i) => {
+        const v = accessor(d);
+        if (v == null) {
+          if (current.length) {
+            segments.push(current);
+            current = [];
+          }
+          return;
+        }
+        current.push({ i, v, date: d.date });
+      });
+      if (current.length) segments.push(current);
+      return segments;
+    }
+
+    function feelingPointsSvg(days, getPoint, xAt, plotTop, plotH, opts = {}) {
+      const geo = opts.geo;
+      const seriesKey = opts.seriesKey;
+      const dot = geo && seriesKey
+        ? feelingSeriesDotStyle(seriesKey, geo)
+        : { r: FEEL_CHART_DOT_R, stroke: '#ffffff', strokeW: 1.75 };
+      const yMargin = geo?.yMargin;
+      let out = '';
+      days.forEach((d, i) => {
+        const v = getPoint(d);
+        if (v == null) return;
+        const cx = xAt(i);
+        const cy = scoreToYExact(v, plotTop, plotH, yMargin);
+        const ring = scoreColor(v);
+        const dim = selectedDate && selectedDate !== d.date ? 0.45 : 1;
+        out += `<circle class="feel-dot" cx="${cx.toFixed(1)}" cy="${cy.toFixed(1)}" r="${dot.r}"
+          fill="${ring}" stroke="${dot.stroke}" stroke-width="${dot.strokeW}" opacity="${dim}"/>`;
+      });
+      return out;
+    }
+
+    function feelingHitZones(days, xAt, plotTop, plotH, step, n, plotW) {
+      const half = n > 1 ? Math.max(step / 2, 8) : plotW / 2;
+      let out = '';
+      days.forEach((d, i) => {
+        const cx = xAt(i);
+        out += `<rect class="feel-col-hit" x="${(cx - half).toFixed(1)}" y="${plotTop}"
+          width="${(half * 2).toFixed(1)}" height="${plotH}" fill="rgba(0,0,0,0.001)"
+          data-date="${d.date}"/>`;
+      });
+      return out;
+    }
+
+    function bindFeelingChartClicks(containerId) {
+      const root = document.getElementById(containerId);
+      root.querySelectorAll('[data-date]').forEach(el => {
+        el.addEventListener('click', (e) => {
+          e.stopPropagation();
+          toggleSelectDay(el.getAttribute('data-date'));
+        });
+      });
+    }
+
+    function feelingTrendSvg(days, getTrend, xAt, plotTop, plotH, seriesKey, opts = {}) {
+      const style = TREND_STYLES[seriesKey];
+      const strokeW = opts.strokeWidth != null ? opts.strokeWidth : style.width;
+      const yMargin = opts.yMargin != null ? opts.yMargin : 10;
+      let out = '';
+      maSegments(days, getTrend).forEach(seg => {
+        const points = seg.map(p => ({
+          x: xAt(p.i),
+          y: scoreToYExact(p.v, plotTop, plotH, yMargin),
+        }));
+        if (points.length < 2) return;
+        const lineD = smoothLinePath(points);
+        out += `<path d="${lineD}" fill="none" stroke="${style.stroke}"
+          stroke-width="${strokeW}" stroke-linecap="round" stroke-linejoin="round"
+          opacity="${selectedDate ? 0.75 : 0.95}" pointer-events="none"/>`;
+      });
+      return out;
+    }
+
+    function feelingMa2TrendGradientSvg(days, xAt, plotTop, plotH, gradId) {
+      const getTrend = d => d.day_score_ma2;
+      let out = '';
+      maSegments(days, getTrend).forEach(seg => {
+        const points = seg.map(p => ({
+          x: xAt(p.i),
+          y: scoreToYExact(p.v, plotTop, plotH),
+        }));
+        if (points.length < 2) return;
+        const lineD = smoothLinePath(points);
+        out += `<path d="${lineD}" fill="none" stroke="url(#${gradId})"
+          stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"
+          opacity="${selectedDate ? 0.82 : 1}" pointer-events="none"/>`;
+      });
+      return out;
+    }
+
+    function svgFeelingTrendChart(containerId, days, seriesKey) {
+      const pal = scaleColors();
+      const series = FEELING_SERIES[seriesKey];
+      const compact = seriesKey !== 'day';
+      const geo = compact ? subFeelChartGeo() : null;
+      const W = compact ? 520 : 880;
+      const labelBand = compact ? 20 : 26;
+      const H = compact ? 178 + labelBand : 248;
+      const pad = { t: 0, r: 0, b: labelBand, l: 0 };
+      const innerW = W;
+      const innerH = H - pad.b;
+      const n = days.length;
+      const inset = compact ? 12 : 16;
+      const plotW = innerW - inset * 2;
+      const plotH = innerH - inset - (compact ? 4 : 8);
+      const plotTop = inset;
+      const plotLeft = inset;
+      const step = n > 1 ? plotW / (n - 1) : 0;
+      const gradId = 'feelGrad-' + containerId.replace(/\W/g, '');
+      const plotBottom = plotTop + plotH;
+      const yMargin = geo?.yMargin ?? 10;
+      const plotRx = geo?.plotRx ?? 12;
+      const frameStroke = geo?.frameStroke ?? 1;
+      const guideDash = geo?.guideDash ?? '3 6';
+
+      const xAt = (i) => plotLeft + (n > 1 ? i * step : plotW / 2);
+      const yAt = (score) => scoreToYExact(score, plotTop, plotH, yMargin);
+      const cardBg = cssVar('--card');
+
+      const bg = `
+        <defs>
+          <linearGradient id="${gradId}" gradientUnits="userSpaceOnUse"
+            x1="0" y1="${plotTop}" x2="0" y2="${plotBottom}">
+            ${feelingScaleGradientStopsRedTop()}
+          </linearGradient>
+        </defs>
+        <rect x="0" y="0" width="${W}" height="${innerH}" fill="${cardBg}" />
+        <rect x="${plotLeft}" y="${plotTop}" width="${plotW}" height="${plotH}"
+          fill="url(#${gradId})" rx="${plotRx}"/>
+        <rect x="${plotLeft}" y="${plotTop}" width="${plotW}" height="${plotH}"
+          fill="none" stroke="rgba(255,255,255,0.14)" stroke-width="${frameStroke}" rx="${plotRx}"/>
+      `;
+
+      const guides = [0.25, 0.5, 0.75].map(t => {
+        const y = yAt(t);
+        return `<line x1="${plotLeft}" y1="${y.toFixed(1)}" x2="${plotLeft + plotW}" y2="${y.toFixed(1)}"
+          stroke="rgba(255,255,255,0.12)" stroke-width="${frameStroke}" stroke-dasharray="${guideDash}"/>`;
+      }).join('');
+
+      const trendSvg = feelingTrendSvg(days, series.trend, xAt, plotTop, plotH, seriesKey, {
+        strokeWidth: geo?.trendStroke,
+        yMargin,
+      });
+      const pointsSvg = feelingPointsSvg(days, series.point, xAt, plotTop, plotH, {
+        geo,
+        seriesKey: compact ? seriesKey : null,
+      });
+      const hitSvg = feelingHitZones(days, xAt, plotTop, plotH, step, n, plotW);
+
+      const labelSize = compact ? chartSubDateLabelFontSize() : chartDateLabelFontSize();
+      const labelY = compact ? H - 5 : H - 8;
+      const labels = days.map((d, i) => {
+        const show = compact
+          ? shouldShowSubChartDateLabel(n, i)
+          : shouldShowChartDateLabel(n, i);
+        if (!show) return '';
+        const muted = selectedDate && selectedDate !== d.date;
+        return `<text x="${xAt(i).toFixed(1)}" y="${labelY}" text-anchor="middle"
+          font-size="${labelSize}" font-weight="600" fill="${pal.muted}" opacity="${muted ? 0.4 : 0.9}">${fmtShort(d.date)}</text>`;
+      }).join('');
+
+      document.getElementById(containerId).innerHTML = `
+        <svg class="chart" viewBox="0 0 ${W} ${H}" preserveAspectRatio="${chartPreserveAspect()}" role="img"
+          aria-label="${series.label} symptom trend on red-to-green scale">
+          ${bg}${guides}${trendSvg}${pointsSvg}${hitSvg}${labels}
+        </svg>`;
+
+      bindFeelingChartClicks(containerId);
+    }
+
+    function dayMarkers(day) {
+      const markers = [];
+      if (day.am_score != null) {
+        markers.push({
+          score: day.am_score,
+          label: `Morning ${day.am_feelings_label || ''}`.trim(),
+          kind: 'session',
+          slot: 'am',
+        });
+      }
+      if (day.pm_score != null) {
+        markers.push({
+          score: day.pm_score,
+          label: `Afternoon ${day.pm_feelings_label || ''}`.trim(),
+          kind: 'session',
+          slot: 'pm',
+        });
+      }
+      if (day.evening_score != null) {
+        markers.push({
+          score: day.evening_score,
+          label: `Evening ${day.evening_feelings_label || ''}`.trim(),
+          kind: 'session',
+          slot: 'evening',
+        });
+      }
+      const whole = day.sessions.find(s => s.period === 'day' && s.score != null);
+      if (whole) {
+        markers.push({
+          score: whole.score,
+          label: `Day ${whole.feelings_label || ''}`.trim(),
+          kind: 'session',
+          slot: 'day',
+        });
+      }
+      (day.incidents || []).forEach(inc => {
+        if (inc.score == null) return;
+        const extra = inc.notes ? ` — ${inc.notes}` : '';
+        markers.push({
+          score: inc.score,
+          label: `Incident: ${inc.description}${extra}`,
+          kind: 'incident',
+          after_session: inc.after_session || null,
+        });
+      });
+      return markers;
+    }
+
+    function dayHasLogSession(day, period) {
+      return day.sessions.some(s => s.period === period);
+    }
+
+    function feelingDayLayout(i, n, step, plotLeft, plotW, dotR, rangeBarW) {
+      const cx = n > 1 ? plotLeft + i * step : plotLeft + plotW / 2;
+      const halfBar = rangeBarW / 2;
+      const rangeLeft = cx - halfBar;
+      const rangeRight = cx + halfBar;
+      return {
+        cx,
+        rangeLeft,
+        rangeRight,
+        amX: rangeLeft - dotR,
+        pmX: cx,
+        evX: rangeRight + dotR,
+      };
+    }
+
+    function markerCenterX(day, marker, layout, midIndex, eveningIndex, postPmIndex) {
+      const hasAm = day.am_score != null;
+      const hasPm = day.pm_score != null;
+      const hasEv = day.evening_score != null;
+
+      if (marker.kind === 'session') {
+        if (marker.slot === 'am' && hasAm) return layout.amX;
+        if (marker.slot === 'pm' && hasPm) return layout.pmX;
+        if (marker.slot === 'evening' && hasEv) return layout.evX;
+        if (marker.slot === 'day') return layout.cx;
+        return layout.cx;
+      }
+
+      if (marker.kind === 'incident') {
+        if (marker.after_session === 'AM') {
+          const mids = midDayIncidents(day);
+          let x = layout.pmX;
+          if (mids.length > 1) x += (midIndex - (mids.length - 1) / 2) * 4;
+          return x;
+        }
+        if (marker.after_session === 'Evening') {
+          const evs = eveningIncidents(day);
+          let x = (layout.pmX + layout.evX) / 2;
+          if (evs.length > 1) x += (eveningIndex - (evs.length - 1) / 2) * 4;
+          return x;
+        }
+        if (marker.after_session === 'PM') {
+          const posts = postPmIncidents(day);
+          let x = layout.evX;
+          if (posts.length > 1) x += (postPmIndex - (posts.length - 1) / 2) * 4;
+          return x;
+        }
+      }
+      return layout.cx;
+    }
+
+    function midDayIncidents(day) {
+      if (!dayHasLogSession(day, 'AM')) return [];
+      return (day.incidents || []).filter(
+        inc => inc.score != null && inc.after_session === 'AM'
+      );
+    }
+
+    function eveningIncidents(day) {
+      return (day.incidents || []).filter(
+        inc => inc.score != null && inc.after_session === 'Evening'
+      );
+    }
+
+    function postPmIncidents(day) {
+      return (day.incidents || []).filter(
+        inc => inc.score != null && inc.after_session === 'PM'
+      );
+    }
+
+    function feelingDayRangeBarsSvg(days, xAt, plotTop, plotH, opts = {}) {
+      const gradPrefix = opts.gradPrefix;
+      const geo = opts.geo || allRatingsGeo();
+      const rangeW = geo.rangeW;
+      let defs = '';
+      let out = '';
+      days.forEach((d, i) => {
+        const markers = dayMarkers(d);
+        if (markers.length < 2) return;
+        const scores = markers.map(m => m.score);
+        const lo = Math.min(...scores);
+        const hi = Math.max(...scores);
+        if (Math.abs(hi - lo) < 0.001) return;
+        const cx = xAt(i);
+        const yTop = scoreToYExact(hi, plotTop, plotH, geo.yMargin);
+        const yBot = scoreToYExact(lo, plotTop, plotH, geo.yMargin);
+        const h = Math.max(geo.rangeMinH, yBot - yTop);
+        const dim = selectedDate && selectedDate !== d.date ? 0.35 : 1;
+        let stroke = 'rgba(255,255,255,0.22)';
+        let strokeW = 1 * geo.scale;
+        if (gradPrefix) {
+          const gradId = `${gradPrefix}-${i}`;
+          defs += `<linearGradient id="${gradId}" gradientUnits="userSpaceOnUse"
+            x1="${cx.toFixed(1)}" y1="${yBot.toFixed(1)}" x2="${cx.toFixed(1)}" y2="${yTop.toFixed(1)}">
+            ${feelingScaleGradientStopsGreenBottom()}
+          </linearGradient>`;
+          stroke = `url(#${gradId})`;
+          strokeW = geo.trendStroke;
+        }
+        out += `<rect x="${(cx - rangeW / 2).toFixed(1)}" y="${yTop.toFixed(1)}" width="${rangeW.toFixed(2)}" height="${h.toFixed(1)}"
+          rx="${geo.rangeRx.toFixed(2)}" fill="rgba(255,255,255,0.08)" stroke="${stroke}" stroke-width="${strokeW.toFixed(2)}"
+          opacity="${dim}" pointer-events="none"/>`;
+      });
+      return defs + out;
+    }
+
+    function feelDotRadius(marker, geo) {
+      if (marker.kind === 'session' && marker.slot === 'pm') return geo.dotRPm;
+      return geo.dotR;
+    }
+
+    function markerDotOutline(m) {
+      if (m.kind === 'session' && m.slot === 'evening') return cssVar('--pm-dot-ring');
+      if (m.kind === 'session' && m.slot === 'pm') return cssVar('--afternoon-dot-ring');
+      return '#ffffff';
+    }
+
+    function feelingAllMarkersPointsSvg(days, xAt, plotTop, plotH, layoutOpts) {
+      const { n, step, plotLeft, plotW, geo } = layoutOpts;
+      let out = '';
+      days.forEach((d, i) => {
+        const markers = dayMarkers(d);
+        if (!markers.length) return;
+        const layout = feelingDayLayout(i, n, step, plotLeft, plotW, geo.dotR, geo.rangeW);
+        let midIdx = 0;
+        let eveningIdx = 0;
+        let postPmIdx = 0;
+        markers.forEach(m => {
+          let midIndex = 0;
+          let eveningIndex = 0;
+          let postPmIndex = 0;
+          if (m.kind === 'incident' && m.after_session === 'AM') {
+            midIndex = midIdx;
+            midIdx += 1;
+          }
+          if (m.kind === 'incident' && m.after_session === 'Evening') {
+            eveningIndex = eveningIdx;
+            eveningIdx += 1;
+          }
+          if (m.kind === 'incident' && m.after_session === 'PM') {
+            postPmIndex = postPmIdx;
+            postPmIdx += 1;
+          }
+          const cx = markerCenterX(d, m, layout, midIndex, eveningIndex, postPmIndex);
+          const cy = scoreToYExact(m.score, plotTop, plotH, geo.yMargin);
+          const ring = scoreColor(m.score);
+          const dim = selectedDate && selectedDate !== d.date ? 0.45 : 1;
+          const dotR = feelDotRadius(m, geo);
+          const strokeW = m.kind === 'incident' ? geo.strokeIncident
+            : (m.kind === 'session' && m.slot === 'pm' ? geo.strokeSessionPm : geo.strokeSession);
+          const dash = m.kind === 'incident' ? ` stroke-dasharray="${geo.incidentDash}"` : '';
+          const outline = markerDotOutline(m);
+          const safe = (m.label || '').replace(/"/g, '&quot;').replace(/</g, '&lt;');
+          out += `<circle class="feel-dot" data-date="${d.date}" cx="${cx.toFixed(1)}" cy="${cy.toFixed(1)}" r="${dotR}"
+            fill="${ring}" stroke="${outline}" stroke-width="${strokeW}"${dash} opacity="${dim}">
+            <title>${safe}</title></circle>`;
+        });
+      });
+      return out;
+    }
+
+    function dayScoreRollingMean(days, idx, windowDays) {
+      const start = Math.max(0, idx - windowDays + 1);
+      const vals = [];
+      for (let j = start; j <= idx; j++) {
+        const v = days[j].day_score;
+        if (v != null) vals.push(v);
+      }
+      return vals.length ? vals.reduce((a, b) => a + b, 0) / vals.length : null;
+    }
+
+    function allRatingsTrendAccessor(days, windowDays) {
+      return (d) => {
+        const idx = days.findIndex(x => x.date === d.date);
+        if (idx < 0) return null;
+        return dayScoreRollingMean(days, idx, windowDays);
+      };
+    }
+
+    function formatTrendWindowDays(n) {
+      return n === 1 ? '1 day' : `${n} days`;
+    }
+
+    function svgFeelingAllMarkersChart(containerId, days) {
+      const pal = scaleColors();
+      const geo = allRatingsGeo();
+      const W = ALL_RATINGS_VIEW_W;
+      const H = ALL_RATINGS_VIEW_H;
+      const pad = { t: 0, r: 0, b: 26, l: 0 };
+      const innerW = W;
+      const innerH = H - pad.b;
+      const n = days.length;
+      const inset = 16;
+      const plotW = innerW - inset * 2;
+      const plotH = innerH - inset - 8;
+      const plotTop = inset;
+      const plotLeft = inset;
+      const step = n > 1 ? plotW / (n - 1) : 0;
+      const gradId = 'feelGrad-' + containerId.replace(/\W/g, '');
+      const plotBottom = plotTop + plotH;
+
+      const xAt = (i) => plotLeft + (n > 1 ? i * step : plotW / 2);
+      const yAt = (score) => scoreToYExact(score, plotTop, plotH, geo.yMargin);
+      const cardBg = cssVar('--card');
+
+      const bg = `
+        <defs>
+          <linearGradient id="${gradId}" gradientUnits="userSpaceOnUse"
+            x1="0" y1="${plotTop}" x2="0" y2="${plotBottom}">
+            ${feelingScaleGradientStopsRedTop()}
+          </linearGradient>
+        </defs>
+        <rect x="0" y="0" width="${W}" height="${innerH}" fill="${cardBg}" />
+        <rect x="${plotLeft}" y="${plotTop}" width="${plotW}" height="${plotH}"
+          fill="url(#${gradId})" rx="12"/>
+        <rect x="${plotLeft}" y="${plotTop}" width="${plotW}" height="${plotH}"
+          fill="none" stroke="rgba(255,255,255,0.14)" stroke-width="1" rx="12"/>
+      `;
+
+      const guides = [0.25, 0.5, 0.75].map(t => {
+        const y = yAt(t);
+        return `<line x1="${plotLeft}" y1="${y.toFixed(1)}" x2="${plotLeft + plotW}" y2="${y.toFixed(1)}"
+          stroke="rgba(255,255,255,0.12)" stroke-width="1" stroke-dasharray="${geo.guideDash}"/>`;
+      }).join('');
+
+      const rangeSvg = feelingDayRangeBarsSvg(days, xAt, plotTop, plotH, { geo });
+      const trendSvg = showAllRatingsTrend
+        ? feelingTrendSvg(
+            days,
+            allRatingsTrendAccessor(days, allRatingsTrendWindow),
+            xAt,
+            plotTop,
+            plotH,
+            'day',
+            { strokeWidth: geo.trendStroke, yMargin: geo.yMargin }
+          )
+        : '';
+      const pointsSvg = feelingAllMarkersPointsSvg(days, xAt, plotTop, plotH, {
+        n, step, plotLeft, plotW, geo,
+      });
+      const hitSvg = feelingHitZones(days, xAt, plotTop, plotH, step, n, plotW);
+
+      const labelSize = chartDateLabelFontSize();
+      const labels = days.map((d, i) => {
+        if (!shouldShowChartDateLabel(n, i)) return '';
+        const muted = selectedDate && selectedDate !== d.date;
+        return `<text x="${xAt(i).toFixed(1)}" y="${H - 8}" text-anchor="middle"
+          font-size="${labelSize}" font-weight="500" fill="${pal.muted}" opacity="${muted ? 0.4 : 0.9}">${fmtShort(d.date)}</text>`;
+      }).join('');
+
+      document.getElementById(containerId).innerHTML = `
+        <svg class="chart chart-all-ratings" viewBox="0 0 ${W} ${H}" preserveAspectRatio="${chartPreserveAspect()}" role="img"
+          aria-label="All symptom ratings per day on red-to-green scale">
+          ${bg}${guides}${rangeSvg}${trendSvg}${pointsSvg}${hitSvg}${labels}
+        </svg>`;
+
+      bindFeelingChartClicks(containerId);
+    }
+
+    function svgFeelingAllMarkersGradientTrendChart(containerId, days) {
+      const pal = scaleColors();
+      const W = 880;
+      const H = 248;
+      const pad = { t: 0, r: 0, b: 26, l: 0 };
+      const innerW = W;
+      const innerH = H - pad.b;
+      const n = days.length;
+      const inset = 16;
+      const plotW = innerW - inset * 2;
+      const plotH = innerH - inset - 8;
+      const plotTop = inset;
+      const plotLeft = inset;
+      const step = n > 1 ? plotW / (n - 1) : 0;
+      const safeId = containerId.replace(/\W/g, '');
+      const trendGradId = 'feelTrendGrad-' + safeId;
+      const rangeGradPrefix = 'feelRangeGrad-' + safeId;
+      const plotBottom = plotTop + plotH;
+
+      const xAt = (i) => plotLeft + (n > 1 ? i * step : plotW / 2);
+      const yAt = (score) => scoreToYExact(score, plotTop, plotH);
+      const cardBg = cssVar('--card');
+
+      const bg = `
+        <defs>
+          <linearGradient id="${trendGradId}" gradientUnits="userSpaceOnUse"
+            x1="0" y1="${plotTop}" x2="0" y2="${plotBottom}">
+            ${feelingScaleGradientStopsRedTop()}
+          </linearGradient>
+        </defs>
+        <rect x="0" y="0" width="${W}" height="${innerH}" fill="${cardBg}" />
+        <rect x="${plotLeft}" y="${plotTop}" width="${plotW}" height="${plotH}"
+          fill="rgba(255,255,255,0.04)" rx="12"/>
+        <rect x="${plotLeft}" y="${plotTop}" width="${plotW}" height="${plotH}"
+          fill="none" stroke="rgba(255,255,255,0.14)" stroke-width="1" rx="12"/>
+      `;
+
+      const guides = [0.25, 0.5, 0.75].map(t => {
+        const y = yAt(t);
+        return `<line x1="${plotLeft}" y1="${y.toFixed(1)}" x2="${plotLeft + plotW}" y2="${y.toFixed(1)}"
+          stroke="rgba(255,255,255,0.1)" stroke-width="1" stroke-dasharray="3 6"/>`;
+      }).join('');
+
+      const rangeSvg = feelingDayRangeBarsSvg(days, xAt, plotTop, plotH, {
+        gradPrefix: rangeGradPrefix,
+      });
+      const trendSvg = feelingMa2TrendGradientSvg(days, xAt, plotTop, plotH, trendGradId);
+      const pointsSvg = feelingAllMarkersPointsSvg(days, xAt, plotTop, plotH, {
+        n, step, plotLeft, plotW,
+      });
+      const hitSvg = feelingHitZones(days, xAt, plotTop, plotH, step, n, plotW);
+
+      const labels = days.map((d, i) => {
+        const show = n <= 24 || i % 2 === 0;
+        if (!show) return '';
+        const muted = selectedDate && selectedDate !== d.date;
+        return `<text x="${xAt(i).toFixed(1)}" y="${H - 8}" text-anchor="middle"
+          font-size="10" font-weight="500" fill="${pal.muted}" opacity="${muted ? 0.4 : 0.9}">${fmtShort(d.date)}</text>`;
+      }).join('');
+
+      document.getElementById(containerId).innerHTML = `
+        <svg class="chart" viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet" role="img"
+          aria-label="All symptom ratings with gradient two-day trend line">
+          ${bg}${guides}${rangeSvg}${trendSvg}${pointsSvg}${hitSvg}${labels}
+        </svg>`;
+
+      bindFeelingChartClicks(containerId);
+    }
+
+    function scoreColor(s) {
+      if (s == null || Number.isNaN(s)) return cssVar('--muted');
+      return colorAtFeelingScore(s);
+    }
+
+    function pillTextColor(s) {
+      if (s == null || Number.isNaN(s)) return cssVar('--text');
+      if (s <= 0.38) return '#052e16';
+      if (s <= 0.78) return '#1a1008';
+      return '#fff';
+    }
+    function fmtDate(iso) {
+      const d = new Date(iso + 'T12:00:00');
+      return d.toLocaleDateString(undefined, { month: 'short', day: 'numeric' });
+    }
+    function fmtShort(iso) {
+      const d = new Date(iso + 'T12:00:00');
+      return `${d.getMonth()+1}/${d.getDate()}`;
+    }
+    function blendedFeelingsLabel(score) {
+      if (score == null || Number.isNaN(score)) return '';
+      if (score <= 0.01) return 'GREEN';
+      if (score >= 0.99) return 'RED';
+      if (Math.abs(score - 0.5) < 0.08) return 'YELLOW';
+      if (score < 0.34) return 'GREEN/YELLOW';
+      if (score > 0.66) return 'YELLOW/RED';
+      return 'GREEN/YELLOW';
+    }
+
+    function feelingChip(score, label, title) {
+      if (score == null || Number.isNaN(score)) return '—';
+      const display = (label || blendedFeelingsLabel(score) || feelingAxisLabel(score) || '').trim();
+      const bg = scoreColor(score);
+      const safe = (title || display).replace(/"/g, '&quot;');
+      return `<span class="feeling-chip" title="${safe}" role="img" aria-label="${safe}">
+        <span class="feeling-chip-dot" style="background:${bg}"></span>
+        <span class="feeling-chip-label">${escapeHtml(display || '—')}</span>
+      </span>`;
+    }
+
+    function feelingAxisLabel(v) {
+      if (v <= 0.01) return 'GREEN';
+      if (v >= 0.99) return 'RED';
+      if (Math.abs(v - 0.5) < 0.01) return 'YELLOW';
+      return '';
+    }
+
+    function dayOverallCell(day) {
+      if (day.day_score == null) return '—';
+      const parts = [];
+      const feelParts = [];
+      if (day.am_feelings_label) {
+        parts.push(`Morning ${day.am_feelings_label}`);
+        feelParts.push(day.am_feelings_label);
+      }
+      if (day.pm_feelings_label) {
+        parts.push(`Afternoon ${day.pm_feelings_label}`);
+        feelParts.push(day.pm_feelings_label);
+      }
+      if (day.evening_feelings_label) {
+        parts.push(`Evening ${day.evening_feelings_label}`);
+        feelParts.push(day.evening_feelings_label);
+      }
+      day.sessions.forEach(s => {
+        if (s.period === 'day' && s.feelings_label) {
+          parts.push(s.feelings_label);
+          feelParts.push(s.feelings_label);
+        }
+      });
+      const title = parts.length ? `Overall (${parts.join('; ')})` : 'Overall';
+      const display = feelParts.length
+        ? [...new Set(feelParts)].join(' · ')
+        : blendedFeelingsLabel(day.day_score);
+      return feelingChip(day.day_score, display, title);
+    }
+
+    function amFeelingCell(day) {
+      if (day.am_score == null) return '—';
+      const src = day.am_source_date
+        ? ` (from PM log on ${fmtDate(day.am_source_date)})`
+        : '';
+      return feelingChip(
+        day.am_score,
+        day.am_feelings_label,
+        `Morning: ${day.am_feelings_label || ''}${src}`.trim()
+      );
+    }
+
+    function pmFeelingCell(day) {
+      if (day.pm_score == null) return '—';
+      return feelingChip(day.pm_score, day.pm_feelings_label, `Afternoon: ${day.pm_feelings_label || ''}`);
+    }
+
+    function eveningFeelingCell(day) {
+      if (day.evening_score == null) return '—';
+      return feelingChip(
+        day.evening_score,
+        day.evening_feelings_label,
+        `Evening: ${day.evening_feelings_label || ''}`
+      );
+    }
+
+    function sessionFeelingText(session) {
+      if (!session || session.score == null) return '';
+      return feelingChip(
+        session.score,
+        session.feelings_label,
+        `${session.period}: ${session.feelings_label || ''}`
+      );
+    }
+
+    function escapeHtml(s) {
+      return String(s ?? '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+    }
+
+    function formatActivityLine(a) {
+      if (!a || !a.name) return '';
+      const bits = [a.name];
+      if (a.duration) bits.push(a.duration);
+      if (a.sets != null && a.reps != null) {
+        bits.push(`${a.sets}×${a.reps}${a.reps_per_side ? ' / side' : ''}`);
+      } else if (a.sets != null && a.duration) {
+        bits.push(`${a.sets} sets`);
+      }
+      if (a.notes) bits.push(a.notes);
+      return bits.join(' · ');
+    }
+
+    function buildIncidentLogHtml(inc) {
+      const feel = (inc.feelings || ['RED']).join('/');
+      return `<div class="log-session log-incident-block">
+        <div class="log-session-head">Incident (${escapeHtml(feel)})</div>
+        <p style="margin:0 0 4px"><strong>${escapeHtml(inc.description)}</strong></p>
+        ${inc.notes ? `<p class="log-session-meta">${escapeHtml(inc.notes)}</p>` : ''}
+      </div>`;
+    }
+
+    function buildSessionActivitiesOnlyHtml(session) {
+      if (!session) return '';
+      let html = '';
+      if (session.feelings_detail) {
+        html += `<p class="log-session-meta">${escapeHtml(session.feelings_detail)}</p>`;
+      }
+      const acts = (session.activities || []).map(formatActivityLine).filter(Boolean);
+      if (acts.length) {
+        html += `<ul class="log-act-list">${acts.map(line => `<li>${escapeHtml(line)}</li>`).join('')}</ul>`;
+      }
+      if (session.session_notes) {
+        html += `<p class="log-session-meta">${escapeHtml(session.session_notes)}</p>`;
+      }
+      return html;
+    }
+
+    function buildPeriodActivitiesCell(d, period) {
+      let html = '';
+      if (period === 'AM') {
+        const whole = d.sessions.find(s => s.period === 'day');
+        const am = d.sessions.find(s => s.period === 'AM');
+        if (whole) html += buildSessionActivitiesOnlyHtml(whole);
+        else html += buildSessionActivitiesOnlyHtml(am);
+      } else {
+        html += buildSessionActivitiesOnlyHtml(d.sessions.find(s => s.period === 'PM'));
+      }
+      (d.incidents || []).forEach(inc => {
+        if (inc.after_session === period) html += buildIncidentLogHtml(inc);
+      });
+      return html.trim() ? html : '<span class="log-session-meta">—</span>';
+    }
+
+    function buildDayActivitiesHtml(d) {
+      let html = '';
+      d.sessions.forEach(s => {
+        const period = s.period === 'day'
+          ? 'Whole day'
+          : s.period === 'AM'
+            ? 'Log Morning (morning routine)'
+            : s.period === 'Evening'
+              ? 'Log Evening (rating only)'
+              : 'Log PM (evening routine)';
+        html += `<div class="log-session">
+          <div class="log-session-head"><span>${escapeHtml(period)}</span> ${sessionFeelingText(s)}</div>`;
+        if (s.period === 'Evening') {
+          if (s.session_notes) {
+            html += `<p class="log-session-meta">${escapeHtml(s.session_notes)}</p>`;
+          }
+          html += '</div>';
+        } else {
+        if (s.feelings_detail) {
+          html += `<p class="log-session-meta">${escapeHtml(s.feelings_detail)}</p>`;
+        }
+        const acts = (s.activities || []).map(formatActivityLine).filter(Boolean);
+        if (acts.length) {
+          html += `<ul class="log-act-list">${acts.map(line => `<li>${escapeHtml(line)}</li>`).join('')}</ul>`;
+        } else if (s.period !== 'day') {
+          html += `<p class="log-session-meta">No activities listed.</p>`;
+        }
+        if (s.session_notes) {
+          html += `<p class="log-session-meta">${escapeHtml(s.session_notes)}</p>`;
+        }
+        html += `</div>`;
+        }
+      });
+      d.incidents.forEach(inc => {
+        const feel = (inc.feelings || ['RED']).join('/');
+        html += `<div class="log-session log-incident-block">
+          <div class="log-session-head">Incident (${escapeHtml(feel)})</div>
+          <p style="margin:0 0 4px"><strong>${escapeHtml(inc.description)}</strong></p>
+          ${inc.notes ? `<p class="log-session-meta">${escapeHtml(inc.notes)}</p>` : ''}
+        </div>`;
+      });
+      return html || '<span class="log-session-meta">—</span>';
+    }
+
+    function buildDayModalHtml(d) {
+      let html = `<div class="day-modal-summary">
+        <div class="day-modal-stat"><div class="v">${d.walk_minutes}</div><div class="l">Walk (min)</div></div>
+        <div class="day-modal-stat"><div class="v">${d.strength_reps}</div><div class="l">Strength reps</div></div>
+        <div class="day-modal-stat"><div class="v">${d.timed_exercise_minutes}</div><div class="l">Timed (min)</div></div>
+        <div class="day-modal-stat"><div class="v">${d.activity_count}</div><div class="l">Logged items</div></div>
+      </div>`;
+      html += `<p class="caption" style="margin:0">Overall: ${dayOverallCell(d)}</p>`;
+      html += buildDayActivitiesHtml(d);
+      return html;
+    }
+
+    function openDayModal(date) {
+      const d = METRICS.days.find(x => x.date === date);
+      if (!d) return;
+      const backdrop = document.getElementById('dayModalBackdrop');
+      document.getElementById('dayModalTitle').textContent =
+        `${fmtDate(d.date)} · +${daysSinceShot(d.date, METRICS.cortisone_shot_date)}d post-shot`;
+      document.getElementById('dayModalBody').innerHTML = buildDayModalHtml(d);
+      backdrop.classList.add('is-open');
+      backdrop.setAttribute('aria-hidden', 'false');
+    }
+
+    function closeDayModal() {
+      const backdrop = document.getElementById('dayModalBackdrop');
+      backdrop.classList.remove('is-open');
+      backdrop.setAttribute('aria-hidden', 'true');
+    }
+
+    let selectedDate = null;
+    let showAllRatingsTrend = true;
+    let allRatingsTrendWindow = 2;
+
+    function syncAllRatingsTrendControls() {
+      const toggle = document.getElementById('toggleAllRatingsTrend');
+      const wrap = document.getElementById('allRatingsTrendSliderWrap');
+      const slider = document.getElementById('allRatingsTrendWindow');
+      const out = document.getElementById('allRatingsTrendWindowVal');
+      if (!toggle || !wrap || !slider || !out) return;
+      toggle.checked = showAllRatingsTrend;
+      wrap.hidden = !showAllRatingsTrend;
+      slider.value = String(allRatingsTrendWindow);
+      slider.disabled = !showAllRatingsTrend;
+      out.textContent = formatTrendWindowDays(allRatingsTrendWindow);
+    }
+
+    function refreshAllRatingsChart() {
+      svgFeelingAllMarkersChart('chartFeelingAll', METRICS.days);
+    }
+
+    function daysSinceShot(dateIso, shotIso) {
+      const a = new Date(shotIso + 'T12:00:00');
+      const b = new Date(dateIso + 'T12:00:00');
+      return Math.round((b - a) / 86400000);
+    }
+
+    function renderHeader() {
+      const m = METRICS;
+      const shot = fmtDate(m.cortisone_shot_date);
+      const logThrough = fmtDate(m.log_end);
+      document.getElementById('shotDate').textContent = m.cortisone_shot_date;
+      const shotMobile = document.getElementById('shotDateMobile');
+      if (shotMobile) shotMobile.textContent = m.cortisone_shot_date;
+      document.getElementById('headerMeta').textContent =
+        `This is a day-by-day log of pain, symptoms, and activity since the cortisone shot on ${shot}, updated through ${logThrough}. `
+        + `The charts show how GREEN, YELLOW, and RED ratings change over time (morning, afternoon, and evening), how much walking and exercise you logged, and the written day-by-day log at the bottom—pick a day in the menu or click a row to highlight it across the page.`;
+    }
+
+    function renderStats() {
+      const t = METRICS.totals;
+      const items = [
+        { v: String(t.days_logged), l: 'Days logged' },
+        { v: String(t.total_walk_minutes), l: 'Total walk (min)' },
+        { v: String(t.avg_walk_minutes), l: 'Avg walk / day (min)' },
+      ];
+      document.getElementById('stats').innerHTML = items.map(i =>
+        `<div class="stat"><div class="v">${i.v}</div><div class="l">${i.l}</div></div>`
+      ).join('');
+      const fs = METRICS.feeling_scale;
+      document.getElementById('legendScale').innerHTML = `
+        <div class="feel-scale-wrap">
+          <div class="feel-scale-bar" role="img" aria-label="Feeling scale from green to red"></div>
+          <div class="feel-scale-ticks">
+            <span>GREEN</span>
+            <span>YELLOW</span>
+            <span>RED</span>
+          </div>
+          <div class="feel-scale-desc">
+            <div><strong style="color:var(--green)">GREEN</strong> — ${fs.GREEN}</div>
+            <div><strong style="color:var(--yellow)">YELLOW</strong> — ${fs.YELLOW}</div>
+            <div><strong style="color:var(--red)">RED</strong> — ${fs.RED}</div>
+          </div>
+        </div>`;
+    }
+
+    function svgBarChart(containerId, days, getValue, opts = {}) {
+      const pal = scaleColors();
+      const W = 520, H = opts.height || 220;
+      const pad = { t: 16, r: 12, b: 36, l: opts.feelingAxis ? 52 : 40 };
+      const innerW = W - pad.l - pad.r;
+      const innerH = H - pad.t - pad.b;
+      const vals = days.map(d => getValue(d));
+      const maxY = opts.maxY ?? Math.max(...vals.filter(v => v != null), 1);
+      const barW = innerW / days.length * 0.72;
+      const gap = innerW / days.length;
+
+      let bars = '';
+      days.forEach((d, i) => {
+        const v = getValue(d);
+        if (v == null) return;
+        const h = opts.feelingAxis ? innerH * 0.88 : (v / maxY) * innerH;
+        const x = pad.l + i * gap + (gap - barW) / 2;
+        const y = pad.t + innerH - h;
+        const fill = opts.color ? opts.color(d, v) : scoreColor(v);
+        const op = selectedDate && selectedDate !== d.date ? '0.35' : '1';
+        bars += `<rect x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${barW.toFixed(1)}" height="${h.toFixed(1)}" fill="${fill}" opacity="${op}" data-date="${d.date}" style="cursor:pointer"/>`;
+      });
+
+      let line = '';
+      if (opts.line) {
+        const pts = [];
+        days.forEach((d, i) => {
+          const v = opts.line(d);
+          if (v == null) return;
+          const x = pad.l + i * gap + gap / 2;
+          const y = pad.t + innerH - (v / maxY) * innerH;
+          pts.push(`${x.toFixed(1)},${y.toFixed(1)}`);
+        });
+        if (pts.length) line = `<polyline fill="none" stroke="${pal.ma}" stroke-width="2" stroke-dasharray="5 4" points="${pts.join(' ')}"/>`;
+      }
+
+      const labels = days.map((d, i) => {
+        const x = pad.l + i * gap + gap / 2;
+        const show = days.length <= 20 || i % 2 === 0;
+        return show ? `<text x="${x}" y="${H - 8}" text-anchor="middle" font-size="10" fill="${pal.muted}">${fmtShort(d.date)}</text>` : '';
+      }).join('');
+
+      const yTickVals = opts.feelingAxis ? [0, maxY / 2, maxY] : [0, maxY / 2, maxY];
+      const yTicks = yTickVals.map(t => {
+        const y = pad.t + innerH - (t / maxY) * innerH;
+        const label = opts.feelingAxis
+          ? feelingAxisLabel(t)
+          : (opts.valueFmt ? opts.valueFmt(t) : t.toFixed(opts.decimals ?? 1));
+        return `<line x1="${pad.l}" y1="${y}" x2="${W-pad.r}" y2="${y}" stroke="${pal.grid}"/><text x="${pad.l-6}" y="${y+4}" text-anchor="end" font-size="10" fill="${pal.muted}">${label}</text>`;
+      }).join('');
+
+      document.getElementById(containerId).innerHTML = `
+        <svg class="chart" viewBox="0 0 ${W} ${H}" role="img" aria-label="${opts.title || 'chart'}">
+          ${yTicks}${bars}${line}${labels}
+        </svg>`;
+
+      document.getElementById(containerId).querySelectorAll('rect[data-date]').forEach(el => {
+        el.addEventListener('click', () => toggleSelectDay(el.getAttribute('data-date')));
+      });
+    }
+
+    function svgLineChart(containerId, days, series, opts = {}) {
+      const pal = scaleColors();
+      const W = 520, H = opts.height || 220;
+      const pad = { t: 16, r: 12, b: 36, l: opts.feelingAxis ? 52 : 40 };
+      const innerW = W - pad.l - pad.r;
+      const innerH = H - pad.t - pad.b;
+      const maxY = opts.maxY ?? 1;
+      const gap = innerW / Math.max(days.length - 1, 1);
+
+      let content = '';
+      series.forEach(s => {
+        const pts = [];
+        days.forEach((d, i) => {
+          const v = s.get(d);
+          if (v == null) return;
+          const x = pad.l + i * gap;
+          const y = opts.feelingAxis
+            ? feelingPlotY(v, maxY, innerH, pad.t)
+            : pad.t + innerH - (v / maxY) * innerH;
+          pts.push(`${x.toFixed(1)},${y.toFixed(1)}`);
+        });
+        if (pts.length >= 2) {
+          content += `<polyline fill="none" stroke="${s.color}" stroke-width="2" stroke-opacity="0.45" points="${pts.join(' ')}"/>`;
+        }
+        days.forEach((d, i) => {
+          const v = s.get(d);
+          if (v == null) return;
+          const x = pad.l + i * gap;
+          const y = opts.feelingAxis
+            ? feelingPlotY(v, maxY, innerH, pad.t)
+            : pad.t + innerH - (v / maxY) * innerH;
+          const dot = scoreColor(v);
+          content += `<circle cx="${x}" cy="${y}" r="5" fill="${dot}" stroke="${pal.grid}" stroke-width="1" data-date="${d.date}" style="cursor:pointer"/>`;
+        });
+      });
+
+      const yTicks = opts.feelingAxis
+        ? [0, maxY / 2, maxY].map(t => {
+            const y = pad.t + innerH - (t / maxY) * innerH;
+            return `<line x1="${pad.l}" y1="${y}" x2="${W-pad.r}" y2="${y}" stroke="${pal.grid}"/><text x="${pad.l-6}" y="${y+4}" text-anchor="end" font-size="10" fill="${pal.muted}">${feelingAxisLabel(t)}</text>`;
+          }).join('')
+        : '';
+
+      const labels = days.map((d, i) => {
+        const x = pad.l + i * gap;
+        const show = days.length <= 20 || i % 2 === 0;
+        return show ? `<text x="${x}" y="${H - 8}" text-anchor="middle" font-size="10" fill="${pal.muted}">${fmtShort(d.date)}</text>` : '';
+      }).join('');
+
+      const legend = series.map(s =>
+        `<span><span class="swatch" style="background:${s.color}"></span>${s.name}</span>`
+      ).join('');
+
+      document.getElementById(containerId).innerHTML = `
+        <svg class="chart" viewBox="0 0 ${W} ${H}" role="img">
+          <line x1="${pad.l}" y1="${pad.t+innerH}" x2="${W-pad.r}" y2="${pad.t+innerH}" stroke="${pal.grid}"/>
+          ${yTicks}${content}${labels}
+        </svg>
+        <div class="legend">${legend}</div>`;
+
+      document.getElementById(containerId).querySelectorAll('circle[data-date]').forEach(el => {
+        el.addEventListener('click', () => toggleSelectDay(el.getAttribute('data-date')));
+      });
+    }
+
+    function renderCharts() {
+      const days = METRICS.days;
+      // svgFeelingTrendChart('chartFeelingOverall', days, 'day');
+      svgFeelingAllMarkersChart('chartFeelingAll', days);
+      // svgFeelingAllMarkersGradientTrendChart('chartFeelingAllTrend', days);
+      svgFeelingTrendChart('chartFeelingAm', days, 'am');
+      svgFeelingTrendChart('chartFeelingPm', days, 'pm');
+      svgFeelingTrendChart('chartFeelingEvening', days, 'evening');
+      const pal = scaleColors();
+      svgBarChart('chartWalk', days, d => d.walk_minutes, {
+        maxY: Math.max(...days.map(d => d.walk_minutes)) * 1.1,
+        color: () => pal.walk,
+        decimals: 0
+      });
+      const maxReps = Math.max(...days.map(d => d.strength_reps), 1);
+      svgBarChart('chartVolume', days, d => d.strength_reps, {
+        maxY: maxReps * 1.1,
+        decimals: 0,
+        color: () => pal.strength,
+        title: 'Strength reps per day'
+      });
+    }
+
+    function bindDayLogSelection(root, selector) {
+      root.querySelectorAll(selector).forEach(el => {
+        const date = el.getAttribute('data-date');
+        el.addEventListener('click', () => toggleSelectDay(date));
+        el.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            toggleSelectDay(date);
+          }
+        });
+      });
+    }
+
+    function renderTable() {
+      const tbody = document.querySelector('#dayTable tbody');
+      tbody.innerHTML = METRICS.days.map(d => {
+        const sel = selectedDate === d.date ? 'selected' : '';
+        return `<tr class="${sel}" data-date="${d.date}">
+          <td class="col-date">${fmtDate(d.date)}<br><small style="color:var(--muted)">+${daysSinceShot(d.date, METRICS.cortisone_shot_date)}d post-shot</small></td>
+          <td class="col-walk col-center"><span class="table-cell-center">${d.walk_minutes}</span></td>
+          <td class="col-log log-activities-cell">${buildPeriodActivitiesCell(d, 'AM')}</td>
+          <td class="col-log log-activities-cell">${buildPeriodActivitiesCell(d, 'PM')}</td>
+        </tr>`;
+      }).join('');
+      bindDayLogSelection(tbody, 'tr');
+      renderDayLogCards();
+    }
+
+    function renderDayLogCards() {
+      const root = document.getElementById('dayLogCards');
+      if (!root) return;
+      root.innerHTML = METRICS.days.map(d => {
+        const sel = selectedDate === d.date ? ' selected' : '';
+        const post = daysSinceShot(d.date, METRICS.cortisone_shot_date);
+        return `<article class="day-log-card${sel}" data-date="${d.date}" tabindex="0" role="button"
+          aria-label="Log for ${fmtDate(d.date)}">
+          <header class="day-log-card-head">
+            <strong>${fmtDate(d.date)}</strong>
+            <span class="day-log-card-meta">+${post}d post-shot · ${d.walk_minutes} min walk</span>
+          </header>
+          <section class="day-log-card-section">
+            <h3>Morning log</h3>
+            <div class="log-activities-cell">${buildPeriodActivitiesCell(d, 'AM')}</div>
+          </section>
+          <section class="day-log-card-section">
+            <h3>Evening log</h3>
+            <div class="log-activities-cell">${buildPeriodActivitiesCell(d, 'PM')}</div>
+          </section>
+        </article>`;
+      }).join('');
+      bindDayLogSelection(root, '.day-log-card');
+    }
+
+    function renderDaySelect() {
+      const sel = document.getElementById('daySelect');
+      sel.innerHTML = '<option value="">—</option>' + METRICS.days.map(d =>
+        `<option value="${d.date}">${fmtDate(d.date)}</option>`
+      ).join('');
+      sel.addEventListener('change', () => selectDay(sel.value || null));
+    }
+
+    function renderDetail() {
+      const el = document.getElementById('dayDetail');
+      if (!selectedDate) {
+        el.innerHTML = '<h3>Session detail</h3><p class="caption">Select a day to see morning/evening activities and notes.</p>';
+        return;
+      }
+      const d = METRICS.days.find(x => x.date === selectedDate);
+      if (!d) return;
+      let html = `<h3>${fmtDate(d.date)} — ${daysSinceShot(d.date, METRICS.cortisone_shot_date)} days after cortisone shot</h3>`;
+      d.sessions.forEach(s => {
+        html += `<p><strong>${s.period}</strong> ${sessionFeelingText(s) || '—'}`;
+        html += ` · Walk ${s.walk_minutes} min · ${s.activity_count} logged items</p>`;
+        if (s.session_notes) html += `<p class="caption">${s.session_notes}</p>`;
+      });
+      d.incidents.forEach(inc => {
+        html += `<div class="incident"><strong>Incident:</strong> ${inc.description} (${inc.feelings?.join('/') || 'RED'})<br>${inc.notes || ''}</div>`;
+      });
+      el.innerHTML = html;
+    }
+
+    function toggleSelectDay(date) {
+      if (!date) {
+        selectDay(null);
+        return;
+      }
+      selectDay(selectedDate === date ? null : date);
+    }
+
+    function selectDay(date) {
+      selectedDate = date || null;
+      document.getElementById('daySelect').value = selectedDate || '';
+      document.getElementById('btnAll').classList.toggle('active', !selectedDate);
+      if (selectedDate) openDayModal(selectedDate);
+      else closeDayModal();
+      renderCharts();
+      renderTable();
+      renderDetail();
+    }
+
+    document.getElementById('btnAll').addEventListener('click', () => selectDay(null));
+    document.getElementById('btnPrint').addEventListener('click', () => window.print());
+    document.getElementById('dayModalClose').addEventListener('click', () => selectDay(null));
+    document.getElementById('dayModalBackdrop').addEventListener('click', (e) => {
+      if (e.target.id === 'dayModalBackdrop') selectDay(null);
+    });
+    document.getElementById('dayModal').addEventListener('click', (e) => e.stopPropagation());
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && selectedDate) selectDay(null);
+    });
+    document.getElementById('toggleAllRatingsTrend').addEventListener('change', (e) => {
+      showAllRatingsTrend = e.target.checked;
+      if (showAllRatingsTrend && !allRatingsTrendWindow) allRatingsTrendWindow = 2;
+      syncAllRatingsTrendControls();
+      refreshAllRatingsChart();
+    });
+    document.getElementById('allRatingsTrendWindow').addEventListener('input', (e) => {
+      allRatingsTrendWindow = Number(e.target.value);
+      document.getElementById('allRatingsTrendWindowVal').textContent =
+        formatTrendWindowDays(allRatingsTrendWindow);
+      if (showAllRatingsTrend) refreshAllRatingsChart();
+    });
+
+    let chartResizeTimer;
+    window.addEventListener('resize', () => {
+      clearTimeout(chartResizeTimer);
+      chartResizeTimer = setTimeout(() => renderCharts(), 220);
+    });
+
+    renderHeader();
+    renderStats();
+    renderDaySelect();
+    syncAllRatingsTrendControls();
+    renderCharts();
+    renderTable();
+    renderDetail();
+  </script>
+</body>
+</html>
