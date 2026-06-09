@@ -1977,6 +1977,16 @@
             }
           ],
           "session_notes": null
+        },
+        {
+          "period": "Evening",
+          "feelings": [
+            "GREEN",
+            "YELLOW"
+          ],
+          "feelings_detail": null,
+          "activities": [],
+          "session_notes": null
         }
       ],
       "incidents": []
