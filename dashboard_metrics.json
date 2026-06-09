@@ -2604,7 +2604,7 @@
     },
     {
       "date": "2026-06-08",
-      "day_score": 0.083,
+      "day_score": 0.0,
       "am_score": 0.0,
       "pm_score": 0.0,
       "whole_day_score": null,
@@ -2704,11 +2704,10 @@
         {
           "period": "Evening",
           "feelings": [
-            "GREEN",
-            "YELLOW"
+            "GREEN"
           ],
-          "feelings_label": "GREEN/YELLOW",
-          "score": 0.25,
+          "feelings_label": "GREEN",
+          "score": 0.0,
           "feelings_detail": null,
           "session_notes": null,
           "activity_count": 0,
@@ -2720,14 +2719,14 @@
       ],
       "incidents": [],
       "pm_feelings_label": "GREEN",
-      "evening_score": 0.25,
-      "evening_feelings_label": "GREEN/YELLOW",
+      "evening_score": 0.0,
+      "evening_feelings_label": "GREEN",
       "am_feelings_label": "GREEN",
       "am_source_date": "2026-06-07",
-      "day_score_ma2": 0.125,
+      "day_score_ma2": 0.084,
       "am_score_ma2": 0.0,
       "pm_score_ma2": 0.125,
-      "evening_score_ma2": 0.25
+      "evening_score_ma2": 0.125
     }
   ],
   "totals": {

@@ -1981,8 +1981,7 @@
         {
           "period": "Evening",
           "feelings": [
-            "GREEN",
-            "YELLOW"
+            "GREEN"
           ],
           "feelings_detail": null,
           "activities": [],
