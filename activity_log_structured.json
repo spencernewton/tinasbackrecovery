@@ -565,6 +565,13 @@
               "sets": 2,
               "reps": null,
               "notes": null
+            },
+            {
+              "name": "walk",
+              "duration": "30min",
+              "sets": null,
+              "reps": null,
+              "notes": null
             }
           ],
           "session_notes": null
@@ -580,10 +587,7 @@
         },
         {
           "period": "PM",
-          "feelings": [
-            "GREEN",
-            "YELLOW"
-          ],
+          "feelings": null,
           "feelings_detail": null,
           "activities": [
             {
@@ -1773,8 +1777,7 @@
         {
           "period": "AM",
           "feelings": [
-            "GREEN",
-            "YELLOW"
+            "GREEN"
           ],
           "feelings_detail": null,
           "activities": [
@@ -1836,7 +1839,7 @@
             },
             {
               "name": "walk",
-              "duration": "60min",
+              "duration": "30min",
               "sets": null,
               "reps": null,
               "notes": null

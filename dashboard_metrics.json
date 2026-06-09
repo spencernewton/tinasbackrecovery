@@ -686,10 +686,10 @@
       "am_score": 0.25,
       "pm_score": 0.5,
       "whole_day_score": null,
-      "walk_minutes": 0.0,
+      "walk_minutes": 30.0,
       "timed_exercise_minutes": 4.5,
       "strength_reps": 156,
-      "activity_count": 12,
+      "activity_count": 13,
       "sessions": [
         {
           "period": "AM",
@@ -700,8 +700,8 @@
           "score": 0.5,
           "feelings_detail": null,
           "session_notes": null,
-          "activity_count": 7,
-          "walk_minutes": 0.0,
+          "activity_count": 8,
+          "walk_minutes": 30.0,
           "timed_exercise_minutes": 2.5,
           "strength_reps": 88,
           "activities": [
@@ -760,6 +760,14 @@
               "reps": null,
               "reps_per_side": null,
               "notes": null
+            },
+            {
+              "name": "walk",
+              "duration": "30min",
+              "sets": null,
+              "reps": null,
+              "reps_per_side": null,
+              "notes": null
             }
           ]
         },
@@ -780,12 +788,9 @@
         },
         {
           "period": "PM",
-          "feelings": [
-            "GREEN",
-            "YELLOW"
-          ],
-          "feelings_label": "GREEN/YELLOW",
-          "score": 0.25,
+          "feelings": null,
+          "feelings_label": null,
+          "score": null,
           "feelings_detail": null,
           "session_notes": null,
           "activity_count": 5,
@@ -849,8 +854,8 @@
     },
     {
       "date": "2025-05-29",
-      "day_score": 0.417,
-      "am_score": 0.25,
+      "day_score": 0.5,
+      "am_score": null,
       "pm_score": 0.25,
       "whole_day_score": null,
       "walk_minutes": 40.0,
@@ -986,9 +991,9 @@
       "pm_feelings_label": "GREEN/YELLOW",
       "evening_score": 0.75,
       "evening_feelings_label": "RED/YELLOW",
-      "am_feelings_label": "GREEN/YELLOW",
-      "am_source_date": "2025-05-28",
-      "day_score_ma2": 0.417,
+      "am_feelings_label": null,
+      "am_source_date": null,
+      "day_score_ma2": 0.459,
       "am_score_ma2": 0.25,
       "pm_score_ma2": 0.375,
       "evening_score_ma2": 0.625
@@ -1163,8 +1168,8 @@
       "evening_feelings_label": "YELLOW",
       "am_feelings_label": "GREEN",
       "am_source_date": "2025-05-29",
-      "day_score_ma2": 0.375,
-      "am_score_ma2": 0.125,
+      "day_score_ma2": 0.416,
+      "am_score_ma2": 0.0,
       "pm_score_ma2": 0.375,
       "evening_score_ma2": 0.625
     },
@@ -2420,11 +2425,11 @@
     },
     {
       "date": "2025-06-07",
-      "day_score": 0.167,
+      "day_score": 0.083,
       "am_score": 0.0,
-      "pm_score": 0.25,
+      "pm_score": 0.0,
       "whole_day_score": null,
-      "walk_minutes": 60.0,
+      "walk_minutes": 30.0,
       "timed_exercise_minutes": 3.5,
       "strength_reps": 146,
       "activity_count": 12,
@@ -2432,15 +2437,14 @@
         {
           "period": "AM",
           "feelings": [
-            "GREEN",
-            "YELLOW"
+            "GREEN"
           ],
-          "feelings_label": "GREEN/YELLOW",
-          "score": 0.25,
+          "feelings_label": "GREEN",
+          "score": 0.0,
           "feelings_detail": null,
           "session_notes": "Some right glute/hamstring irritation (noted with AM GREEN/YELLOW rating)",
           "activity_count": 9,
-          "walk_minutes": 60.0,
+          "walk_minutes": 30.0,
           "timed_exercise_minutes": 3.5,
           "strength_reps": 130,
           "activities": [
@@ -2510,7 +2514,7 @@
             },
             {
               "name": "walk",
-              "duration": "60min",
+              "duration": "30min",
               "sets": null,
               "reps": null,
               "reps_per_side": null,
@@ -2574,14 +2578,14 @@
         }
       ],
       "incidents": [],
-      "pm_feelings_label": "GREEN/YELLOW",
+      "pm_feelings_label": "GREEN",
       "evening_score": 0.25,
       "evening_feelings_label": "GREEN/YELLOW",
       "am_feelings_label": "GREEN",
       "am_source_date": "2025-06-06",
-      "day_score_ma2": 0.084,
+      "day_score_ma2": 0.042,
       "am_score_ma2": 0.0,
-      "pm_score_ma2": 0.125,
+      "pm_score_ma2": 0.0,
       "evening_score_ma2": 0.125
     }
   ],
