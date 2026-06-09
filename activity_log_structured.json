@@ -1,318 +1,34 @@
 {
   "meta": {
-    "cortisone_shot_date": "2025-05-13",
     "log_start": "2026-05-23",
     "log_end": "2026-06-08",
-    "source_file": "Activity_Log_raw",
+    "cortisone_shot_date": null,
     "feeling_scale": {
-      "GREEN": "No symptoms; felt great without pain",
-      "YELLOW": "Some symptoms; somewhat uncomfortable but went away fairly quickly",
-      "RED": "Significant symptoms; really feeling it"
+      "GREEN": "All good",
+      "YELLOW": "Some symptoms",
+      "RED": "Significant symptoms"
     },
-    "log_period_note": "Log AM / Evening / PM in the raw file. AM block = morning routine + color (dashboard Afternoon). Evening = end-of-day color only. PM = evening routine + color (next calendar day dashboard Morning).",
-    "activity_fields": {
-      "name": "Exercise or activity label",
-      "duration": "Time spent (e.g. 20min, 15sec) when applicable",
-      "sets": "Number of sets when recorded as NxM",
-      "reps": "Reps per set, or total reps when only Nx is given",
-      "reps_per_side": "true when reps are per side (e.g. nerve glides)",
-      "notes": "Modifiers, context, or parenthetical detail"
-    }
+    "log_period_note": "Log AM / Evening / PM in the raw file. AM block = morning routine + color (dashboard Afternoon). Evening = end-of-day color only. PM = evening routine + color (next calendar day dashboard Morning)."
   },
   "days": [
     {
-      "date": "2025-05-23",
-      "sessions": [
-        {
-          "period": "day",
-          "feelings": [
-            "RED"
-          ],
-          "feelings_detail": null,
-          "activities": [
-            {
-              "name": "walk",
-              "duration": "20min",
-              "sets": null,
-              "reps": null,
-              "notes": null
-            },
-            {
-              "name": "walk",
-              "duration": "10min",
-              "sets": null,
-              "reps": null,
-              "notes": null
-            },
-            {
-              "name": "full glute bridges",
-              "duration": null,
-              "sets": 1,
-              "reps": 10,
-              "notes": null
-            },
-            {
-              "name": "plank",
-              "duration": "15sec",
-              "sets": null,
-              "reps": null,
-              "notes": null
-            },
-            {
-              "name": "dead hang",
-              "duration": "30sec",
-              "sets": null,
-              "reps": null,
-              "notes": null
-            }
-          ],
-          "session_notes": null
-        }
-      ],
+      "date": "2026-05-23",
+      "sessions": [],
       "incidents": []
     },
     {
-      "date": "2025-05-24",
-      "sessions": [
-        {
-          "period": "day",
-          "feelings": [
-            "GREEN",
-            "YELLOW"
-          ],
-          "feelings_detail": null,
-          "activities": [
-            {
-              "name": "walk",
-              "duration": "20min",
-              "sets": null,
-              "reps": null,
-              "notes": null
-            },
-            {
-              "name": "walk",
-              "duration": "15min",
-              "sets": null,
-              "reps": null,
-              "notes": "hip circles throughout walk \u2014 helpful"
-            },
-            {
-              "name": "mobility block (2\u20133 sets spread through day)",
-              "duration": null,
-              "sets": "2-3",
-              "reps": null,
-              "notes": "grouped routine",
-              "children": [
-                {
-                  "name": "90/90 supine diaphragmatic breathing",
-                  "duration": "2min",
-                  "sets": null,
-                  "reps": null,
-                  "notes": null
-                },
-                {
-                  "name": "cow neutral",
-                  "duration": null,
-                  "sets": null,
-                  "reps": "8-10",
-                  "notes": null
-                },
-                {
-                  "name": "rock back",
-                  "duration": null,
-                  "sets": null,
-                  "reps": "5-10",
-                  "notes": null
-                },
-                {
-                  "name": "single knee drops",
-                  "duration": null,
-                  "sets": null,
-                  "reps": "5-10",
-                  "notes": null
-                },
-                {
-                  "name": "nerve glides",
-                  "duration": null,
-                  "sets": null,
-                  "reps": 10,
-                  "reps_per_side": true,
-                  "notes": null
-                }
-              ]
-            }
-          ],
-          "session_notes": null
-        }
-      ],
+      "date": "2026-05-24",
+      "sessions": [],
       "incidents": []
     },
     {
-      "date": "2025-05-25",
-      "sessions": [
-        {
-          "period": "day",
-          "feelings": [
-            "GREEN",
-            "YELLOW"
-          ],
-          "feelings_detail": null,
-          "activities": [
-            {
-              "name": "walk",
-              "duration": "25min",
-              "sets": null,
-              "reps": null,
-              "notes": null
-            },
-            {
-              "name": "walk",
-              "duration": "20min",
-              "sets": null,
-              "reps": null,
-              "notes": null
-            },
-            {
-              "name": "walk",
-              "duration": "15min",
-              "sets": null,
-              "reps": null,
-              "notes": null
-            },
-            {
-              "name": "mobility block (2\u20133 sets spread through day)",
-              "duration": null,
-              "sets": "2-3",
-              "reps": null,
-              "notes": "grouped routine",
-              "children": [
-                {
-                  "name": "90/90 supine diaphragmatic breathing",
-                  "duration": "2min",
-                  "sets": null,
-                  "reps": null,
-                  "notes": null
-                },
-                {
-                  "name": "cow neutral",
-                  "duration": null,
-                  "sets": null,
-                  "reps": "8-10",
-                  "notes": null
-                },
-                {
-                  "name": "rock back",
-                  "duration": null,
-                  "sets": null,
-                  "reps": "5-10",
-                  "notes": null
-                },
-                {
-                  "name": "single knee drops",
-                  "duration": null,
-                  "sets": null,
-                  "reps": "5-10",
-                  "notes": null
-                },
-                {
-                  "name": "nerve glides",
-                  "duration": null,
-                  "sets": null,
-                  "reps": 10,
-                  "reps_per_side": true,
-                  "notes": null
-                },
-                {
-                  "name": "full bird dogs",
-                  "duration": null,
-                  "sets": 2,
-                  "reps": "5-10",
-                  "notes": null
-                }
-              ]
-            }
-          ],
-          "session_notes": null
-        }
-      ],
+      "date": "2026-05-25",
+      "sessions": [],
       "incidents": []
     },
     {
-      "date": "2025-05-26",
+      "date": "2026-05-26",
       "sessions": [
-        {
-          "period": "AM",
-          "feelings": [
-            "YELLOW"
-          ],
-          "feelings_detail": null,
-          "activities": [
-            {
-              "name": "supine 90/90",
-              "duration": "2min",
-              "sets": null,
-              "reps": null,
-              "notes": null
-            },
-            {
-              "name": "cow neutral",
-              "duration": null,
-              "sets": 2,
-              "reps": 8,
-              "notes": null
-            },
-            {
-              "name": "rock back",
-              "duration": null,
-              "sets": 2,
-              "reps": 8,
-              "notes": null
-            },
-            {
-              "name": "single knee drops",
-              "duration": null,
-              "sets": 1,
-              "reps": 5,
-              "notes": null
-            },
-            {
-              "name": "mini glute bridges",
-              "duration": null,
-              "sets": 2,
-              "reps": 8,
-              "notes": null
-            },
-            {
-              "name": "bird dog",
-              "duration": null,
-              "sets": 2,
-              "reps": 8,
-              "notes": "with foot sliding"
-            },
-            {
-              "name": "walk",
-              "duration": "28min",
-              "sets": null,
-              "reps": null,
-              "notes": "2x5 hip circles in the middle"
-            },
-            {
-              "name": "cow neutral",
-              "duration": null,
-              "sets": null,
-              "reps": null,
-              "notes": "after walk"
-            },
-            {
-              "name": "supine 90/90",
-              "duration": null,
-              "sets": null,
-              "reps": null,
-              "notes": "after walk"
-            }
-          ],
-          "session_notes": null
-        },
         {
           "period": "Evening",
           "feelings": [
@@ -322,117 +38,13 @@
           "feelings_detail": null,
           "activities": [],
           "session_notes": null
-        },
-        {
-          "period": "PM",
-          "feelings": [
-            "GREEN"
-          ],
-          "feelings_detail": null,
-          "activities": [
-            {
-              "name": "supine 90/90",
-              "duration": "10min",
-              "sets": null,
-              "reps": null,
-              "notes": null
-            },
-            {
-              "name": "rock back",
-              "duration": null,
-              "sets": 1,
-              "reps": 8,
-              "notes": null
-            },
-            {
-              "name": "cow neutral",
-              "duration": null,
-              "sets": 1,
-              "reps": 8,
-              "notes": null
-            },
-            {
-              "name": "mini glute bridges",
-              "duration": null,
-              "sets": 1,
-              "reps": 8,
-              "notes": null
-            },
-            {
-              "name": "bird dog",
-              "duration": null,
-              "sets": 1,
-              "reps": 8,
-              "notes": "with foot sliding"
-            }
-          ],
-          "session_notes": null
         }
       ],
       "incidents": []
     },
     {
-      "date": "2025-05-27",
+      "date": "2026-05-27",
       "sessions": [
-        {
-          "period": "AM",
-          "feelings": [
-            "GREEN"
-          ],
-          "feelings_detail": null,
-          "activities": [
-            {
-              "name": "supine 90/90",
-              "duration": "2min",
-              "sets": null,
-              "reps": null,
-              "notes": null
-            },
-            {
-              "name": "cow neutral",
-              "duration": null,
-              "sets": 1,
-              "reps": 8,
-              "notes": null
-            },
-            {
-              "name": "rock back",
-              "duration": null,
-              "sets": 1,
-              "reps": 8,
-              "notes": null
-            },
-            {
-              "name": "single knee drops",
-              "duration": null,
-              "sets": 1,
-              "reps": 5,
-              "notes": null
-            },
-            {
-              "name": "half range glute bridges",
-              "duration": null,
-              "sets": 1,
-              "reps": 8,
-              "notes": null
-            },
-            {
-              "name": "bird dog",
-              "duration": null,
-              "sets": 1,
-              "reps": 8,
-              "notes": "no mods"
-            },
-            {
-              "name": "walk",
-              "duration": "20min",
-              "sets": null,
-              "reps": null,
-              "notes": "2x5 hip circles in the middle; repeated mobility routine after walk"
-            }
-          ],
-          "session_notes": null
-        },
         {
           "period": "Evening",
           "feelings": [
@@ -440,59 +52,6 @@
           ],
           "feelings_detail": null,
           "activities": [],
-          "session_notes": null
-        },
-        {
-          "period": "PM",
-          "feelings": [
-            "GREEN",
-            "YELLOW"
-          ],
-          "feelings_detail": null,
-          "activities": [
-            {
-              "name": "90/90",
-              "duration": "2min",
-              "sets": null,
-              "reps": null,
-              "notes": null
-            },
-            {
-              "name": "cow neutral",
-              "duration": null,
-              "sets": 1,
-              "reps": 8,
-              "notes": null
-            },
-            {
-              "name": "rock back",
-              "duration": null,
-              "sets": 1,
-              "reps": 8,
-              "notes": null
-            },
-            {
-              "name": "half range glute bridges",
-              "duration": null,
-              "sets": 1,
-              "reps": 8,
-              "notes": null
-            },
-            {
-              "name": "bird dog",
-              "duration": null,
-              "sets": 1,
-              "reps": 8,
-              "notes": "no mods"
-            },
-            {
-              "name": "walk",
-              "duration": "15min",
-              "sets": null,
-              "reps": null,
-              "notes": null
-            }
-          ],
           "session_notes": null
         }
       ],
@@ -502,80 +61,14 @@
             "RED"
           ],
           "description": "Double knee drops",
-          "notes": "marked RED separately from PM session rating",
+          "notes": null,
           "after_session": "PM"
         }
       ]
     },
     {
-      "date": "2025-05-28",
+      "date": "2026-05-28",
       "sessions": [
-        {
-          "period": "AM",
-          "feelings": [
-            "YELLOW"
-          ],
-          "feelings_detail": null,
-          "activities": [
-            {
-              "name": "supine 90/90",
-              "duration": "2min",
-              "sets": null,
-              "reps": null,
-              "notes": null
-            },
-            {
-              "name": "rock back",
-              "duration": null,
-              "sets": 2,
-              "reps": 8,
-              "notes": null
-            },
-            {
-              "name": "cow neutral",
-              "duration": null,
-              "sets": 2,
-              "reps": 8,
-              "notes": null
-            },
-            {
-              "name": "supine marches",
-              "duration": null,
-              "sets": 2,
-              "reps": 10,
-              "notes": null
-            },
-            {
-              "name": "half range glute bridges",
-              "duration": null,
-              "sets": 2,
-              "reps": 10,
-              "notes": null
-            },
-            {
-              "name": "bird dog",
-              "duration": null,
-              "sets": 2,
-              "reps": 8,
-              "notes": "got easier as I did them"
-            },
-            {
-              "name": "modified front plank (desk)",
-              "duration": "15sec",
-              "sets": 2,
-              "reps": null,
-              "notes": null
-            },
-            {
-              "name": "walk",
-              "duration": "30min",
-              "sets": null,
-              "reps": null,
-              "notes": null
-            }
-          ],
-          "session_notes": null
-        },
         {
           "period": "Evening",
           "feelings": [
@@ -584,109 +77,13 @@
           "feelings_detail": null,
           "activities": [],
           "session_notes": null
-        },
-        {
-          "period": "PM",
-          "feelings": null,
-          "feelings_detail": null,
-          "activities": [
-            {
-              "name": "supine 90/90",
-              "duration": "2min",
-              "sets": null,
-              "reps": null,
-              "notes": null
-            },
-            {
-              "name": "cow neutral",
-              "duration": null,
-              "sets": 2,
-              "reps": 8,
-              "notes": null
-            },
-            {
-              "name": "rock back",
-              "duration": null,
-              "sets": 2,
-              "reps": 8,
-              "notes": null
-            },
-            {
-              "name": "half-range glute bridges",
-              "duration": null,
-              "sets": 2,
-              "reps": 10,
-              "notes": null
-            },
-            {
-              "name": "bird dog",
-              "duration": null,
-              "sets": 2,
-              "reps": 8,
-              "notes": null
-            }
-          ],
-          "session_notes": null
         }
       ],
       "incidents": []
     },
     {
-      "date": "2025-05-29",
+      "date": "2026-05-29",
       "sessions": [
-        {
-          "period": "AM",
-          "feelings": [
-            "GREEN",
-            "YELLOW"
-          ],
-          "feelings_detail": null,
-          "activities": [
-            {
-              "name": "supine 90/90",
-              "duration": "2min",
-              "sets": null,
-              "reps": null,
-              "notes": null
-            },
-            {
-              "name": "rock back",
-              "duration": null,
-              "sets": 2,
-              "reps": 8,
-              "notes": null
-            },
-            {
-              "name": "cow neutral",
-              "duration": null,
-              "sets": 2,
-              "reps": 8,
-              "notes": null
-            },
-            {
-              "name": "half range glute bridges",
-              "duration": null,
-              "sets": 2,
-              "reps": 10,
-              "notes": null
-            },
-            {
-              "name": "bird dog",
-              "duration": null,
-              "sets": 2,
-              "reps": 8,
-              "notes": null
-            },
-            {
-              "name": "walk",
-              "duration": "20min",
-              "sets": null,
-              "reps": null,
-              "notes": "2x5 hip circles in the middle; after ultrasound, pain during ultrasound"
-            }
-          ],
-          "session_notes": null
-        },
         {
           "period": "Evening",
           "feelings": [
@@ -695,30 +92,6 @@
           ],
           "feelings_detail": null,
           "activities": [],
-          "session_notes": null
-        },
-        {
-          "period": "PM",
-          "feelings": [
-            "GREEN"
-          ],
-          "feelings_detail": null,
-          "activities": [
-            {
-              "name": "walk",
-              "duration": "20min",
-              "sets": null,
-              "reps": null,
-              "notes": null
-            },
-            {
-              "name": "supine 90/90 diaphragmatic breathing",
-              "duration": null,
-              "sets": null,
-              "reps": null,
-              "notes": null
-            }
-          ],
           "session_notes": null
         }
       ],
@@ -734,67 +107,8 @@
       ]
     },
     {
-      "date": "2025-05-30",
+      "date": "2026-05-30",
       "sessions": [
-        {
-          "period": "AM",
-          "feelings": [
-            "YELLOW"
-          ],
-          "feelings_detail": null,
-          "activities": [
-            {
-              "name": "supine 90/90",
-              "duration": "2min",
-              "sets": null,
-              "reps": null,
-              "notes": null
-            },
-            {
-              "name": "rock back",
-              "duration": null,
-              "sets": 2,
-              "reps": 8,
-              "notes": null
-            },
-            {
-              "name": "cow neutral",
-              "duration": null,
-              "sets": 2,
-              "reps": 8,
-              "notes": null
-            },
-            {
-              "name": "half range glute bridges",
-              "duration": null,
-              "sets": 2,
-              "reps": 10,
-              "notes": null
-            },
-            {
-              "name": "bird dog",
-              "duration": null,
-              "sets": 2,
-              "reps": 8,
-              "notes": null
-            },
-            {
-              "name": "desk plank",
-              "duration": "15sec",
-              "sets": 3,
-              "reps": null,
-              "notes": null
-            },
-            {
-              "name": "walk",
-              "duration": "40min",
-              "sets": null,
-              "reps": null,
-              "notes": "2x5 hip circles at the end"
-            }
-          ],
-          "session_notes": null
-        },
         {
           "period": "Evening",
           "feelings": [
@@ -802,134 +116,14 @@
           ],
           "feelings_detail": null,
           "activities": [],
-          "session_notes": null
-        },
-        {
-          "period": "PM",
-          "feelings": [
-            "GREEN",
-            "YELLOW"
-          ],
-          "feelings_detail": null,
-          "activities": [
-            {
-              "name": "90/90",
-              "duration": "2min",
-              "sets": null,
-              "reps": null,
-              "notes": null
-            },
-            {
-              "name": "cow neutral",
-              "duration": null,
-              "sets": 1,
-              "reps": 8,
-              "notes": null
-            },
-            {
-              "name": "rock back",
-              "duration": null,
-              "sets": 1,
-              "reps": 8,
-              "notes": null
-            },
-            {
-              "name": "half range glute bridges",
-              "duration": null,
-              "sets": 1,
-              "reps": 8,
-              "notes": null
-            },
-            {
-              "name": "bird dog",
-              "duration": null,
-              "sets": 1,
-              "reps": 8,
-              "notes": null
-            },
-            {
-              "name": "walk",
-              "duration": "20min",
-              "sets": null,
-              "reps": null,
-              "notes": null
-            }
-          ],
           "session_notes": null
         }
       ],
       "incidents": []
     },
     {
-      "date": "2025-05-31",
+      "date": "2026-05-31",
       "sessions": [
-        {
-          "period": "AM",
-          "feelings": [
-            "GREEN",
-            "YELLOW"
-          ],
-          "feelings_detail": null,
-          "activities": [
-            {
-              "name": "supine 90/90",
-              "duration": "2min",
-              "sets": null,
-              "reps": null,
-              "notes": null
-            },
-            {
-              "name": "single knee drop",
-              "duration": null,
-              "sets": 1,
-              "reps": 5,
-              "notes": null
-            },
-            {
-              "name": "rock back",
-              "duration": null,
-              "sets": 2,
-              "reps": 8,
-              "notes": null
-            },
-            {
-              "name": "cow neutral",
-              "duration": null,
-              "sets": 2,
-              "reps": 8,
-              "notes": null
-            },
-            {
-              "name": "half range glute bridges",
-              "duration": null,
-              "sets": 2,
-              "reps": 10,
-              "notes": null
-            },
-            {
-              "name": "bird dog",
-              "duration": null,
-              "sets": 2,
-              "reps": 8,
-              "notes": null
-            },
-            {
-              "name": "desk plank",
-              "duration": "15sec",
-              "sets": 3,
-              "reps": null,
-              "notes": null
-            },
-            {
-              "name": "walk",
-              "duration": "35min",
-              "sets": null,
-              "reps": null,
-              "notes": "2x5 hip circles at the end"
-            }
-          ],
-          "session_notes": null
-        },
         {
           "period": "Evening",
           "feelings": [
@@ -938,133 +132,14 @@
           ],
           "feelings_detail": null,
           "activities": [],
-          "session_notes": null
-        },
-        {
-          "period": "PM",
-          "feelings": [
-            "GREEN"
-          ],
-          "feelings_detail": null,
-          "activities": [
-            {
-              "name": "90/90",
-              "duration": "2min",
-              "sets": null,
-              "reps": null,
-              "notes": null
-            },
-            {
-              "name": "cow neutral",
-              "duration": null,
-              "sets": 1,
-              "reps": 8,
-              "notes": null
-            },
-            {
-              "name": "rock back",
-              "duration": null,
-              "sets": 1,
-              "reps": 8,
-              "notes": null
-            },
-            {
-              "name": "half range glute bridges",
-              "duration": null,
-              "sets": 1,
-              "reps": 8,
-              "notes": null
-            },
-            {
-              "name": "bird dog",
-              "duration": null,
-              "sets": 1,
-              "reps": 8,
-              "notes": null
-            },
-            {
-              "name": "walk",
-              "duration": "20min",
-              "sets": null,
-              "reps": null,
-              "notes": null
-            }
-          ],
           "session_notes": null
         }
       ],
       "incidents": []
     },
     {
-      "date": "2025-06-01",
+      "date": "2026-06-01",
       "sessions": [
-        {
-          "period": "AM",
-          "feelings": [
-            "GREEN",
-            "YELLOW"
-          ],
-          "feelings_detail": null,
-          "activities": [
-            {
-              "name": "supine 90/90",
-              "duration": "2min",
-              "sets": null,
-              "reps": null,
-              "notes": null
-            },
-            {
-              "name": "single knee drop",
-              "duration": null,
-              "sets": 1,
-              "reps": 5,
-              "notes": null
-            },
-            {
-              "name": "rock back",
-              "duration": null,
-              "sets": 2,
-              "reps": 8,
-              "notes": null
-            },
-            {
-              "name": "cow neutral",
-              "duration": null,
-              "sets": 2,
-              "reps": 8,
-              "notes": null
-            },
-            {
-              "name": "75% range glute bridges",
-              "duration": null,
-              "sets": 2,
-              "reps": 10,
-              "notes": null
-            },
-            {
-              "name": "bird dog",
-              "duration": null,
-              "sets": 2,
-              "reps": 10,
-              "notes": null
-            },
-            {
-              "name": "incline plank",
-              "duration": "15sec",
-              "sets": 3,
-              "reps": null,
-              "notes": "half height of desk"
-            },
-            {
-              "name": "walk",
-              "duration": "40min",
-              "sets": null,
-              "reps": null,
-              "notes": null
-            }
-          ],
-          "session_notes": null
-        },
         {
           "period": "Evening",
           "feelings": [
@@ -1072,781 +147,29 @@
           ],
           "feelings_detail": null,
           "activities": [],
-          "session_notes": null
-        },
-        {
-          "period": "PM",
-          "feelings": [
-            "GREEN",
-            "YELLOW"
-          ],
-          "feelings_detail": "~60% GREEN",
-          "activities": [
-            {
-              "name": "supine 90/90",
-              "duration": "2min",
-              "sets": null,
-              "reps": null,
-              "notes": null
-            },
-            {
-              "name": "rock back",
-              "duration": null,
-              "sets": 1,
-              "reps": 8,
-              "notes": null
-            },
-            {
-              "name": "cow neutral",
-              "duration": null,
-              "sets": 1,
-              "reps": 8,
-              "notes": null
-            },
-            {
-              "name": "walk",
-              "duration": "20min",
-              "sets": null,
-              "reps": null,
-              "notes": null
-            }
-          ],
-          "session_notes": "some burning sensation on lower right back Evening all day, no consistent guarding, was feeling symptoms before I did my evening routine, ibuprofen only taken before bed"
-        }
-      ],
-      "incidents": []
-    },
-    {
-      "date": "2025-06-02",
-      "sessions": [
-        {
-          "period": "AM",
-          "feelings": [
-            "GREEN",
-            "YELLOW"
-          ],
-          "feelings_detail": "~70% GREEN",
-          "activities": [
-            {
-              "name": "supine 90/90",
-              "duration": "2min",
-              "sets": null,
-              "reps": null,
-              "notes": null
-            },
-            {
-              "name": "dead bug",
-              "duration": null,
-              "sets": 1,
-              "reps": 5,
-              "notes": null
-            },
-            {
-              "name": "single knee drop",
-              "duration": null,
-              "sets": 1,
-              "reps": 5,
-              "notes": null
-            },
-            {
-              "name": "rock back",
-              "duration": null,
-              "sets": 2,
-              "reps": 8,
-              "notes": null
-            },
-            {
-              "name": "cow neutral",
-              "duration": null,
-              "sets": 2,
-              "reps": 8,
-              "notes": null
-            },
-            {
-              "name": "75% range glute bridges",
-              "duration": null,
-              "sets": 2,
-              "reps": 10,
-              "notes": null
-            },
-            {
-              "name": "bird dog",
-              "duration": null,
-              "sets": 2,
-              "reps": 10,
-              "notes": null
-            },
-            {
-              "name": "incline plank",
-              "duration": "15sec",
-              "sets": 3,
-              "reps": null,
-              "notes": "half height of desk"
-            },
-            {
-              "name": "walk",
-              "duration": "45min",
-              "sets": null,
-              "reps": null,
-              "notes": null
-            }
-          ],
-          "session_notes": null
-        },
-        {
-          "period": "Evening",
-          "feelings": [
-            "YELLOW"
-          ],
-          "feelings_detail": null,
-          "activities": [],
-          "session_notes": null
-        },
-        {
-          "period": "PM",
-          "feelings": [
-            "GREEN"
-          ],
-          "feelings_detail": null,
-          "activities": [
-            {
-              "name": "90/90",
-              "duration": null,
-              "sets": null,
-              "reps": null,
-              "notes": null
-            },
-            {
-              "name": "rock back",
-              "duration": null,
-              "sets": 1,
-              "reps": 8,
-              "notes": null
-            },
-            {
-              "name": "cow neutral",
-              "duration": null,
-              "sets": 1,
-              "reps": 8,
-              "notes": null
-            },
-            {
-              "name": "walk",
-              "duration": "20min",
-              "sets": null,
-              "reps": null,
-              "notes": null
-            }
-          ],
-          "session_notes": "No ibuprofen"
-        }
-      ],
-      "incidents": []
-    },
-    {
-      "date": "2025-06-03",
-      "sessions": [
-        {
-          "period": "AM",
-          "feelings": [
-            "GREEN",
-            "YELLOW"
-          ],
-          "feelings_detail": null,
-          "activities": [
-            {
-              "name": "supine 90/90",
-              "duration": "2min",
-              "sets": null,
-              "reps": null,
-              "notes": null
-            },
-            {
-              "name": "dead bug",
-              "duration": null,
-              "sets": 2,
-              "reps": 5,
-              "notes": null
-            },
-            {
-              "name": "single knee drop",
-              "duration": null,
-              "sets": 1,
-              "reps": 5,
-              "notes": null
-            },
-            {
-              "name": "rock back",
-              "duration": null,
-              "sets": 2,
-              "reps": 8,
-              "notes": null
-            },
-            {
-              "name": "cow neutral",
-              "duration": null,
-              "sets": 2,
-              "reps": 8,
-              "notes": null
-            },
-            {
-              "name": "75% range glute bridges",
-              "duration": null,
-              "sets": 2,
-              "reps": 10,
-              "notes": null
-            },
-            {
-              "name": "bird dog",
-              "duration": null,
-              "sets": 2,
-              "reps": 10,
-              "notes": null
-            },
-            {
-              "name": "incline plank",
-              "duration": "30sec",
-              "sets": 3,
-              "reps": null,
-              "notes": "half height of desk"
-            },
-            {
-              "name": "walk",
-              "duration": "10min",
-              "sets": null,
-              "reps": null,
-              "notes": null
-            }
-          ],
-          "session_notes": "1 ibuprofen for headache, felt some back pain when stressed but fine after"
-        },
-        {
-          "period": "Evening",
-          "feelings": [
-            "GREEN",
-            "YELLOW"
-          ],
-          "feelings_detail": null,
-          "activities": [],
-          "session_notes": null
-        },
-        {
-          "period": "PM",
-          "feelings": [
-            "GREEN"
-          ],
-          "feelings_detail": null,
-          "activities": [
-            {
-              "name": "90/90",
-              "duration": null,
-              "sets": null,
-              "reps": null,
-              "notes": null
-            },
-            {
-              "name": "rock back",
-              "duration": null,
-              "sets": 1,
-              "reps": 8,
-              "notes": null
-            },
-            {
-              "name": "cow neutral",
-              "duration": null,
-              "sets": 1,
-              "reps": 8,
-              "notes": null
-            },
-            {
-              "name": "walk",
-              "duration": "40min",
-              "sets": null,
-              "reps": null,
-              "notes": null
-            }
-          ],
-          "session_notes": "No ibuprofen"
-        }
-      ],
-      "incidents": []
-    },
-    {
-      "date": "2025-06-04",
-      "sessions": [
-        {
-          "period": "AM",
-          "feelings": [
-            "GREEN",
-            "YELLOW"
-          ],
-          "feelings_detail": null,
-          "activities": [
-            {
-              "name": "supine 90/90",
-              "duration": "2min",
-              "sets": null,
-              "reps": null,
-              "notes": null
-            },
-            {
-              "name": "dead bug",
-              "duration": null,
-              "sets": 2,
-              "reps": 8,
-              "notes": null
-            },
-            {
-              "name": "single knee drop",
-              "duration": null,
-              "sets": 1,
-              "reps": 5,
-              "notes": null
-            },
-            {
-              "name": "rock back",
-              "duration": null,
-              "sets": 2,
-              "reps": 8,
-              "notes": null
-            },
-            {
-              "name": "cow neutral",
-              "duration": null,
-              "sets": 2,
-              "reps": 8,
-              "notes": null
-            },
-            {
-              "name": "75% range glute bridges",
-              "duration": null,
-              "sets": 2,
-              "reps": 10,
-              "notes": null
-            },
-            {
-              "name": "bird dog",
-              "duration": null,
-              "sets": 2,
-              "reps": 10,
-              "notes": null
-            },
-            {
-              "name": "incline plank",
-              "duration": "30sec",
-              "sets": 3,
-              "reps": null,
-              "notes": null
-            },
-            {
-              "name": "walk",
-              "duration": "40min",
-              "sets": null,
-              "reps": null,
-              "notes": null
-            }
-          ],
-          "session_notes": null
-        },
-        {
-          "period": "Evening",
-          "feelings": [
-            "GREEN"
-          ],
-          "feelings_detail": null,
-          "activities": [],
-          "session_notes": null
-        },
-        {
-          "period": "PM",
-          "feelings": [
-            "GREEN"
-          ],
-          "feelings_detail": null,
-          "activities": [
-            {
-              "name": "90/90",
-              "duration": null,
-              "sets": null,
-              "reps": null,
-              "notes": null
-            },
-            {
-              "name": "rock back",
-              "duration": null,
-              "sets": 1,
-              "reps": 8,
-              "notes": null
-            },
-            {
-              "name": "cow neutral",
-              "duration": null,
-              "sets": 1,
-              "reps": 8,
-              "notes": null
-            },
-            {
-              "name": "walk",
-              "duration": "20min",
-              "sets": null,
-              "reps": null,
-              "notes": null
-            }
-          ],
           "session_notes": null
         }
       ],
       "incidents": []
     },
     {
-      "date": "2025-06-05",
+      "date": "2026-06-02",
       "sessions": [
-        {
-          "period": "AM",
-          "feelings": [
-            "GREEN"
-          ],
-          "feelings_detail": null,
-          "activities": [
-            {
-              "name": "supine 90/90",
-              "duration": "2min",
-              "sets": null,
-              "reps": null,
-              "notes": null
-            },
-            {
-              "name": "dead bug",
-              "duration": null,
-              "sets": 2,
-              "reps": 8,
-              "notes": null
-            },
-            {
-              "name": "single knee drop",
-              "duration": null,
-              "sets": 1,
-              "reps": 5,
-              "notes": null
-            },
-            {
-              "name": "rock back",
-              "duration": null,
-              "sets": 2,
-              "reps": 8,
-              "notes": null
-            },
-            {
-              "name": "cow neutral",
-              "duration": null,
-              "sets": 2,
-              "reps": 8,
-              "notes": null
-            },
-            {
-              "name": "glute bridges",
-              "duration": null,
-              "sets": 2,
-              "reps": 10,
-              "notes": null
-            },
-            {
-              "name": "bird dog",
-              "duration": null,
-              "sets": 2,
-              "reps": 10,
-              "notes": null
-            },
-            {
-              "name": "incline plank",
-              "duration": "30sec",
-              "sets": 3,
-              "reps": null,
-              "notes": null
-            },
-            {
-              "name": "walk",
-              "duration": "45min",
-              "sets": null,
-              "reps": null,
-              "notes": null
-            },
-            {
-              "name": "legs against wall",
-              "duration": null,
-              "sets": null,
-              "reps": null,
-              "notes": "laid with legs against wall"
-            },
-            {
-              "name": "supported dead hang",
-              "duration": null,
-              "sets": null,
-              "reps": null,
-              "notes": "very light"
-            }
-          ],
-          "session_notes": null
-        },
         {
           "period": "Evening",
           "feelings": [
-            "GREEN"
+            "YELLOW"
           ],
           "feelings_detail": null,
           "activities": [],
-          "session_notes": null
-        },
-        {
-          "period": "PM",
-          "feelings": [
-            "GREEN"
-          ],
-          "feelings_detail": null,
-          "activities": [
-            {
-              "name": "90/90",
-              "duration": null,
-              "sets": null,
-              "reps": null,
-              "notes": null
-            },
-            {
-              "name": "rock back",
-              "duration": null,
-              "sets": 1,
-              "reps": 8,
-              "notes": null
-            },
-            {
-              "name": "cow neutral",
-              "duration": null,
-              "sets": 1,
-              "reps": 8,
-              "notes": null
-            },
-            {
-              "name": "walk",
-              "duration": "20min",
-              "sets": null,
-              "reps": null,
-              "notes": null
-            },
-            {
-              "name": "knees to chest hug",
-              "duration": "1min",
-              "sets": null,
-              "reps": null,
-              "notes": null
-            }
-          ],
           "session_notes": null
         }
       ],
       "incidents": []
     },
     {
-      "date": "2025-06-06",
+      "date": "2026-06-03",
       "sessions": [
-        {
-          "period": "AM",
-          "feelings": [
-            "GREEN"
-          ],
-          "feelings_detail": null,
-          "activities": [
-            {
-              "name": "supine 90/90",
-              "duration": "2min",
-              "sets": null,
-              "reps": null,
-              "notes": "and a few times during stabilization sets"
-            },
-            {
-              "name": "dead bug",
-              "duration": null,
-              "sets": 2,
-              "reps": 8,
-              "notes": null
-            },
-            {
-              "name": "single knee drop",
-              "duration": null,
-              "sets": 2,
-              "reps": 5,
-              "notes": null
-            },
-            {
-              "name": "rock back",
-              "duration": null,
-              "sets": 2,
-              "reps": 10,
-              "notes": null
-            },
-            {
-              "name": "cow neutral",
-              "duration": null,
-              "sets": 2,
-              "reps": 10,
-              "notes": null
-            },
-            {
-              "name": "glute bridges",
-              "duration": null,
-              "sets": 3,
-              "reps": 10,
-              "notes": "last set difficult"
-            },
-            {
-              "name": "bird dog",
-              "duration": null,
-              "sets": 2,
-              "reps": 10,
-              "notes": null
-            },
-            {
-              "name": "high plank",
-              "duration": "30sec",
-              "sets": 3,
-              "reps": null,
-              "notes": null
-            },
-            {
-              "name": "walk",
-              "duration": "60min",
-              "sets": null,
-              "reps": null,
-              "notes": null
-            }
-          ],
-          "session_notes": null
-        },
-        {
-          "period": "Evening",
-          "feelings": [
-            "GREEN"
-          ],
-          "feelings_detail": null,
-          "activities": [],
-          "session_notes": null
-        },
-        {
-          "period": "PM",
-          "feelings": [
-            "GREEN"
-          ],
-          "feelings_detail": null,
-          "activities": [
-            {
-              "name": "90/90",
-              "duration": null,
-              "sets": null,
-              "reps": null,
-              "notes": null
-            },
-            {
-              "name": "rock back",
-              "duration": null,
-              "sets": 1,
-              "reps": 8,
-              "notes": null
-            },
-            {
-              "name": "cow neutral",
-              "duration": null,
-              "sets": 1,
-              "reps": 8,
-              "notes": null
-            },
-            {
-              "name": "walk",
-              "duration": "20min",
-              "sets": null,
-              "reps": null,
-              "notes": null
-            }
-          ],
-          "session_notes": null
-        }
-      ],
-      "incidents": []
-    },
-    {
-      "date": "2025-06-07",
-      "sessions": [
-        {
-          "period": "AM",
-          "feelings": [
-            "GREEN"
-          ],
-          "feelings_detail": null,
-          "activities": [
-            {
-              "name": "supine 90/90",
-              "duration": "2min",
-              "sets": null,
-              "reps": null,
-              "notes": "and a few times during stabilization sets"
-            },
-            {
-              "name": "single knee drop",
-              "duration": null,
-              "sets": 2,
-              "reps": 5,
-              "notes": null
-            },
-            {
-              "name": "dead bug",
-              "duration": null,
-              "sets": 3,
-              "reps": 8,
-              "notes": null
-            },
-            {
-              "name": "rock back",
-              "duration": null,
-              "sets": 3,
-              "reps": 8,
-              "notes": null
-            },
-            {
-              "name": "cow neutral",
-              "duration": null,
-              "sets": 3,
-              "reps": 8,
-              "notes": null
-            },
-            {
-              "name": "glute bridges",
-              "duration": null,
-              "sets": 3,
-              "reps": 8,
-              "notes": null
-            },
-            {
-              "name": "bird dog",
-              "duration": null,
-              "sets": 3,
-              "reps": 8,
-              "notes": null
-            },
-            {
-              "name": "high plank",
-              "duration": "30sec",
-              "sets": 3,
-              "reps": null,
-              "notes": null
-            },
-            {
-              "name": "walk",
-              "duration": "30min",
-              "sets": null,
-              "reps": null,
-              "notes": null
-            }
-          ],
-          "session_notes": "Some right glute/hamstring irritation (noted with AM GREEN/YELLOW rating)"
-        },
         {
           "period": "Evening",
           "feelings": [
@@ -1856,37 +179,74 @@
           "feelings_detail": null,
           "activities": [],
           "session_notes": null
-        },
+        }
+      ],
+      "incidents": []
+    },
+    {
+      "date": "2026-06-04",
+      "sessions": [
         {
-          "period": "PM",
-          "feelings": null,
-          "feelings_detail": null,
-          "activities": [
-            {
-              "name": "90/90",
-              "duration": null,
-              "sets": null,
-              "reps": null,
-              "notes": null
-            },
-            {
-              "name": "rock back",
-              "duration": null,
-              "sets": 1,
-              "reps": 8,
-              "notes": null
-            },
-            {
-              "name": "cow neutral",
-              "duration": null,
-              "sets": 1,
-              "reps": 8,
-              "notes": null
-            }
+          "period": "Evening",
+          "feelings": [
+            "GREEN"
           ],
+          "feelings_detail": null,
+          "activities": [],
           "session_notes": null
         }
       ],
+      "incidents": []
+    },
+    {
+      "date": "2026-06-05",
+      "sessions": [
+        {
+          "period": "Evening",
+          "feelings": [
+            "GREEN"
+          ],
+          "feelings_detail": null,
+          "activities": [],
+          "session_notes": null
+        }
+      ],
+      "incidents": []
+    },
+    {
+      "date": "2026-06-06",
+      "sessions": [
+        {
+          "period": "Evening",
+          "feelings": [
+            "GREEN"
+          ],
+          "feelings_detail": null,
+          "activities": [],
+          "session_notes": null
+        }
+      ],
+      "incidents": []
+    },
+    {
+      "date": "2026-06-07",
+      "sessions": [
+        {
+          "period": "Evening",
+          "feelings": [
+            "GREEN",
+            "YELLOW"
+          ],
+          "feelings_detail": null,
+          "activities": [],
+          "session_notes": null
+        }
+      ],
+      "incidents": []
+    },
+    {
+      "date": "2026-06-08",
+      "sessions": [],
       "incidents": []
     }
   ]

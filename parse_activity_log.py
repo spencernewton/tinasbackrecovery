@@ -467,12 +467,13 @@ def sync_early_day_body(day: dict, day_entry: dict) -> None:
 
 
 def main():
+    import sys
     raw_text = RAW.read_text()
-    data = json.loads(STRUCTURED.read_text())
-    raw_days = {d["date"]: d for d in parse_raw_days(raw_text)}
+    raw_days_list = parse_raw_days(raw_text)
+    raw_days = {d["date"]: d for d in raw_days_list}
     evenings = {}
 
-    for day_entry in parse_raw_days(raw_text):
+    for day_entry in raw_days_list:
         for kind, text in split_day_blocks(day_entry):
             if kind == "Evening":
                 feelings, detail = parse_feelings(text)
@@ -481,35 +482,105 @@ def main():
                     "feelings_detail": detail,
                 }
 
-    dates_in_raw = sorted(raw_days.keys())
-    if dates_in_raw:
-        data["meta"]["log_start"] = dates_in_raw[0]
-        data["meta"]["log_end"] = dates_in_raw[-1]
+    # Check if we should do a full rebuild (year mismatch or --rebuild flag)
+    rebuild = "--rebuild" in sys.argv
+    if not rebuild and STRUCTURED.exists():
+        try:
+            existing = json.loads(STRUCTURED.read_text())
+            existing_years = {d["date"][:4] for d in existing.get("days", [])}
+            raw_years = {d["date"][:4] for d in raw_days_list}
+            if existing_years != raw_years:
+                rebuild = True
+        except Exception:
+            rebuild = True
 
-    for day in data["days"]:
-        date = day["date"]
-        entry = raw_days.get(date)
-        if not entry:
-            continue
+    if rebuild:
+        # Full rebuild from raw
+        dates_in_raw = sorted(raw_days.keys())
+        data = {
+            "meta": {
+                "log_start": dates_in_raw[0] if dates_in_raw else None,
+                "log_end": dates_in_raw[-1] if dates_in_raw else None,
+                "cortisone_shot_date": None,
+                "feeling_scale": {"GREEN": "All good", "YELLOW": "Some symptoms", "RED": "Significant symptoms"},
+                "log_period_note": (
+                    "Log AM / Evening / PM in the raw file. AM block = morning routine + color (dashboard Afternoon). "
+                    "Evening = end-of-day color only. PM = evening routine + color (next calendar day dashboard Morning)."
+                ),
+            },
+            "days": [],
+        }
+        for date_key in dates_in_raw:
+            entry = raw_days[date_key]
+            blocks = split_day_blocks(entry)
+            new_day = {"date": date_key, "sessions": [], "incidents": []}
+            if date_key in evenings:
+                upsert_evening_session(new_day, evenings[date_key])
+            sync_day_from_raw(new_day, blocks)
+            for sess in new_day.get("sessions", []):
+                compact_session_notes(sess)
+                if sess.get("period") == "PM":
+                    notes = sess.get("session_notes") or ""
+                    if notes.startswith("No GREEN"):
+                        sess["session_notes"] = None
+            data["days"].append(new_day)
+    else:
+        # Incremental update: load existing and merge
+        data = json.loads(STRUCTURED.read_text())
 
-        blocks = split_day_blocks(entry)
-        if date in evenings:
-            upsert_evening_session(day, evenings[date])
-        reorder_sessions(day)
-        sync_early_day_body(day, entry)
-        sync_day_from_raw(day, blocks)
+        # Ensure required meta fields exist
+        if "cortisone_shot_date" not in data["meta"]:
+            data["meta"]["cortisone_shot_date"] = None
+        if "feeling_scale" not in data["meta"]:
+            data["meta"]["feeling_scale"] = {"GREEN": "All good", "YELLOW": "Some symptoms", "RED": "Significant symptoms"}
+        if "log_period_note" not in data["meta"]:
+            data["meta"]["log_period_note"] = (
+                "Log AM / Evening / PM in the raw file. AM block = morning routine + color (dashboard Afternoon). "
+                "Evening = end-of-day color only. PM = evening routine + color (next calendar day dashboard Morning)."
+            )
 
-        for sess in day.get("sessions", []):
-            compact_session_notes(sess)
-            if sess.get("period") == "PM":
-                notes = sess.get("session_notes") or ""
-                if notes.startswith("No GREEN"):
-                    sess["session_notes"] = None
+        dates_in_raw = sorted(raw_days.keys())
+        if dates_in_raw:
+            data["meta"]["log_start"] = dates_in_raw[0]
+            data["meta"]["log_end"] = dates_in_raw[-1]
 
-    data["meta"]["log_period_note"] = (
-        "Log AM / Evening / PM in the raw file. AM block = morning routine + color (dashboard Afternoon). "
-        "Evening = end-of-day color only. PM = evening routine + color (next calendar day dashboard Morning)."
-    )
+        for day in data["days"]:
+            date = day["date"]
+            entry = raw_days.get(date)
+            if not entry:
+                continue
+
+            blocks = split_day_blocks(entry)
+            if date in evenings:
+                upsert_evening_session(day, evenings[date])
+            reorder_sessions(day)
+            sync_early_day_body(day, entry)
+            sync_day_from_raw(day, blocks)
+
+            for sess in day.get("sessions", []):
+                compact_session_notes(sess)
+                if sess.get("period") == "PM":
+                    notes = sess.get("session_notes") or ""
+                    if notes.startswith("No GREEN"):
+                        sess["session_notes"] = None
+
+        # Add any new dates from raw that weren't in the existing structured data
+        existing_dates = {d["date"] for d in data["days"]}
+        for date_key in sorted(raw_days):
+            if date_key not in existing_dates:
+                entry = raw_days[date_key]
+                blocks = split_day_blocks(entry)
+                new_day = {"date": date_key, "sessions": [], "incidents": []}
+                if date_key in evenings:
+                    upsert_evening_session(new_day, evenings[date_key])
+                sync_day_from_raw(new_day, blocks)
+                for sess in new_day.get("sessions", []):
+                    compact_session_notes(sess)
+                    if sess.get("period") == "PM":
+                        notes = sess.get("session_notes") or ""
+                        if notes.startswith("No GREEN"):
+                            sess["session_notes"] = None
+                data["days"].append(new_day)
 
     STRUCTURED.write_text(json.dumps(data, indent=2) + "\n")
     print(f"Updated {STRUCTURED.name} from {RAW.name} ({len(raw_days)} days)")
