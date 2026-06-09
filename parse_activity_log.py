@@ -37,7 +37,10 @@ def log_date(year: int, month: int, day: int) -> str:
     return f"{year}-{month:02d}-{day:02d}"
 
 
-def parse_raw_days(text: str, default_year: int = 2025):
+def parse_raw_days(text: str, default_year: int | None = None):
+    if default_year is None:
+        from datetime import datetime
+        default_year = datetime.now().year
     lines = text.splitlines()
     days = []
     current = None

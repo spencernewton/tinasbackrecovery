@@ -1,8 +1,8 @@
 {
   "meta": {
     "cortisone_shot_date": "2025-05-13",
-    "log_start": "2025-05-23",
-    "log_end": "2025-06-07",
+    "log_start": "2026-05-23",
+    "log_end": "2026-06-08",
     "source_file": "Activity_Log_raw",
     "feeling_scale": {
       "GREEN": "No symptoms; felt great without pain",
