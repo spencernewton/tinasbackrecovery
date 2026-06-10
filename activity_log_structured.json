@@ -309,6 +309,27 @@
               "sets": null,
               "reps": null,
               "notes": "after walk"
+            },
+            {
+              "name": "5x single knee drops",
+              "duration": null,
+              "sets": null,
+              "reps": null,
+              "notes": null
+            },
+            {
+              "name": "28min walk with 2x5 hip circles  in the middle",
+              "duration": null,
+              "sets": null,
+              "reps": null,
+              "notes": null
+            },
+            {
+              "name": "cow neutral and supine 90/90 after",
+              "duration": null,
+              "sets": null,
+              "reps": null,
+              "notes": null
             }
           ],
           "session_notes": null
@@ -364,6 +385,27 @@
               "sets": 1,
               "reps": 8,
               "notes": "with foot sliding"
+            },
+            {
+              "name": "rock backs",
+              "duration": null,
+              "sets": 1,
+              "reps": 8,
+              "notes": null
+            },
+            {
+              "name": "cow neutrals",
+              "duration": null,
+              "sets": 1,
+              "reps": 8,
+              "notes": null
+            },
+            {
+              "name": "20min",
+              "duration": null,
+              "sets": null,
+              "reps": null,
+              "notes": null
             }
           ],
           "session_notes": null
@@ -429,6 +471,27 @@
               "sets": null,
               "reps": null,
               "notes": "2x5 hip circles in the middle; repeated mobility routine after walk"
+            },
+            {
+              "name": "5x single knee drops",
+              "duration": null,
+              "sets": null,
+              "reps": null,
+              "notes": null
+            },
+            {
+              "name": "20min walk with 2x5 hip circles  in the middle",
+              "duration": null,
+              "sets": null,
+              "reps": null,
+              "notes": null
+            },
+            {
+              "name": "repeated mobility routine after walk",
+              "duration": null,
+              "sets": null,
+              "reps": null,
+              "notes": null
             }
           ],
           "session_notes": null
@@ -488,6 +551,13 @@
             {
               "name": "walk",
               "duration": "15min",
+              "sets": null,
+              "reps": null,
+              "notes": null
+            },
+            {
+              "name": "15min walk",
+              "duration": null,
               "sets": null,
               "reps": null,
               "notes": null
@@ -572,6 +642,27 @@
               "sets": null,
               "reps": null,
               "notes": null
+            },
+            {
+              "name": "bird dogs",
+              "duration": null,
+              "sets": 2,
+              "reps": 8,
+              "notes": "got easier as I did them"
+            },
+            {
+              "name": "modified front plank",
+              "duration": null,
+              "sets": 2,
+              "reps": 15,
+              "notes": "desk"
+            },
+            {
+              "name": "30min walk",
+              "duration": null,
+              "sets": null,
+              "reps": null,
+              "notes": null
             }
           ],
           "session_notes": null
@@ -634,6 +725,20 @@
               "sets": null,
               "reps": null,
               "notes": null
+            },
+            {
+              "name": "bird dogs",
+              "duration": null,
+              "sets": 2,
+              "reps": 8,
+              "notes": null
+            },
+            {
+              "name": "20min walk",
+              "duration": null,
+              "sets": null,
+              "reps": null,
+              "notes": null
             }
           ],
           "session_notes": null
@@ -693,6 +798,27 @@
               "sets": null,
               "reps": null,
               "notes": "2x5 hip circles in the middle; after ultrasound, pain during ultrasound"
+            },
+            {
+              "name": "bird dogs",
+              "duration": null,
+              "sets": 2,
+              "reps": 8,
+              "notes": null
+            },
+            {
+              "name": "20min walk with 2x5 hip circles  in the middle (after ultrasound",
+              "duration": null,
+              "sets": null,
+              "reps": null,
+              "notes": null
+            },
+            {
+              "name": "pain during ultrasound)",
+              "duration": null,
+              "sets": null,
+              "reps": null,
+              "notes": null
             }
           ],
           "session_notes": null
@@ -723,6 +849,13 @@
             },
             {
               "name": "supine 90/90 diaphragmatic breathing",
+              "duration": null,
+              "sets": null,
+              "reps": null,
+              "notes": null
+            },
+            {
+              "name": "20min walk",
               "duration": null,
               "sets": null,
               "reps": null,
@@ -801,6 +934,20 @@
               "sets": null,
               "reps": null,
               "notes": "2x5 hip circles at the end"
+            },
+            {
+              "name": "bird dogs",
+              "duration": null,
+              "sets": 2,
+              "reps": 8,
+              "notes": null
+            },
+            {
+              "name": "40min walk with 2x5 hip circles at the end",
+              "duration": null,
+              "sets": null,
+              "reps": null,
+              "notes": null
             }
           ],
           "session_notes": null
@@ -860,6 +1007,20 @@
             {
               "name": "walk",
               "duration": "20min",
+              "sets": null,
+              "reps": null,
+              "notes": null
+            },
+            {
+              "name": "bird dogs",
+              "duration": null,
+              "sets": 1,
+              "reps": 8,
+              "notes": null
+            },
+            {
+              "name": "20min walk",
+              "duration": null,
               "sets": null,
               "reps": null,
               "notes": null
@@ -936,6 +1097,20 @@
               "sets": null,
               "reps": null,
               "notes": "2x5 hip circles at the end"
+            },
+            {
+              "name": "bird dogs",
+              "duration": null,
+              "sets": 2,
+              "reps": 8,
+              "notes": null
+            },
+            {
+              "name": "35min walk with 2x5 hip circles at the end",
+              "duration": null,
+              "sets": null,
+              "reps": null,
+              "notes": null
             }
           ],
           "session_notes": null
@@ -995,6 +1170,20 @@
             {
               "name": "walk",
               "duration": "20min",
+              "sets": null,
+              "reps": null,
+              "notes": null
+            },
+            {
+              "name": "bird dogs",
+              "duration": null,
+              "sets": 1,
+              "reps": 8,
+              "notes": null
+            },
+            {
+              "name": "20min walk",
+              "duration": null,
               "sets": null,
               "reps": null,
               "notes": null
@@ -1071,6 +1260,20 @@
               "sets": null,
               "reps": null,
               "notes": null
+            },
+            {
+              "name": "bird dogs",
+              "duration": null,
+              "sets": 2,
+              "reps": 10,
+              "notes": null
+            },
+            {
+              "name": "40min walk",
+              "duration": null,
+              "sets": null,
+              "reps": null,
+              "notes": null
             }
           ],
           "session_notes": null
@@ -1116,6 +1319,13 @@
             {
               "name": "walk",
               "duration": "20min",
+              "sets": null,
+              "reps": null,
+              "notes": null
+            },
+            {
+              "name": "20min walk",
+              "duration": null,
               "sets": null,
               "reps": null,
               "notes": null
@@ -1199,6 +1409,20 @@
               "sets": null,
               "reps": null,
               "notes": null
+            },
+            {
+              "name": "bird dogs",
+              "duration": null,
+              "sets": 2,
+              "reps": 10,
+              "notes": null
+            },
+            {
+              "name": "incline plank (half height of desk) 45min walk",
+              "duration": null,
+              "sets": 3,
+              "reps": 15,
+              "notes": null
             }
           ],
           "session_notes": null
@@ -1243,6 +1467,13 @@
             {
               "name": "walk",
               "duration": "20min",
+              "sets": null,
+              "reps": null,
+              "notes": null
+            },
+            {
+              "name": "20min walk  (no ibuprofen)",
+              "duration": null,
               "sets": null,
               "reps": null,
               "notes": null
@@ -1326,6 +1557,27 @@
               "sets": null,
               "reps": null,
               "notes": null
+            },
+            {
+              "name": "bird dogs",
+              "duration": null,
+              "sets": 2,
+              "reps": 10,
+              "notes": null
+            },
+            {
+              "name": "10min walk  (1 ibuprofen for headache",
+              "duration": null,
+              "sets": null,
+              "reps": null,
+              "notes": null
+            },
+            {
+              "name": "felt some back pain when stressed but fine after)",
+              "duration": null,
+              "sets": null,
+              "reps": null,
+              "notes": null
             }
           ],
           "session_notes": "1 ibuprofen for headache, felt some back pain when stressed but fine after"
@@ -1371,6 +1623,13 @@
             {
               "name": "walk",
               "duration": "40min",
+              "sets": null,
+              "reps": null,
+              "notes": null
+            },
+            {
+              "name": "40min walk  (no ibuprofen)",
+              "duration": null,
               "sets": null,
               "reps": null,
               "notes": null
@@ -1454,6 +1713,20 @@
               "sets": null,
               "reps": null,
               "notes": null
+            },
+            {
+              "name": "bird dogs",
+              "duration": null,
+              "sets": 2,
+              "reps": 10,
+              "notes": null
+            },
+            {
+              "name": "40min walk",
+              "duration": null,
+              "sets": null,
+              "reps": null,
+              "notes": null
             }
           ],
           "session_notes": null
@@ -1498,6 +1771,13 @@
             {
               "name": "walk",
               "duration": "20min",
+              "sets": null,
+              "reps": null,
+              "notes": null
+            },
+            {
+              "name": "20min walk",
+              "duration": null,
               "sets": null,
               "reps": null,
               "notes": null
@@ -1594,6 +1874,34 @@
               "sets": null,
               "reps": null,
               "notes": "very light"
+            },
+            {
+              "name": "bird dogs",
+              "duration": null,
+              "sets": 2,
+              "reps": 10,
+              "notes": null
+            },
+            {
+              "name": "45min walk",
+              "duration": null,
+              "sets": null,
+              "reps": null,
+              "notes": null
+            },
+            {
+              "name": "laid with legs against wall",
+              "duration": null,
+              "sets": null,
+              "reps": null,
+              "notes": null
+            },
+            {
+              "name": "very light supported dead hangs",
+              "duration": null,
+              "sets": null,
+              "reps": null,
+              "notes": null
             }
           ],
           "session_notes": null
@@ -1645,6 +1953,20 @@
             {
               "name": "knees to chest hug",
               "duration": "1min",
+              "sets": null,
+              "reps": null,
+              "notes": null
+            },
+            {
+              "name": "20min walk",
+              "duration": null,
+              "sets": null,
+              "reps": null,
+              "notes": null
+            },
+            {
+              "name": "knees to chest hug 1min* GREEN*",
+              "duration": null,
               "sets": null,
               "reps": null,
               "notes": null
@@ -1727,6 +2049,27 @@
               "sets": null,
               "reps": null,
               "notes": null
+            },
+            {
+              "name": "supine 90/90 2min (and a few times during stabilization sets)",
+              "duration": null,
+              "sets": null,
+              "reps": null,
+              "notes": null
+            },
+            {
+              "name": "bird dogs",
+              "duration": null,
+              "sets": 2,
+              "reps": 10,
+              "notes": null
+            },
+            {
+              "name": "60min walk",
+              "duration": null,
+              "sets": null,
+              "reps": null,
+              "notes": null
             }
           ],
           "session_notes": null
@@ -1771,6 +2114,13 @@
             {
               "name": "walk",
               "duration": "20min",
+              "sets": null,
+              "reps": null,
+              "notes": null
+            },
+            {
+              "name": "20min walk",
+              "duration": null,
               "sets": null,
               "reps": null,
               "notes": null
@@ -1851,6 +2201,27 @@
             {
               "name": "walk",
               "duration": "60min",
+              "sets": null,
+              "reps": null,
+              "notes": null
+            },
+            {
+              "name": "supine 90/90 2min (and a few times during stabilization sets)",
+              "duration": null,
+              "sets": null,
+              "reps": null,
+              "notes": null
+            },
+            {
+              "name": "bird dogs",
+              "duration": null,
+              "sets": 3,
+              "reps": 8,
+              "notes": null
+            },
+            {
+              "name": "60min walk   (some right glute/hamstring irritation)",
+              "duration": null,
               "sets": null,
               "reps": null,
               "notes": null
@@ -1974,6 +2345,27 @@
               "sets": null,
               "reps": null,
               "notes": "timing related, not pain"
+            },
+            {
+              "name": "bird dogs",
+              "duration": null,
+              "sets": 3,
+              "reps": 8,
+              "notes": null
+            },
+            {
+              "name": "30min walk (timing related",
+              "duration": null,
+              "sets": null,
+              "reps": null,
+              "notes": null
+            },
+            {
+              "name": "not pain)",
+              "duration": null,
+              "sets": null,
+              "reps": null,
+              "notes": null
             }
           ],
           "session_notes": null
@@ -1986,13 +2378,153 @@
           "feelings_detail": null,
           "activities": [],
           "session_notes": null
+        },
+        {
+          "period": "PM",
+          "feelings": [
+            "GREEN"
+          ],
+          "feelings_detail": null,
+          "activities": [
+            {
+              "name": "walk",
+              "duration": "20min",
+              "sets": null,
+              "reps": null,
+              "notes": null
+            },
+            {
+              "name": "90/90",
+              "duration": null,
+              "sets": null,
+              "reps": null,
+              "notes": null
+            },
+            {
+              "name": "rock back",
+              "duration": null,
+              "sets": 1,
+              "reps": 8,
+              "notes": null
+            },
+            {
+              "name": "cow neutral",
+              "duration": null,
+              "sets": 1,
+              "reps": 8,
+              "notes": null
+            },
+            {
+              "name": "20min walk",
+              "duration": null,
+              "sets": null,
+              "reps": null,
+              "notes": null
+            }
+          ],
+          "session_notes": null
         }
       ],
       "incidents": []
     },
     {
       "date": "2026-06-09",
-      "sessions": [],
+      "sessions": [
+        {
+          "period": "AM",
+          "feelings": [
+            "GREEN"
+          ],
+          "feelings_detail": null,
+          "activities": [
+            {
+              "name": "walk",
+              "duration": "40min",
+              "sets": null,
+              "reps": null,
+              "notes": null
+            },
+            {
+              "name": "supine 90/90",
+              "duration": "2min",
+              "sets": null,
+              "reps": null,
+              "notes": null
+            },
+            {
+              "name": "single knee drop",
+              "duration": null,
+              "sets": 2,
+              "reps": 5,
+              "notes": null
+            },
+            {
+              "name": "dead bug",
+              "duration": null,
+              "sets": 3,
+              "reps": 8,
+              "notes": null
+            },
+            {
+              "name": "rock back",
+              "duration": null,
+              "sets": 3,
+              "reps": 8,
+              "notes": null
+            },
+            {
+              "name": "cow neutral",
+              "duration": null,
+              "sets": 3,
+              "reps": 8,
+              "notes": null
+            },
+            {
+              "name": "glute bridges",
+              "duration": null,
+              "sets": 3,
+              "reps": 8,
+              "notes": null
+            },
+            {
+              "name": "bird dogs",
+              "duration": null,
+              "sets": 3,
+              "reps": 8,
+              "notes": null
+            },
+            {
+              "name": "Russian twists",
+              "duration": null,
+              "sets": 3,
+              "reps": 8,
+              "notes": "no weight"
+            },
+            {
+              "name": "plank",
+              "duration": "30sec",
+              "sets": 3,
+              "reps": null,
+              "notes": null
+            }
+          ],
+          "session_notes": null
+        },
+        {
+          "period": "Evening",
+          "feelings": null,
+          "feelings_detail": null,
+          "activities": [],
+          "session_notes": null
+        },
+        {
+          "period": "PM",
+          "feelings": null,
+          "feelings_detail": null,
+          "activities": [],
+          "session_notes": null
+        }
+      ],
       "incidents": []
     }
   ]

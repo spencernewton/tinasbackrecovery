@@ -320,8 +320,8 @@
       "whole_day_score": null,
       "walk_minutes": 28.0,
       "timed_exercise_minutes": 12.0,
-      "strength_reps": 101,
-      "activity_count": 14,
+      "strength_reps": 117,
+      "activity_count": 20,
       "sessions": [
         {
           "period": "AM",
@@ -332,7 +332,7 @@
           "score": 0.5,
           "feelings_detail": null,
           "session_notes": null,
-          "activity_count": 9,
+          "activity_count": 12,
           "walk_minutes": 28.0,
           "timed_exercise_minutes": 2.0,
           "strength_reps": 69,
@@ -408,6 +408,30 @@
               "reps": null,
               "reps_per_side": null,
               "notes": "after walk"
+            },
+            {
+              "name": "5x single knee drops",
+              "duration": null,
+              "sets": null,
+              "reps": null,
+              "reps_per_side": null,
+              "notes": null
+            },
+            {
+              "name": "28min walk with 2x5 hip circles  in the middle",
+              "duration": null,
+              "sets": null,
+              "reps": null,
+              "reps_per_side": null,
+              "notes": null
+            },
+            {
+              "name": "cow neutral and supine 90/90 after",
+              "duration": null,
+              "sets": null,
+              "reps": null,
+              "reps_per_side": null,
+              "notes": null
             }
           ]
         },
@@ -436,10 +460,10 @@
           "score": 0.0,
           "feelings_detail": null,
           "session_notes": null,
-          "activity_count": 5,
+          "activity_count": 8,
           "walk_minutes": 0.0,
           "timed_exercise_minutes": 10.0,
-          "strength_reps": 32,
+          "strength_reps": 48,
           "activities": [
             {
               "name": "supine 90/90",
@@ -480,6 +504,30 @@
               "reps": 8,
               "reps_per_side": null,
               "notes": "with foot sliding"
+            },
+            {
+              "name": "rock backs",
+              "duration": null,
+              "sets": 1,
+              "reps": 8,
+              "reps_per_side": null,
+              "notes": null
+            },
+            {
+              "name": "cow neutrals",
+              "duration": null,
+              "sets": 1,
+              "reps": 8,
+              "reps_per_side": null,
+              "notes": null
+            },
+            {
+              "name": "20min",
+              "duration": null,
+              "sets": null,
+              "reps": null,
+              "reps_per_side": null,
+              "notes": null
             }
           ]
         }
@@ -504,7 +552,7 @@
       "walk_minutes": 35.0,
       "timed_exercise_minutes": 4.0,
       "strength_reps": 69,
-      "activity_count": 13,
+      "activity_count": 17,
       "sessions": [
         {
           "period": "AM",
@@ -515,7 +563,7 @@
           "score": 0.0,
           "feelings_detail": null,
           "session_notes": null,
-          "activity_count": 7,
+          "activity_count": 10,
           "walk_minutes": 20.0,
           "timed_exercise_minutes": 2.0,
           "strength_reps": 37,
@@ -575,6 +623,30 @@
               "reps": null,
               "reps_per_side": null,
               "notes": "2x5 hip circles in the middle; repeated mobility routine after walk"
+            },
+            {
+              "name": "5x single knee drops",
+              "duration": null,
+              "sets": null,
+              "reps": null,
+              "reps_per_side": null,
+              "notes": null
+            },
+            {
+              "name": "20min walk with 2x5 hip circles  in the middle",
+              "duration": null,
+              "sets": null,
+              "reps": null,
+              "reps_per_side": null,
+              "notes": null
+            },
+            {
+              "name": "repeated mobility routine after walk",
+              "duration": null,
+              "sets": null,
+              "reps": null,
+              "reps_per_side": null,
+              "notes": null
             }
           ]
         },
@@ -603,7 +675,7 @@
           "score": 0.25,
           "feelings_detail": null,
           "session_notes": null,
-          "activity_count": 6,
+          "activity_count": 7,
           "walk_minutes": 15.0,
           "timed_exercise_minutes": 2.0,
           "strength_reps": 32,
@@ -655,6 +727,14 @@
               "reps": null,
               "reps_per_side": null,
               "notes": null
+            },
+            {
+              "name": "15min walk",
+              "duration": null,
+              "sets": null,
+              "reps": null,
+              "reps_per_side": null,
+              "notes": null
             }
           ]
         }
@@ -688,8 +768,8 @@
       "whole_day_score": null,
       "walk_minutes": 50.0,
       "timed_exercise_minutes": 4.5,
-      "strength_reps": 156,
-      "activity_count": 14,
+      "strength_reps": 218,
+      "activity_count": 19,
       "sessions": [
         {
           "period": "AM",
@@ -700,10 +780,10 @@
           "score": 0.5,
           "feelings_detail": null,
           "session_notes": null,
-          "activity_count": 8,
+          "activity_count": 11,
           "walk_minutes": 30.0,
           "timed_exercise_minutes": 2.5,
-          "strength_reps": 88,
+          "strength_reps": 134,
           "activities": [
             {
               "name": "supine 90/90",
@@ -768,6 +848,30 @@
               "reps": null,
               "reps_per_side": null,
               "notes": null
+            },
+            {
+              "name": "bird dogs",
+              "duration": null,
+              "sets": 2,
+              "reps": 8,
+              "reps_per_side": null,
+              "notes": "got easier as I did them"
+            },
+            {
+              "name": "modified front plank",
+              "duration": null,
+              "sets": 2,
+              "reps": 15,
+              "reps_per_side": null,
+              "notes": "desk"
+            },
+            {
+              "name": "30min walk",
+              "duration": null,
+              "sets": null,
+              "reps": null,
+              "reps_per_side": null,
+              "notes": null
             }
           ]
         },
@@ -796,10 +900,10 @@
           "score": 0.25,
           "feelings_detail": null,
           "session_notes": null,
-          "activity_count": 6,
+          "activity_count": 8,
           "walk_minutes": 20.0,
           "timed_exercise_minutes": 2.0,
-          "strength_reps": 68,
+          "strength_reps": 84,
           "activities": [
             {
               "name": "supine 90/90",
@@ -848,6 +952,22 @@
               "reps": null,
               "reps_per_side": null,
               "notes": null
+            },
+            {
+              "name": "bird dogs",
+              "duration": null,
+              "sets": 2,
+              "reps": 8,
+              "reps_per_side": null,
+              "notes": null
+            },
+            {
+              "name": "20min walk",
+              "duration": null,
+              "sets": null,
+              "reps": null,
+              "reps_per_side": null,
+              "notes": null
             }
           ]
         }
@@ -871,8 +991,8 @@
       "whole_day_score": null,
       "walk_minutes": 40.0,
       "timed_exercise_minutes": 2.0,
-      "strength_reps": 68,
-      "activity_count": 8,
+      "strength_reps": 84,
+      "activity_count": 12,
       "sessions": [
         {
           "period": "AM",
@@ -884,10 +1004,10 @@
           "score": 0.25,
           "feelings_detail": null,
           "session_notes": null,
-          "activity_count": 6,
+          "activity_count": 9,
           "walk_minutes": 20.0,
           "timed_exercise_minutes": 2.0,
-          "strength_reps": 68,
+          "strength_reps": 84,
           "activities": [
             {
               "name": "supine 90/90",
@@ -936,6 +1056,30 @@
               "reps": null,
               "reps_per_side": null,
               "notes": "2x5 hip circles in the middle; after ultrasound, pain during ultrasound"
+            },
+            {
+              "name": "bird dogs",
+              "duration": null,
+              "sets": 2,
+              "reps": 8,
+              "reps_per_side": null,
+              "notes": null
+            },
+            {
+              "name": "20min walk with 2x5 hip circles  in the middle (after ultrasound",
+              "duration": null,
+              "sets": null,
+              "reps": null,
+              "reps_per_side": null,
+              "notes": null
+            },
+            {
+              "name": "pain during ultrasound)",
+              "duration": null,
+              "sets": null,
+              "reps": null,
+              "reps_per_side": null,
+              "notes": null
             }
           ]
         },
@@ -964,7 +1108,7 @@
           "score": 0.0,
           "feelings_detail": null,
           "session_notes": null,
-          "activity_count": 2,
+          "activity_count": 3,
           "walk_minutes": 20.0,
           "timed_exercise_minutes": 0.0,
           "strength_reps": 0,
@@ -979,6 +1123,14 @@
             },
             {
               "name": "supine 90/90 diaphragmatic breathing",
+              "duration": null,
+              "sets": null,
+              "reps": null,
+              "reps_per_side": null,
+              "notes": null
+            },
+            {
+              "name": "20min walk",
               "duration": null,
               "sets": null,
               "reps": null,
@@ -1017,8 +1169,8 @@
       "whole_day_score": null,
       "walk_minutes": 60.0,
       "timed_exercise_minutes": 4.75,
-      "strength_reps": 100,
-      "activity_count": 13,
+      "strength_reps": 124,
+      "activity_count": 17,
       "sessions": [
         {
           "period": "AM",
@@ -1029,10 +1181,10 @@
           "score": 0.5,
           "feelings_detail": null,
           "session_notes": null,
-          "activity_count": 7,
+          "activity_count": 9,
           "walk_minutes": 40.0,
           "timed_exercise_minutes": 2.75,
-          "strength_reps": 68,
+          "strength_reps": 84,
           "activities": [
             {
               "name": "supine 90/90",
@@ -1089,6 +1241,22 @@
               "reps": null,
               "reps_per_side": null,
               "notes": "2x5 hip circles at the end"
+            },
+            {
+              "name": "bird dogs",
+              "duration": null,
+              "sets": 2,
+              "reps": 8,
+              "reps_per_side": null,
+              "notes": null
+            },
+            {
+              "name": "40min walk with 2x5 hip circles at the end",
+              "duration": null,
+              "sets": null,
+              "reps": null,
+              "reps_per_side": null,
+              "notes": null
             }
           ]
         },
@@ -1117,10 +1285,10 @@
           "score": 0.25,
           "feelings_detail": null,
           "session_notes": null,
-          "activity_count": 6,
+          "activity_count": 8,
           "walk_minutes": 20.0,
           "timed_exercise_minutes": 2.0,
-          "strength_reps": 32,
+          "strength_reps": 40,
           "activities": [
             {
               "name": "90/90",
@@ -1169,6 +1337,22 @@
               "reps": null,
               "reps_per_side": null,
               "notes": null
+            },
+            {
+              "name": "bird dogs",
+              "duration": null,
+              "sets": 1,
+              "reps": 8,
+              "reps_per_side": null,
+              "notes": null
+            },
+            {
+              "name": "20min walk",
+              "duration": null,
+              "sets": null,
+              "reps": null,
+              "reps_per_side": null,
+              "notes": null
             }
           ]
         }
@@ -1192,8 +1376,8 @@
       "whole_day_score": null,
       "walk_minutes": 55.0,
       "timed_exercise_minutes": 4.75,
-      "strength_reps": 105,
-      "activity_count": 14,
+      "strength_reps": 129,
+      "activity_count": 18,
       "sessions": [
         {
           "period": "AM",
@@ -1205,10 +1389,10 @@
           "score": 0.25,
           "feelings_detail": null,
           "session_notes": null,
-          "activity_count": 8,
+          "activity_count": 10,
           "walk_minutes": 35.0,
           "timed_exercise_minutes": 2.75,
-          "strength_reps": 73,
+          "strength_reps": 89,
           "activities": [
             {
               "name": "supine 90/90",
@@ -1273,6 +1457,22 @@
               "reps": null,
               "reps_per_side": null,
               "notes": "2x5 hip circles at the end"
+            },
+            {
+              "name": "bird dogs",
+              "duration": null,
+              "sets": 2,
+              "reps": 8,
+              "reps_per_side": null,
+              "notes": null
+            },
+            {
+              "name": "35min walk with 2x5 hip circles at the end",
+              "duration": null,
+              "sets": null,
+              "reps": null,
+              "reps_per_side": null,
+              "notes": null
             }
           ]
         },
@@ -1301,10 +1501,10 @@
           "score": 0.0,
           "feelings_detail": null,
           "session_notes": null,
-          "activity_count": 6,
+          "activity_count": 8,
           "walk_minutes": 20.0,
           "timed_exercise_minutes": 2.0,
-          "strength_reps": 32,
+          "strength_reps": 40,
           "activities": [
             {
               "name": "90/90",
@@ -1353,6 +1553,22 @@
               "reps": null,
               "reps_per_side": null,
               "notes": null
+            },
+            {
+              "name": "bird dogs",
+              "duration": null,
+              "sets": 1,
+              "reps": 8,
+              "reps_per_side": null,
+              "notes": null
+            },
+            {
+              "name": "20min walk",
+              "duration": null,
+              "sets": null,
+              "reps": null,
+              "reps_per_side": null,
+              "notes": null
             }
           ]
         }
@@ -1376,8 +1592,8 @@
       "whole_day_score": null,
       "walk_minutes": 60.0,
       "timed_exercise_minutes": 4.75,
-      "strength_reps": 93,
-      "activity_count": 12,
+      "strength_reps": 113,
+      "activity_count": 15,
       "sessions": [
         {
           "period": "AM",
@@ -1389,10 +1605,10 @@
           "score": 0.25,
           "feelings_detail": null,
           "session_notes": null,
-          "activity_count": 8,
+          "activity_count": 10,
           "walk_minutes": 40.0,
           "timed_exercise_minutes": 2.75,
-          "strength_reps": 77,
+          "strength_reps": 97,
           "activities": [
             {
               "name": "supine 90/90",
@@ -1457,6 +1673,22 @@
               "reps": null,
               "reps_per_side": null,
               "notes": null
+            },
+            {
+              "name": "bird dogs",
+              "duration": null,
+              "sets": 2,
+              "reps": 10,
+              "reps_per_side": null,
+              "notes": null
+            },
+            {
+              "name": "40min walk",
+              "duration": null,
+              "sets": null,
+              "reps": null,
+              "reps_per_side": null,
+              "notes": null
             }
           ]
         },
@@ -1485,7 +1717,7 @@
           "score": 0.2,
           "feelings_detail": "~60% GREEN",
           "session_notes": "some burning sensation on lower right back Evening all day, no consistent guarding, was feeling symptoms before I did my evening routine, ibuprofen only taken before bed",
-          "activity_count": 4,
+          "activity_count": 5,
           "walk_minutes": 20.0,
           "timed_exercise_minutes": 2.0,
           "strength_reps": 16,
@@ -1521,6 +1753,14 @@
               "reps": null,
               "reps_per_side": null,
               "notes": null
+            },
+            {
+              "name": "20min walk",
+              "duration": null,
+              "sets": null,
+              "reps": null,
+              "reps_per_side": null,
+              "notes": null
             }
           ]
         }
@@ -1544,8 +1784,8 @@
       "whole_day_score": null,
       "walk_minutes": 65.0,
       "timed_exercise_minutes": 2.75,
-      "strength_reps": 98,
-      "activity_count": 13,
+      "strength_reps": 163,
+      "activity_count": 16,
       "sessions": [
         {
           "period": "AM",
@@ -1557,10 +1797,10 @@
           "score": 0.15,
           "feelings_detail": "~70% GREEN",
           "session_notes": null,
-          "activity_count": 9,
+          "activity_count": 11,
           "walk_minutes": 45.0,
           "timed_exercise_minutes": 2.75,
-          "strength_reps": 82,
+          "strength_reps": 147,
           "activities": [
             {
               "name": "supine 90/90",
@@ -1633,6 +1873,22 @@
               "reps": null,
               "reps_per_side": null,
               "notes": null
+            },
+            {
+              "name": "bird dogs",
+              "duration": null,
+              "sets": 2,
+              "reps": 10,
+              "reps_per_side": null,
+              "notes": null
+            },
+            {
+              "name": "incline plank (half height of desk) 45min walk",
+              "duration": null,
+              "sets": 3,
+              "reps": 15,
+              "reps_per_side": null,
+              "notes": null
             }
           ]
         },
@@ -1660,7 +1916,7 @@
           "score": 0.0,
           "feelings_detail": null,
           "session_notes": "No ibuprofen",
-          "activity_count": 4,
+          "activity_count": 5,
           "walk_minutes": 20.0,
           "timed_exercise_minutes": 0.0,
           "strength_reps": 16,
@@ -1696,6 +1952,14 @@
               "reps": null,
               "reps_per_side": null,
               "notes": null
+            },
+            {
+              "name": "20min walk  (no ibuprofen)",
+              "duration": null,
+              "sets": null,
+              "reps": null,
+              "reps_per_side": null,
+              "notes": null
             }
           ]
         }
@@ -1719,8 +1983,8 @@
       "whole_day_score": null,
       "walk_minutes": 50.0,
       "timed_exercise_minutes": 3.5,
-      "strength_reps": 103,
-      "activity_count": 13,
+      "strength_reps": 123,
+      "activity_count": 17,
       "sessions": [
         {
           "period": "AM",
@@ -1732,10 +1996,10 @@
           "score": 0.25,
           "feelings_detail": null,
           "session_notes": "1 ibuprofen for headache, felt some back pain when stressed but fine after",
-          "activity_count": 9,
+          "activity_count": 12,
           "walk_minutes": 10.0,
           "timed_exercise_minutes": 3.5,
-          "strength_reps": 87,
+          "strength_reps": 107,
           "activities": [
             {
               "name": "supine 90/90",
@@ -1808,6 +2072,30 @@
               "reps": null,
               "reps_per_side": null,
               "notes": null
+            },
+            {
+              "name": "bird dogs",
+              "duration": null,
+              "sets": 2,
+              "reps": 10,
+              "reps_per_side": null,
+              "notes": null
+            },
+            {
+              "name": "10min walk  (1 ibuprofen for headache",
+              "duration": null,
+              "sets": null,
+              "reps": null,
+              "reps_per_side": null,
+              "notes": null
+            },
+            {
+              "name": "felt some back pain when stressed but fine after)",
+              "duration": null,
+              "sets": null,
+              "reps": null,
+              "reps_per_side": null,
+              "notes": null
             }
           ]
         },
@@ -1836,7 +2124,7 @@
           "score": 0.0,
           "feelings_detail": null,
           "session_notes": "No ibuprofen",
-          "activity_count": 4,
+          "activity_count": 5,
           "walk_minutes": 40.0,
           "timed_exercise_minutes": 0.0,
           "strength_reps": 16,
@@ -1872,6 +2160,14 @@
               "reps": null,
               "reps_per_side": null,
               "notes": null
+            },
+            {
+              "name": "40min walk  (no ibuprofen)",
+              "duration": null,
+              "sets": null,
+              "reps": null,
+              "reps_per_side": null,
+              "notes": null
             }
           ]
         }
@@ -1895,8 +2191,8 @@
       "whole_day_score": null,
       "walk_minutes": 60.0,
       "timed_exercise_minutes": 3.5,
-      "strength_reps": 109,
-      "activity_count": 13,
+      "strength_reps": 129,
+      "activity_count": 16,
       "sessions": [
         {
           "period": "AM",
@@ -1908,10 +2204,10 @@
           "score": 0.25,
           "feelings_detail": null,
           "session_notes": null,
-          "activity_count": 9,
+          "activity_count": 11,
           "walk_minutes": 40.0,
           "timed_exercise_minutes": 3.5,
-          "strength_reps": 93,
+          "strength_reps": 113,
           "activities": [
             {
               "name": "supine 90/90",
@@ -1984,6 +2280,22 @@
               "reps": null,
               "reps_per_side": null,
               "notes": null
+            },
+            {
+              "name": "bird dogs",
+              "duration": null,
+              "sets": 2,
+              "reps": 10,
+              "reps_per_side": null,
+              "notes": null
+            },
+            {
+              "name": "40min walk",
+              "duration": null,
+              "sets": null,
+              "reps": null,
+              "reps_per_side": null,
+              "notes": null
             }
           ]
         },
@@ -2011,7 +2323,7 @@
           "score": 0.0,
           "feelings_detail": null,
           "session_notes": null,
-          "activity_count": 4,
+          "activity_count": 5,
           "walk_minutes": 20.0,
           "timed_exercise_minutes": 0.0,
           "strength_reps": 16,
@@ -2047,6 +2359,14 @@
               "reps": null,
               "reps_per_side": null,
               "notes": null
+            },
+            {
+              "name": "20min walk",
+              "duration": null,
+              "sets": null,
+              "reps": null,
+              "reps_per_side": null,
+              "notes": null
             }
           ]
         }
@@ -2070,8 +2390,8 @@
       "whole_day_score": null,
       "walk_minutes": 65.0,
       "timed_exercise_minutes": 4.5,
-      "strength_reps": 109,
-      "activity_count": 16,
+      "strength_reps": 129,
+      "activity_count": 22,
       "sessions": [
         {
           "period": "AM",
@@ -2082,10 +2402,10 @@
           "score": 0.0,
           "feelings_detail": null,
           "session_notes": null,
-          "activity_count": 11,
+          "activity_count": 15,
           "walk_minutes": 45.0,
           "timed_exercise_minutes": 3.5,
-          "strength_reps": 93,
+          "strength_reps": 113,
           "activities": [
             {
               "name": "supine 90/90",
@@ -2174,6 +2494,38 @@
               "reps": null,
               "reps_per_side": null,
               "notes": "very light"
+            },
+            {
+              "name": "bird dogs",
+              "duration": null,
+              "sets": 2,
+              "reps": 10,
+              "reps_per_side": null,
+              "notes": null
+            },
+            {
+              "name": "45min walk",
+              "duration": null,
+              "sets": null,
+              "reps": null,
+              "reps_per_side": null,
+              "notes": null
+            },
+            {
+              "name": "laid with legs against wall",
+              "duration": null,
+              "sets": null,
+              "reps": null,
+              "reps_per_side": null,
+              "notes": null
+            },
+            {
+              "name": "very light supported dead hangs",
+              "duration": null,
+              "sets": null,
+              "reps": null,
+              "reps_per_side": null,
+              "notes": null
             }
           ]
         },
@@ -2201,7 +2553,7 @@
           "score": 0.0,
           "feelings_detail": null,
           "session_notes": null,
-          "activity_count": 5,
+          "activity_count": 7,
           "walk_minutes": 20.0,
           "timed_exercise_minutes": 1.0,
           "strength_reps": 16,
@@ -2245,6 +2597,22 @@
               "reps": null,
               "reps_per_side": null,
               "notes": null
+            },
+            {
+              "name": "20min walk",
+              "duration": null,
+              "sets": null,
+              "reps": null,
+              "reps_per_side": null,
+              "notes": null
+            },
+            {
+              "name": "knees to chest hug 1min* GREEN*",
+              "duration": null,
+              "sets": null,
+              "reps": null,
+              "reps_per_side": null,
+              "notes": null
             }
           ]
         }
@@ -2268,8 +2636,8 @@
       "whole_day_score": null,
       "walk_minutes": 80.0,
       "timed_exercise_minutes": 3.5,
-      "strength_reps": 132,
-      "activity_count": 13,
+      "strength_reps": 152,
+      "activity_count": 17,
       "sessions": [
         {
           "period": "AM",
@@ -2280,10 +2648,10 @@
           "score": 0.0,
           "feelings_detail": null,
           "session_notes": null,
-          "activity_count": 9,
+          "activity_count": 12,
           "walk_minutes": 60.0,
           "timed_exercise_minutes": 3.5,
-          "strength_reps": 116,
+          "strength_reps": 136,
           "activities": [
             {
               "name": "supine 90/90",
@@ -2356,6 +2724,30 @@
               "reps": null,
               "reps_per_side": null,
               "notes": null
+            },
+            {
+              "name": "supine 90/90 2min (and a few times during stabilization sets)",
+              "duration": null,
+              "sets": null,
+              "reps": null,
+              "reps_per_side": null,
+              "notes": null
+            },
+            {
+              "name": "bird dogs",
+              "duration": null,
+              "sets": 2,
+              "reps": 10,
+              "reps_per_side": null,
+              "notes": null
+            },
+            {
+              "name": "60min walk",
+              "duration": null,
+              "sets": null,
+              "reps": null,
+              "reps_per_side": null,
+              "notes": null
             }
           ]
         },
@@ -2383,7 +2775,7 @@
           "score": 0.0,
           "feelings_detail": null,
           "session_notes": null,
-          "activity_count": 4,
+          "activity_count": 5,
           "walk_minutes": 20.0,
           "timed_exercise_minutes": 0.0,
           "strength_reps": 16,
@@ -2419,6 +2811,14 @@
               "reps": null,
               "reps_per_side": null,
               "notes": null
+            },
+            {
+              "name": "20min walk",
+              "duration": null,
+              "sets": null,
+              "reps": null,
+              "reps_per_side": null,
+              "notes": null
             }
           ]
         }
@@ -2442,8 +2842,8 @@
       "whole_day_score": null,
       "walk_minutes": 60.0,
       "timed_exercise_minutes": 3.5,
-      "strength_reps": 146,
-      "activity_count": 12,
+      "strength_reps": 170,
+      "activity_count": 15,
       "sessions": [
         {
           "period": "AM",
@@ -2455,10 +2855,10 @@
           "score": 0.25,
           "feelings_detail": null,
           "session_notes": "Some right glute/hamstring irritation (noted with AM GREEN/YELLOW rating)",
-          "activity_count": 9,
+          "activity_count": 12,
           "walk_minutes": 60.0,
           "timed_exercise_minutes": 3.5,
-          "strength_reps": 130,
+          "strength_reps": 154,
           "activities": [
             {
               "name": "supine 90/90",
@@ -2527,6 +2927,30 @@
             {
               "name": "walk",
               "duration": "60min",
+              "sets": null,
+              "reps": null,
+              "reps_per_side": null,
+              "notes": null
+            },
+            {
+              "name": "supine 90/90 2min (and a few times during stabilization sets)",
+              "duration": null,
+              "sets": null,
+              "reps": null,
+              "reps_per_side": null,
+              "notes": null
+            },
+            {
+              "name": "bird dogs",
+              "duration": null,
+              "sets": 3,
+              "reps": 8,
+              "reps_per_side": null,
+              "notes": null
+            },
+            {
+              "name": "60min walk   (some right glute/hamstring irritation)",
+              "duration": null,
               "sets": null,
               "reps": null,
               "reps_per_side": null,
@@ -2608,10 +3032,10 @@
       "am_score": 0.0,
       "pm_score": 0.0,
       "whole_day_score": null,
-      "walk_minutes": 30.0,
+      "walk_minutes": 50.0,
       "timed_exercise_minutes": 3.5,
-      "strength_reps": 114,
-      "activity_count": 9,
+      "strength_reps": 154,
+      "activity_count": 17,
       "sessions": [
         {
           "period": "AM",
@@ -2622,10 +3046,10 @@
           "score": 0.0,
           "feelings_detail": null,
           "session_notes": null,
-          "activity_count": 9,
+          "activity_count": 12,
           "walk_minutes": 30.0,
           "timed_exercise_minutes": 3.5,
-          "strength_reps": 114,
+          "strength_reps": 138,
           "activities": [
             {
               "name": "supine 90/90",
@@ -2698,6 +3122,30 @@
               "reps": null,
               "reps_per_side": null,
               "notes": "timing related, not pain"
+            },
+            {
+              "name": "bird dogs",
+              "duration": null,
+              "sets": 3,
+              "reps": 8,
+              "reps_per_side": null,
+              "notes": null
+            },
+            {
+              "name": "30min walk (timing related",
+              "duration": null,
+              "sets": null,
+              "reps": null,
+              "reps_per_side": null,
+              "notes": null
+            },
+            {
+              "name": "not pain)",
+              "duration": null,
+              "sets": null,
+              "reps": null,
+              "reps_per_side": null,
+              "notes": null
             }
           ]
         },
@@ -2715,6 +3163,62 @@
           "timed_exercise_minutes": 0.0,
           "strength_reps": 0,
           "activities": []
+        },
+        {
+          "period": "PM",
+          "feelings": [
+            "GREEN"
+          ],
+          "feelings_label": "GREEN",
+          "score": 0.0,
+          "feelings_detail": null,
+          "session_notes": null,
+          "activity_count": 5,
+          "walk_minutes": 20.0,
+          "timed_exercise_minutes": 0.0,
+          "strength_reps": 16,
+          "activities": [
+            {
+              "name": "walk",
+              "duration": "20min",
+              "sets": null,
+              "reps": null,
+              "reps_per_side": null,
+              "notes": null
+            },
+            {
+              "name": "90/90",
+              "duration": null,
+              "sets": null,
+              "reps": null,
+              "reps_per_side": null,
+              "notes": null
+            },
+            {
+              "name": "rock back",
+              "duration": null,
+              "sets": 1,
+              "reps": 8,
+              "reps_per_side": null,
+              "notes": null
+            },
+            {
+              "name": "cow neutral",
+              "duration": null,
+              "sets": 1,
+              "reps": 8,
+              "reps_per_side": null,
+              "notes": null
+            },
+            {
+              "name": "20min walk",
+              "duration": null,
+              "sets": null,
+              "reps": null,
+              "reps_per_side": null,
+              "notes": null
+            }
+          ]
         }
       ],
       "incidents": [],
@@ -2730,21 +3234,144 @@
     },
     {
       "date": "2026-06-09",
-      "day_score": null,
-      "am_score": null,
-      "pm_score": null,
+      "day_score": 0.0,
+      "am_score": 0.0,
+      "pm_score": 0.0,
       "whole_day_score": null,
-      "walk_minutes": 0,
-      "timed_exercise_minutes": 0,
-      "strength_reps": 0,
-      "activity_count": 0,
-      "sessions": [],
+      "walk_minutes": 40.0,
+      "timed_exercise_minutes": 3.5,
+      "strength_reps": 154,
+      "activity_count": 10,
+      "sessions": [
+        {
+          "period": "AM",
+          "feelings": [
+            "GREEN"
+          ],
+          "feelings_label": "GREEN",
+          "score": 0.0,
+          "feelings_detail": null,
+          "session_notes": null,
+          "activity_count": 10,
+          "walk_minutes": 40.0,
+          "timed_exercise_minutes": 3.5,
+          "strength_reps": 154,
+          "activities": [
+            {
+              "name": "walk",
+              "duration": "40min",
+              "sets": null,
+              "reps": null,
+              "reps_per_side": null,
+              "notes": null
+            },
+            {
+              "name": "supine 90/90",
+              "duration": "2min",
+              "sets": null,
+              "reps": null,
+              "reps_per_side": null,
+              "notes": null
+            },
+            {
+              "name": "single knee drop",
+              "duration": null,
+              "sets": 2,
+              "reps": 5,
+              "reps_per_side": null,
+              "notes": null
+            },
+            {
+              "name": "dead bug",
+              "duration": null,
+              "sets": 3,
+              "reps": 8,
+              "reps_per_side": null,
+              "notes": null
+            },
+            {
+              "name": "rock back",
+              "duration": null,
+              "sets": 3,
+              "reps": 8,
+              "reps_per_side": null,
+              "notes": null
+            },
+            {
+              "name": "cow neutral",
+              "duration": null,
+              "sets": 3,
+              "reps": 8,
+              "reps_per_side": null,
+              "notes": null
+            },
+            {
+              "name": "glute bridges",
+              "duration": null,
+              "sets": 3,
+              "reps": 8,
+              "reps_per_side": null,
+              "notes": null
+            },
+            {
+              "name": "bird dogs",
+              "duration": null,
+              "sets": 3,
+              "reps": 8,
+              "reps_per_side": null,
+              "notes": null
+            },
+            {
+              "name": "Russian twists",
+              "duration": null,
+              "sets": 3,
+              "reps": 8,
+              "reps_per_side": null,
+              "notes": "no weight"
+            },
+            {
+              "name": "plank",
+              "duration": "30sec",
+              "sets": 3,
+              "reps": null,
+              "reps_per_side": null,
+              "notes": null
+            }
+          ]
+        },
+        {
+          "period": "Evening",
+          "feelings": null,
+          "feelings_label": null,
+          "score": null,
+          "feelings_detail": null,
+          "session_notes": null,
+          "activity_count": 0,
+          "walk_minutes": 0.0,
+          "timed_exercise_minutes": 0.0,
+          "strength_reps": 0,
+          "activities": []
+        },
+        {
+          "period": "PM",
+          "feelings": null,
+          "feelings_label": null,
+          "score": null,
+          "feelings_detail": null,
+          "session_notes": null,
+          "activity_count": 0,
+          "walk_minutes": 0.0,
+          "timed_exercise_minutes": 0.0,
+          "strength_reps": 0,
+          "activities": []
+        }
+      ],
       "incidents": [],
-      "pm_feelings_label": null,
+      "pm_feelings_label": "GREEN",
       "evening_score": null,
       "evening_feelings_label": null,
-      "am_feelings_label": null,
-      "am_source_date": null,
+      "am_feelings_label": "GREEN",
+      "am_source_date": "2026-06-08",
       "day_score_ma2": 0.0,
       "am_score_ma2": 0.0,
       "pm_score_ma2": 0.0,
@@ -2753,7 +3380,7 @@
   ],
   "totals": {
     "days_logged": 18,
-    "total_walk_minutes": 863.0,
-    "avg_walk_minutes": 47.9
+    "total_walk_minutes": 923.0,
+    "avg_walk_minutes": 51.3
   }
 }

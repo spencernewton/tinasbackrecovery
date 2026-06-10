@@ -404,6 +404,78 @@ def incident_after_session(blocks, incident_text: str) -> str:
     return "AM"
 
 
+def parse_exercise_token(token: str) -> dict | None:
+    """Parse a single comma-separated exercise token like '3x8 dead bug' or '3x30sec plank' or 'supine 90/90 2min'."""
+    t = token.strip()
+    if not t:
+        return None
+    # Match patterns like: "3x8 dead bug", "2x5 single knee drop", "3x8 Russian twists (no weight)"
+    # Also: "3x30sec plank" (duration-based hold, not reps)
+    m = re.match(r'^(\d+)x(\d+)(sec|min)?\s+(.+)$', t)
+    if m:
+        sets = int(m.group(1))
+        dur_or_reps = int(m.group(2))
+        unit = m.group(3)  # "sec", "min", or None
+        rest = m.group(4).strip()
+        if unit in ("sec", "min"):
+            # Duration-based: 3x30sec plank -> sets=3, duration="30sec", reps=None
+            duration = f"{dur_or_reps}{unit}"
+            reps = None
+        else:
+            duration = None
+            reps = dur_or_reps
+        # Check for parenthetical note
+        note = None
+        paren = re.match(r'^(.+?)\s*\(([^)]+)\)\s*$', rest)
+        if paren:
+            rest = paren.group(1).strip()
+            note = paren.group(2).strip()
+        return {"name": rest, "duration": duration, "sets": sets, "reps": reps, "notes": note}
+    # Match patterns like: "supine 90/90 2min" or "30min walk" (duration-based, no setsxreps)
+    m = re.match(r'^(.+?)\s+(\d+min|\d+sec)$', t)
+    if m:
+        name = m.group(1).strip()
+        duration = m.group(2)
+        return {"name": name, "duration": duration, "sets": None, "reps": None, "notes": None}
+    # Fallback: just a name
+    return {"name": t, "duration": None, "sets": None, "reps": None, "notes": None}
+
+
+def parse_session_exercises(text: str) -> list:
+    """Parse comma-separated exercises from an AM/PM session line, skipping the feeling tag."""
+    # Remove feeling tags like *GREEN*, *GREEN/YELLOW*, etc.
+    cleaned = re.sub(r'\*([A-Z/]+)\*', '', text).strip()
+    # Remove parenthetical feeling details like (~100% GREEN)
+    cleaned = re.sub(r'\(~?\d+%?\s*[A-Z/]+\)', '', cleaned).strip()
+    # Split on commas, respecting parentheses
+    tokens = []
+    depth = 0
+    current = []
+    for ch in cleaned:
+        if ch == '(':
+            depth += 1
+            current.append(ch)
+        elif ch == ')':
+            depth -= 1
+            current.append(ch)
+        elif ch == ',' and depth == 0:
+            tokens.append(''.join(current))
+            current = []
+        else:
+            current.append(ch)
+    if current:
+        tokens.append(''.join(current))
+    activities = []
+    for token in tokens:
+        token = token.strip()
+        if not token:
+            continue
+        ex = parse_exercise_token(token)
+        if ex:
+            activities.append(ex)
+    return activities
+
+
 def sync_day_from_raw(day: dict, blocks: List[Tuple[str, str]]) -> None:
     has_am_pm = any(k in ("AM", "PM", "Evening") for k, _ in blocks)
     trailing_notes: Dict[str, List[str]] = {"AM": [], "PM": [], "Evening": [], "day": []}
@@ -414,10 +486,31 @@ def sync_day_from_raw(day: dict, blocks: List[Tuple[str, str]]) -> None:
             last_period = kind
             sess = session_by_period(day, kind)
             if not sess:
-                continue
+                sess = {
+                    "period": kind,
+                    "feelings": None,
+                    "feelings_detail": None,
+                    "activities": [],
+                    "session_notes": None,
+                }
+                day.setdefault("sessions", []).append(sess)
             extra = pct_detail_from_text(text)
             apply_feelings_to_session(sess, text, extra_detail=extra)
             sync_walk_in_session(sess, text, kind)
+            # Parse individual exercises from the session text
+            if kind in ("AM", "PM"):
+                exercises = parse_session_exercises(text)
+                # Merge: keep walk from sync_walk_in_session, add non-walk exercises
+                existing_walk = next((a for a in sess.get("activities", []) if a.get("name") and "walk" in a["name"].lower()), None)
+                existing_names = {a.get("name", "").lower() for a in sess.get("activities", []) if a.get("name")}
+                for ex in exercises:
+                    ex_name = ex.get("name", "").lower()
+                    # Skip walks — sync_walk_in_session handles those
+                    if "walk" in ex_name:
+                        continue
+                    if ex_name not in existing_names:
+                        sess.setdefault("activities", []).append(ex)
+                        existing_names.add(ex_name)
             if kind in ("AM", "PM"):
                 for note in session_trailing_paren_notes(text):
                     append_session_note(sess, note)
@@ -495,38 +588,34 @@ def sync_early_day_body(day: dict, day_entry: dict) -> None:
 
 
 def new_day_shell(date_key: str) -> dict:
-    """Structured skeleton for a new calendar day (activities filled separately)."""
-    if date_key == "2026-06-08":
-        return {
-            "date": date_key,
-            "sessions": [
-                {
-                    "period": "AM",
-                    "feelings": None,
-                    "feelings_detail": None,
-                    "activities": [
-                        {"name": "supine 90/90", "duration": "2min", "sets": None, "reps": None, "notes": None},
-                        {"name": "single knee drop", "duration": None, "sets": 2, "reps": 5, "notes": None},
-                        {"name": "dead bug", "duration": None, "sets": 3, "reps": 8, "notes": None},
-                        {"name": "rock back", "duration": None, "sets": 2, "reps": 8, "notes": None},
-                        {"name": "cow neutral", "duration": None, "sets": 2, "reps": 8, "notes": None},
-                        {"name": "glute bridges", "duration": None, "sets": 3, "reps": 8, "notes": None},
-                        {"name": "bird dog", "duration": None, "sets": 3, "reps": 8, "notes": None},
-                        {"name": "plank", "duration": "30sec", "sets": 3, "reps": None, "notes": None},
-                        {
-                            "name": "walk",
-                            "duration": "30min",
-                            "sets": None,
-                            "reps": None,
-                            "notes": "timing related, not pain",
-                        },
-                    ],
-                    "session_notes": None,
-                }
-            ],
-            "incidents": [],
-        }
-    return {"date": date_key, "sessions": [], "incidents": []}
+    """Structured skeleton for a new calendar day with AM/PM/Evening session placeholders."""
+    return {
+        "date": date_key,
+        "sessions": [
+            {
+                "period": "AM",
+                "feelings": None,
+                "feelings_detail": None,
+                "activities": [],
+                "session_notes": None,
+            },
+            {
+                "period": "PM",
+                "feelings": None,
+                "feelings_detail": None,
+                "activities": [],
+                "session_notes": None,
+            },
+            {
+                "period": "Evening",
+                "feelings": None,
+                "feelings_detail": None,
+                "activities": [],
+                "session_notes": None,
+            },
+        ],
+        "incidents": [],
+    }
 
 
 def sync_day_from_raw_entry(day: dict, entry: dict, evenings: dict) -> None:
