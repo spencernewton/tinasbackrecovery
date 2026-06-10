@@ -1,7 +1,7 @@
 {
   "cortisone_shot_date": "2026-05-13",
   "log_start": "2026-05-23",
-  "log_end": "2026-06-08",
+  "log_end": "2026-06-09",
   "feeling_scale": {
     "GREEN": "No symptoms; felt great without pain",
     "YELLOW": "Some symptoms; somewhat uncomfortable but went away fairly quickly",
@@ -2727,11 +2727,33 @@
       "am_score_ma2": 0.0,
       "pm_score_ma2": 0.125,
       "evening_score_ma2": 0.125
+    },
+    {
+      "date": "2026-06-09",
+      "day_score": null,
+      "am_score": null,
+      "pm_score": null,
+      "whole_day_score": null,
+      "walk_minutes": 0,
+      "timed_exercise_minutes": 0,
+      "strength_reps": 0,
+      "activity_count": 0,
+      "sessions": [],
+      "incidents": [],
+      "pm_feelings_label": null,
+      "evening_score": null,
+      "evening_feelings_label": null,
+      "am_feelings_label": null,
+      "am_source_date": null,
+      "day_score_ma2": 0.0,
+      "am_score_ma2": 0.0,
+      "pm_score_ma2": 0.0,
+      "evening_score_ma2": 0.0
     }
   ],
   "totals": {
-    "days_logged": 17,
+    "days_logged": 18,
     "total_walk_minutes": 863.0,
-    "avg_walk_minutes": 50.8
+    "avg_walk_minutes": 47.9
   }
 }
