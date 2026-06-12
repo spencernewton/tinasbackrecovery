@@ -1,7 +1,7 @@
 {
   "cortisone_shot_date": "2026-05-13",
   "log_start": "2026-05-23",
-  "log_end": "2026-06-10",
+  "log_end": "2026-06-11",
   "feeling_scale": {
     "GREEN": "No symptoms; felt great without pain",
     "YELLOW": "Some symptoms; somewhat uncomfortable but went away fairly quickly",
@@ -3418,22 +3418,24 @@
       "date": "2026-06-10",
       "day_score": 0.0,
       "am_score": 0.0,
-      "pm_score": null,
+      "pm_score": 0.0,
       "whole_day_score": null,
-      "walk_minutes": 0.0,
+      "walk_minutes": 60.0,
       "timed_exercise_minutes": 3.0,
-      "strength_reps": 90,
-      "activity_count": 8,
+      "strength_reps": 106,
+      "activity_count": 13,
       "sessions": [
         {
           "period": "AM",
-          "feelings": null,
-          "feelings_label": null,
-          "score": null,
+          "feelings": [
+            "GREEN"
+          ],
+          "feelings_label": "GREEN",
+          "score": 0.0,
           "feelings_detail": null,
           "session_notes": null,
-          "activity_count": 8,
-          "walk_minutes": 0.0,
+          "activity_count": 9,
+          "walk_minutes": 35.0,
           "timed_exercise_minutes": 3.0,
           "strength_reps": 90,
           "activities": [
@@ -3500,6 +3502,14 @@
               "reps": null,
               "reps_per_side": null,
               "notes": null
+            },
+            {
+              "name": "walk",
+              "duration": "35min",
+              "sets": null,
+              "reps": null,
+              "reps_per_side": null,
+              "notes": null
             }
           ]
         },
@@ -3518,6 +3528,133 @@
         },
         {
           "period": "PM",
+          "feelings": [
+            "GREEN"
+          ],
+          "feelings_label": "GREEN",
+          "score": 0.0,
+          "feelings_detail": null,
+          "session_notes": null,
+          "activity_count": 4,
+          "walk_minutes": 25.0,
+          "timed_exercise_minutes": 0.0,
+          "strength_reps": 16,
+          "activities": [
+            {
+              "name": "walk",
+              "duration": "25min",
+              "sets": null,
+              "reps": null,
+              "reps_per_side": null,
+              "notes": null
+            },
+            {
+              "name": "PM: 90/90",
+              "duration": null,
+              "sets": null,
+              "reps": null,
+              "reps_per_side": null,
+              "notes": null
+            },
+            {
+              "name": "rock back",
+              "duration": null,
+              "sets": 1,
+              "reps": 8,
+              "reps_per_side": null,
+              "notes": null
+            },
+            {
+              "name": "cow neutral",
+              "duration": null,
+              "sets": 1,
+              "reps": 8,
+              "reps_per_side": null,
+              "notes": null
+            }
+          ]
+        }
+      ],
+      "incidents": [],
+      "pm_feelings_label": "GREEN",
+      "evening_score": null,
+      "evening_feelings_label": null,
+      "am_feelings_label": "GREEN",
+      "am_source_date": "2026-06-09",
+      "day_score_ma2": 0.0,
+      "am_score_ma2": 0.0,
+      "pm_score_ma2": 0.0,
+      "evening_score_ma2": 0.0
+    },
+    {
+      "date": "2026-06-11",
+      "day_score": 0.0,
+      "am_score": 0.0,
+      "pm_score": 0.0,
+      "whole_day_score": null,
+      "walk_minutes": 40.0,
+      "timed_exercise_minutes": 0.0,
+      "strength_reps": 48,
+      "activity_count": 9,
+      "sessions": [
+        {
+          "period": "AM",
+          "feelings": [
+            "GREEN"
+          ],
+          "feelings_label": "GREEN",
+          "score": 0.0,
+          "feelings_detail": null,
+          "session_notes": null,
+          "activity_count": 5,
+          "walk_minutes": 25.0,
+          "timed_exercise_minutes": 0.0,
+          "strength_reps": 32,
+          "activities": [
+            {
+              "name": "walk",
+              "duration": "25min",
+              "sets": null,
+              "reps": null,
+              "reps_per_side": null,
+              "notes": null
+            },
+            {
+              "name": "supine 90/90",
+              "duration": null,
+              "sets": null,
+              "reps": null,
+              "reps_per_side": null,
+              "notes": null
+            },
+            {
+              "name": "rock back",
+              "duration": null,
+              "sets": 2,
+              "reps": 8,
+              "reps_per_side": null,
+              "notes": null
+            },
+            {
+              "name": "cow neutral",
+              "duration": null,
+              "sets": 2,
+              "reps": 8,
+              "reps_per_side": null,
+              "notes": null
+            },
+            {
+              "name": "Heartcore class",
+              "duration": null,
+              "sets": null,
+              "reps": null,
+              "reps_per_side": null,
+              "notes": null
+            }
+          ]
+        },
+        {
+          "period": "Evening",
           "feelings": null,
           "feelings_label": null,
           "score": null,
@@ -3528,23 +3665,71 @@
           "timed_exercise_minutes": 0.0,
           "strength_reps": 0,
           "activities": []
+        },
+        {
+          "period": "PM",
+          "feelings": [
+            "GREEN"
+          ],
+          "feelings_label": "GREEN",
+          "score": 0.0,
+          "feelings_detail": null,
+          "session_notes": null,
+          "activity_count": 4,
+          "walk_minutes": 15.0,
+          "timed_exercise_minutes": 0.0,
+          "strength_reps": 16,
+          "activities": [
+            {
+              "name": "walk",
+              "duration": "15min",
+              "sets": null,
+              "reps": null,
+              "reps_per_side": null,
+              "notes": null
+            },
+            {
+              "name": "PM: PM: 90/90",
+              "duration": null,
+              "sets": null,
+              "reps": null,
+              "reps_per_side": null,
+              "notes": null
+            },
+            {
+              "name": "rock back",
+              "duration": null,
+              "sets": 1,
+              "reps": 8,
+              "reps_per_side": null,
+              "notes": null
+            },
+            {
+              "name": "cow neutral",
+              "duration": null,
+              "sets": 1,
+              "reps": 8,
+              "reps_per_side": null,
+              "notes": null
+            }
+          ]
         }
       ],
       "incidents": [],
-      "pm_feelings_label": null,
+      "pm_feelings_label": "GREEN",
       "evening_score": null,
       "evening_feelings_label": null,
       "am_feelings_label": "GREEN",
-      "am_source_date": "2026-06-09",
+      "am_source_date": "2026-06-10",
       "day_score_ma2": 0.0,
       "am_score_ma2": 0.0,
       "pm_score_ma2": 0.0,
-      "evening_score_ma2": 0.0
+      "evening_score_ma2": null
     }
   ],
   "totals": {
-    "days_logged": 19,
-    "total_walk_minutes": 948.0,
-    "avg_walk_minutes": 49.9
+    "days_logged": 20,
+    "total_walk_minutes": 1048.0,
+    "avg_walk_minutes": 52.4
   }
 }
