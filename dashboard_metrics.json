@@ -3515,9 +3515,11 @@
         },
         {
           "period": "Evening",
-          "feelings": null,
-          "feelings_label": null,
-          "score": null,
+          "feelings": [
+            "GREEN"
+          ],
+          "feelings_label": "GREEN",
+          "score": 0.0,
           "feelings_detail": null,
           "session_notes": null,
           "activity_count": 0,
@@ -3577,8 +3579,8 @@
       ],
       "incidents": [],
       "pm_feelings_label": "GREEN",
-      "evening_score": null,
-      "evening_feelings_label": null,
+      "evening_score": 0.0,
+      "evening_feelings_label": "GREEN",
       "am_feelings_label": "GREEN",
       "am_source_date": "2026-06-09",
       "day_score_ma2": 0.0,
@@ -3655,9 +3657,11 @@
         },
         {
           "period": "Evening",
-          "feelings": null,
-          "feelings_label": null,
-          "score": null,
+          "feelings": [
+            "GREEN"
+          ],
+          "feelings_label": "GREEN",
+          "score": 0.0,
           "feelings_detail": null,
           "session_notes": null,
           "activity_count": 0,
@@ -3717,14 +3721,14 @@
       ],
       "incidents": [],
       "pm_feelings_label": "GREEN",
-      "evening_score": null,
-      "evening_feelings_label": null,
+      "evening_score": 0.0,
+      "evening_feelings_label": "GREEN",
       "am_feelings_label": "GREEN",
       "am_source_date": "2026-06-10",
       "day_score_ma2": 0.0,
       "am_score_ma2": 0.0,
       "pm_score_ma2": 0.0,
-      "evening_score_ma2": null
+      "evening_score_ma2": 0.0
     },
     {
       "date": "2026-06-12",
@@ -3735,7 +3739,7 @@
       "walk_minutes": 0.0,
       "timed_exercise_minutes": 0.0,
       "strength_reps": 48,
-      "activity_count": 5,
+      "activity_count": 6,
       "sessions": [
         {
           "period": "AM",
@@ -3744,7 +3748,7 @@
           "score": null,
           "feelings_detail": null,
           "session_notes": null,
-          "activity_count": 5,
+          "activity_count": 6,
           "walk_minutes": 0.0,
           "timed_exercise_minutes": 0.0,
           "strength_reps": 48,
@@ -3788,6 +3792,14 @@
               "reps": 8,
               "reps_per_side": null,
               "notes": null
+            },
+            {
+              "name": "PT (plyometrics, weight hip rolls)",
+              "duration": null,
+              "sets": null,
+              "reps": null,
+              "reps_per_side": null,
+              "notes": null
             }
           ]
         },
@@ -3827,7 +3839,7 @@
       "day_score_ma2": 0.0,
       "am_score_ma2": 0.0,
       "pm_score_ma2": 0.0,
-      "evening_score_ma2": null
+      "evening_score_ma2": 0.0
     }
   ],
   "totals": {

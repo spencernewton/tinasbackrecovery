@@ -2638,7 +2638,9 @@
         },
         {
           "period": "Evening",
-          "feelings": null,
+          "feelings": [
+            "GREEN"
+          ],
           "feelings_detail": null,
           "activities": [],
           "session_notes": null
@@ -2734,7 +2736,9 @@
         },
         {
           "period": "Evening",
-          "feelings": null,
+          "feelings": [
+            "GREEN"
+          ],
           "feelings_detail": null,
           "activities": [],
           "session_notes": null
@@ -2821,6 +2825,13 @@
               "duration": null,
               "sets": 2,
               "reps": 8,
+              "notes": null
+            },
+            {
+              "name": "PT (plyometrics, weight hip rolls)",
+              "duration": null,
+              "sets": null,
+              "reps": null,
               "notes": null
             }
           ],
