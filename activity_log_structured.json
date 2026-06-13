@@ -2777,6 +2777,13 @@
               "sets": 1,
               "reps": 8,
               "notes": null
+            },
+            {
+              "name": "90/90",
+              "duration": null,
+              "sets": null,
+              "reps": null,
+              "notes": null
             }
           ],
           "session_notes": null
@@ -2789,7 +2796,9 @@
       "sessions": [
         {
           "period": "AM",
-          "feelings": null,
+          "feelings": [
+            "GREEN"
+          ],
           "feelings_detail": null,
           "activities": [
             {
@@ -2839,16 +2848,50 @@
         },
         {
           "period": "Evening",
-          "feelings": null,
+          "feelings": [
+            "GREEN",
+            "YELLOW"
+          ],
           "feelings_detail": null,
           "activities": [],
           "session_notes": null
         },
         {
           "period": "PM",
-          "feelings": null,
+          "feelings": [
+            "GREEN"
+          ],
           "feelings_detail": null,
-          "activities": [],
+          "activities": [
+            {
+              "name": "walk",
+              "duration": "25min",
+              "sets": null,
+              "reps": null,
+              "notes": null
+            },
+            {
+              "name": "90/90",
+              "duration": null,
+              "sets": null,
+              "reps": null,
+              "notes": null
+            },
+            {
+              "name": "rock back",
+              "duration": null,
+              "sets": 1,
+              "reps": 8,
+              "notes": null
+            },
+            {
+              "name": "cow neutral",
+              "duration": null,
+              "sets": 1,
+              "reps": 8,
+              "notes": null
+            }
+          ],
           "session_notes": null
         }
       ],
