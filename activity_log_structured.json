@@ -2902,7 +2902,10 @@
       "sessions": [
         {
           "period": "AM",
-          "feelings": null,
+          "feelings": [
+            "GREEN",
+            "YELLOW"
+          ],
           "feelings_detail": null,
           "activities": [
             {
