@@ -2976,7 +2976,9 @@
         },
         {
           "period": "Evening",
-          "feelings": null,
+          "feelings": [
+            "YELLOW"
+          ],
           "feelings_detail": null,
           "activities": [],
           "session_notes": null
