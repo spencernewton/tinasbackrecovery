@@ -2849,7 +2849,6 @@
         {
           "period": "Evening",
           "feelings": [
-            "GREEN",
             "YELLOW"
           ],
           "feelings_detail": null,
