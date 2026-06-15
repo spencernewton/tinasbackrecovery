@@ -4050,9 +4050,9 @@
     },
     {
       "date": "2026-06-14",
-      "day_score": 0.25,
+      "day_score": 0.125,
       "am_score": 0.25,
-      "pm_score": null,
+      "pm_score": 0.0,
       "whole_day_score": null,
       "walk_minutes": 0.0,
       "timed_exercise_minutes": 3.5,
@@ -4061,9 +4061,11 @@
       "sessions": [
         {
           "period": "AM",
-          "feelings": null,
-          "feelings_label": null,
-          "score": null,
+          "feelings": [
+            "GREEN"
+          ],
+          "feelings_label": "GREEN",
+          "score": 0.0,
           "feelings_detail": null,
           "session_notes": null,
           "activity_count": 8,
@@ -4165,14 +4167,14 @@
         }
       ],
       "incidents": [],
-      "pm_feelings_label": null,
+      "pm_feelings_label": "GREEN",
       "evening_score": null,
       "evening_feelings_label": null,
       "am_feelings_label": "GREEN/YELLOW",
       "am_source_date": "2026-06-13",
-      "day_score_ma2": 0.25,
+      "day_score_ma2": 0.188,
       "am_score_ma2": 0.125,
-      "pm_score_ma2": 0.25,
+      "pm_score_ma2": 0.125,
       "evening_score_ma2": 0.5
     }
   ],
