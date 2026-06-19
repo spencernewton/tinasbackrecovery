@@ -4504,23 +4504,21 @@
       "date": "2026-06-17",
       "day_score": 0.0,
       "am_score": 0.0,
-      "pm_score": 0.0,
+      "pm_score": null,
       "whole_day_score": null,
-      "walk_minutes": 30.0,
+      "walk_minutes": 65.0,
       "timed_exercise_minutes": 3.5,
       "strength_reps": 163,
-      "activity_count": 12,
+      "activity_count": 14,
       "sessions": [
         {
           "period": "AM",
-          "feelings": [
-            "GREEN"
-          ],
-          "feelings_label": "GREEN",
-          "score": 0.0,
+          "feelings": null,
+          "feelings_label": null,
+          "score": null,
           "feelings_detail": null,
           "session_notes": null,
-          "activity_count": 9,
+          "activity_count": 10,
           "walk_minutes": 30.0,
           "timed_exercise_minutes": 3.5,
           "strength_reps": 147,
@@ -4596,6 +4594,14 @@
               "reps": null,
               "reps_per_side": null,
               "notes": null
+            },
+            {
+              "name": "PT",
+              "duration": null,
+              "sets": null,
+              "reps": null,
+              "reps_per_side": null,
+              "notes": null
             }
           ]
         },
@@ -4623,8 +4629,8 @@
           "score": 0.0,
           "feelings_detail": null,
           "session_notes": null,
-          "activity_count": 3,
-          "walk_minutes": 0.0,
+          "activity_count": 4,
+          "walk_minutes": 35.0,
           "timed_exercise_minutes": 0.0,
           "strength_reps": 16,
           "activities": [
@@ -4651,12 +4657,20 @@
               "reps": 8,
               "reps_per_side": null,
               "notes": null
+            },
+            {
+              "name": "walk",
+              "duration": "35min",
+              "sets": null,
+              "reps": null,
+              "reps_per_side": null,
+              "notes": null
             }
           ]
         }
       ],
       "incidents": [],
-      "pm_feelings_label": "GREEN",
+      "pm_feelings_label": null,
       "evening_score": 0.0,
       "evening_feelings_label": "GREEN",
       "am_feelings_label": "GREEN",
@@ -4669,7 +4683,7 @@
   ],
   "totals": {
     "days_logged": 26,
-    "total_walk_minutes": 1353.0,
-    "avg_walk_minutes": 52.0
+    "total_walk_minutes": 1388.0,
+    "avg_walk_minutes": 53.4
   }
 }
