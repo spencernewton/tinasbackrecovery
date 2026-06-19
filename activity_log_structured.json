@@ -3313,6 +3313,13 @@
               "sets": 1,
               "reps": 8,
               "notes": null
+            },
+            {
+              "name": "90/90",
+              "duration": null,
+              "sets": null,
+              "reps": null,
+              "notes": null
             }
           ],
           "session_notes": null
@@ -3398,16 +3405,42 @@
         },
         {
           "period": "Evening",
-          "feelings": null,
+          "feelings": [
+            "GREEN"
+          ],
           "feelings_detail": null,
           "activities": [],
           "session_notes": null
         },
         {
           "period": "PM",
-          "feelings": null,
+          "feelings": [
+            "GREEN"
+          ],
           "feelings_detail": null,
-          "activities": [],
+          "activities": [
+            {
+              "name": "90/90",
+              "duration": null,
+              "sets": null,
+              "reps": null,
+              "notes": null
+            },
+            {
+              "name": "rock back",
+              "duration": null,
+              "sets": 1,
+              "reps": 8,
+              "notes": null
+            },
+            {
+              "name": "cow neutral",
+              "duration": null,
+              "sets": 1,
+              "reps": 8,
+              "notes": null
+            }
+          ],
           "session_notes": null
         }
       ],
