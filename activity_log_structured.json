@@ -2,7 +2,7 @@
   "meta": {
     "cortisone_shot_date": "2026-05-13",
     "log_start": "2026-05-23",
-    "log_end": "2026-06-17",
+    "log_end": "2026-06-20",
     "source_file": "Activity_Log_raw",
     "feeling_scale": {
       "GREEN": "No symptoms; felt great without pain",
@@ -3332,12 +3332,14 @@
       "sessions": [
         {
           "period": "AM",
-          "feelings": null,
+          "feelings": [
+            "GREEN"
+          ],
           "feelings_detail": null,
           "activities": [
             {
               "name": "walk",
-              "duration": "30min",
+              "duration": "35min",
               "sets": null,
               "reps": null,
               "notes": null
@@ -3444,15 +3446,145 @@
               "sets": 1,
               "reps": 8,
               "notes": null
-            },
+            }
+          ],
+          "session_notes": null
+        }
+      ],
+      "incidents": []
+    },
+    {
+      "date": "2026-06-19",
+      "sessions": [
+        {
+          "period": "AM",
+          "feelings": [
+            "GREEN",
+            "YELLOW"
+          ],
+          "feelings_detail": null,
+          "activities": [
             {
-              "name": "walk",
-              "duration": "35min",
+              "name": "flights",
+              "duration": null,
               "sets": null,
               "reps": null,
               "notes": null
             }
           ],
+          "session_notes": null
+        },
+        {
+          "period": "Evening",
+          "feelings": [
+            "YELLOW"
+          ],
+          "feelings_detail": null,
+          "activities": [],
+          "session_notes": null
+        },
+        {
+          "period": "PM",
+          "feelings": [
+            "YELLOW"
+          ],
+          "feelings_detail": null,
+          "activities": [],
+          "session_notes": null
+        }
+      ],
+      "incidents": []
+    },
+    {
+      "date": "2026-06-20",
+      "sessions": [
+        {
+          "period": "AM",
+          "feelings": [
+            "GREEN"
+          ],
+          "feelings_detail": null,
+          "activities": [
+            {
+              "name": "walk",
+              "duration": "30min",
+              "sets": null,
+              "reps": null,
+              "notes": null
+            },
+            {
+              "name": "supine 90/90",
+              "duration": "2min",
+              "sets": null,
+              "reps": null,
+              "notes": null
+            },
+            {
+              "name": "single knee drop",
+              "duration": null,
+              "sets": 3,
+              "reps": 5,
+              "notes": null
+            },
+            {
+              "name": "cow neutral",
+              "duration": null,
+              "sets": 3,
+              "reps": 8,
+              "notes": null
+            },
+            {
+              "name": "rock back",
+              "duration": null,
+              "sets": 3,
+              "reps": 8,
+              "notes": null
+            },
+            {
+              "name": "glute bridges",
+              "duration": null,
+              "sets": 3,
+              "reps": 10,
+              "notes": null
+            },
+            {
+              "name": "dead bug",
+              "duration": null,
+              "sets": 3,
+              "reps": 8,
+              "notes": null
+            },
+            {
+              "name": "bird dogs",
+              "duration": null,
+              "sets": 3,
+              "reps": 10,
+              "notes": null
+            },
+            {
+              "name": "plank",
+              "duration": "30sec",
+              "sets": 3,
+              "reps": null,
+              "notes": null
+            }
+          ],
+          "session_notes": null
+        },
+        {
+          "period": "Evening",
+          "feelings": [
+            "GREEN"
+          ],
+          "feelings_detail": null,
+          "activities": [],
+          "session_notes": null
+        },
+        {
+          "period": "PM",
+          "feelings": null,
+          "feelings_detail": null,
+          "activities": [],
           "session_notes": null
         }
       ],
