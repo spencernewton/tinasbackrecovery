@@ -4754,9 +4754,9 @@
     },
     {
       "date": "2026-06-20",
-      "day_score": 0.25,
+      "day_score": 0.417,
       "am_score": 0.5,
-      "pm_score": null,
+      "pm_score": 0.25,
       "whole_day_score": null,
       "walk_minutes": 30.0,
       "timed_exercise_minutes": 3.5,
@@ -4765,9 +4765,12 @@
       "sessions": [
         {
           "period": "AM",
-          "feelings": null,
-          "feelings_label": null,
-          "score": null,
+          "feelings": [
+            "GREEN",
+            "YELLOW"
+          ],
+          "feelings_label": "GREEN/YELLOW",
+          "score": 0.25,
           "feelings_detail": null,
           "session_notes": null,
           "activity_count": 9,
@@ -4852,6 +4855,21 @@
         {
           "period": "Evening",
           "feelings": [
+            "YELLOW"
+          ],
+          "feelings_label": "YELLOW",
+          "score": 0.5,
+          "feelings_detail": null,
+          "session_notes": null,
+          "activity_count": 0,
+          "walk_minutes": 0.0,
+          "timed_exercise_minutes": 0.0,
+          "strength_reps": 0,
+          "activities": []
+        },
+        {
+          "period": "PM",
+          "feelings": [
             "GREEN"
           ],
           "feelings_label": "GREEN",
@@ -4863,31 +4881,18 @@
           "timed_exercise_minutes": 0.0,
           "strength_reps": 0,
           "activities": []
-        },
-        {
-          "period": "PM",
-          "feelings": null,
-          "feelings_label": null,
-          "score": null,
-          "feelings_detail": null,
-          "session_notes": null,
-          "activity_count": 0,
-          "walk_minutes": 0.0,
-          "timed_exercise_minutes": 0.0,
-          "strength_reps": 0,
-          "activities": []
         }
       ],
       "incidents": [],
-      "pm_feelings_label": null,
-      "evening_score": 0.0,
-      "evening_feelings_label": "GREEN",
+      "pm_feelings_label": "GREEN/YELLOW",
+      "evening_score": 0.5,
+      "evening_feelings_label": "YELLOW",
       "am_feelings_label": "YELLOW",
       "am_source_date": "2026-06-19",
-      "day_score_ma2": 0.25,
+      "day_score_ma2": 0.334,
       "am_score_ma2": 0.25,
       "pm_score_ma2": 0.25,
-      "evening_score_ma2": 0.25
+      "evening_score_ma2": 0.5
     }
   ],
   "totals": {
