@@ -4761,7 +4761,7 @@
       "walk_minutes": 30.0,
       "timed_exercise_minutes": 3.5,
       "strength_reps": 147,
-      "activity_count": 9,
+      "activity_count": 10,
       "sessions": [
         {
           "period": "AM",
@@ -4869,18 +4869,25 @@
         },
         {
           "period": "PM",
-          "feelings": [
-            "GREEN"
-          ],
-          "feelings_label": "GREEN",
-          "score": 0.0,
+          "feelings": null,
+          "feelings_label": null,
+          "score": null,
           "feelings_detail": null,
           "session_notes": null,
-          "activity_count": 0,
+          "activity_count": 1,
           "walk_minutes": 0.0,
           "timed_exercise_minutes": 0.0,
           "strength_reps": 0,
-          "activities": []
+          "activities": [
+            {
+              "name": "*GREEN",
+              "duration": null,
+              "sets": null,
+              "reps": null,
+              "reps_per_side": null,
+              "notes": null
+            }
+          ]
         }
       ],
       "incidents": [],

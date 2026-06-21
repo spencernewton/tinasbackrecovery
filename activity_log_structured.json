@@ -3583,11 +3583,17 @@
         },
         {
           "period": "PM",
-          "feelings": [
-            "GREEN"
-          ],
+          "feelings": null,
           "feelings_detail": null,
-          "activities": [],
+          "activities": [
+            {
+              "name": "*GREEN",
+              "duration": null,
+              "sets": null,
+              "reps": null,
+              "notes": null
+            }
+          ],
           "session_notes": null
         }
       ],
