@@ -3500,9 +3500,7 @@
       "sessions": [
         {
           "period": "AM",
-          "feelings": [
-            "GREEN"
-          ],
+          "feelings": null,
           "feelings_detail": null,
           "activities": [
             {
