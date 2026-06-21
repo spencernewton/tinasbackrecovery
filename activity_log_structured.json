@@ -3568,6 +3568,13 @@
               "sets": 3,
               "reps": null,
               "notes": null
+            },
+            {
+              "name": "lat pulldown",
+              "duration": null,
+              "sets": 3,
+              "reps": 5,
+              "notes": "20lb"
             }
           ],
           "session_notes": null

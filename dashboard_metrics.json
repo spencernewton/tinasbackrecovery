@@ -4760,8 +4760,8 @@
       "whole_day_score": null,
       "walk_minutes": 30.0,
       "timed_exercise_minutes": 3.5,
-      "strength_reps": 147,
-      "activity_count": 10,
+      "strength_reps": 162,
+      "activity_count": 11,
       "sessions": [
         {
           "period": "AM",
@@ -4773,10 +4773,10 @@
           "score": 0.25,
           "feelings_detail": null,
           "session_notes": null,
-          "activity_count": 9,
+          "activity_count": 10,
           "walk_minutes": 30.0,
           "timed_exercise_minutes": 3.5,
-          "strength_reps": 147,
+          "strength_reps": 162,
           "activities": [
             {
               "name": "walk",
@@ -4849,6 +4849,14 @@
               "reps": null,
               "reps_per_side": null,
               "notes": null
+            },
+            {
+              "name": "lat pulldown",
+              "duration": null,
+              "sets": 3,
+              "reps": 5,
+              "reps_per_side": null,
+              "notes": "20lb"
             }
           ]
         },
