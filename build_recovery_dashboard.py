@@ -9,7 +9,7 @@ ROOT = Path(__file__).resolve().parent
 STRUCTURED = ROOT / "activity_log_structured.json"
 RAW = ROOT / "Activity_Log_raw"
 METRICS = ROOT / "dashboard_metrics.json"
-HTML_OUT = ROOT / "tina_recovery_dashboard.html"
+HTML_OUT = ROOT / "index.html"
 
 FEELING_VAL = {"GREEN": 0.0, "YELLOW": 0.5, "RED": 1.0}
 
