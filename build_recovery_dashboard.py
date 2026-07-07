@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build dashboard_metrics.json and tina_recovery_dashboard.html from structured log."""
+"""Build dashboard_metrics.json and index.html from structured log."""
 
 import json
 import re
