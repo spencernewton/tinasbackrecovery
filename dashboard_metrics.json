@@ -6038,8 +6038,8 @@
       "whole_day_score": null,
       "walk_minutes": 0.0,
       "timed_exercise_minutes": 0.0,
-      "strength_reps": 102,
-      "activity_count": 8,
+      "strength_reps": 126,
+      "activity_count": 9,
       "sessions": [
         {
           "period": "AM",
@@ -6048,10 +6048,10 @@
           "score": null,
           "feelings_detail": null,
           "session_notes": null,
-          "activity_count": 8,
+          "activity_count": 9,
           "walk_minutes": 0.0,
           "timed_exercise_minutes": 0.0,
-          "strength_reps": 102,
+          "strength_reps": 126,
           "activities": [
             {
               "name": "cow neutral",
@@ -6116,6 +6116,14 @@
               "reps": null,
               "reps_per_side": null,
               "notes": null
+            },
+            {
+              "name": "dead bugs",
+              "duration": null,
+              "sets": 3,
+              "reps": 8,
+              "reps_per_side": null,
+              "notes": "middle core started to fatigue towards end, felt like it was less isolated to obliques"
             }
           ]
         },
