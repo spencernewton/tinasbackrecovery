@@ -2,7 +2,7 @@
   "meta": {
     "cortisone_shot_date": "2026-05-13",
     "log_start": "2026-05-23",
-    "log_end": "2026-08-05",
+    "log_end": "2026-08-07",
     "source_file": "Activity_Log_raw",
     "feeling_scale": {
       "GREEN": "No symptoms; felt great without pain",
@@ -4659,6 +4659,41 @@
               "duration": null,
               "sets": 2,
               "reps": 8,
+              "notes": null
+            }
+          ],
+          "session_notes": null
+        },
+        {
+          "period": "Evening",
+          "feelings": null,
+          "feelings_detail": null,
+          "activities": [],
+          "session_notes": null
+        },
+        {
+          "period": "PM",
+          "feelings": null,
+          "feelings_detail": null,
+          "activities": [],
+          "session_notes": null
+        }
+      ],
+      "incidents": []
+    },
+    {
+      "date": "2026-08-07",
+      "sessions": [
+        {
+          "period": "AM",
+          "feelings": null,
+          "feelings_detail": null,
+          "activities": [
+            {
+              "name": "megaformer Pilates",
+              "duration": null,
+              "sets": null,
+              "reps": null,
               "notes": null
             }
           ],
