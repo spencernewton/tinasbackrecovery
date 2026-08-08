@@ -6491,7 +6491,7 @@
       "walk_minutes": 0.0,
       "timed_exercise_minutes": 0.0,
       "strength_reps": 156,
-      "activity_count": 7,
+      "activity_count": 8,
       "sessions": [
         {
           "period": "AM",
@@ -6500,7 +6500,7 @@
           "score": null,
           "feelings_detail": null,
           "session_notes": null,
-          "activity_count": 7,
+          "activity_count": 8,
           "walk_minutes": 0.0,
           "timed_exercise_minutes": 0.0,
           "strength_reps": 156,
@@ -6558,6 +6558,14 @@
               "duration": null,
               "sets": 2,
               "reps": 8,
+              "reps_per_side": null,
+              "notes": null
+            },
+            {
+              "name": "3x banded side steps",
+              "duration": null,
+              "sets": null,
+              "reps": null,
               "reps_per_side": null,
               "notes": null
             }
