@@ -4667,6 +4667,13 @@
               "sets": null,
               "reps": null,
               "notes": null
+            },
+            {
+              "name": "plank",
+              "duration": "30sec",
+              "sets": 3,
+              "reps": null,
+              "notes": null
             }
           ],
           "session_notes": null
