@@ -6491,7 +6491,7 @@
       "walk_minutes": 0.0,
       "timed_exercise_minutes": 1.5,
       "strength_reps": 176,
-      "activity_count": 11,
+      "activity_count": 12,
       "sessions": [
         {
           "period": "AM",
@@ -6500,7 +6500,7 @@
           "score": null,
           "feelings_detail": null,
           "session_notes": null,
-          "activity_count": 11,
+          "activity_count": 12,
           "walk_minutes": 0.0,
           "timed_exercise_minutes": 1.5,
           "strength_reps": 176,
@@ -6587,6 +6587,14 @@
             },
             {
               "name": "nerve glides (little bit of nerve irritations",
+              "duration": null,
+              "sets": null,
+              "reps": null,
+              "reps_per_side": null,
+              "notes": null
+            },
+            {
+              "name": "nerve glides (little bit of nerve irritation)",
               "duration": null,
               "sets": null,
               "reps": null,
@@ -6703,11 +6711,138 @@
       "am_score_ma2": null,
       "pm_score_ma2": null,
       "evening_score_ma2": null
+    },
+    {
+      "date": "2026-08-06",
+      "day_score": null,
+      "am_score": null,
+      "pm_score": null,
+      "whole_day_score": null,
+      "walk_minutes": 0.0,
+      "timed_exercise_minutes": 0.0,
+      "strength_reps": 135,
+      "activity_count": 8,
+      "sessions": [
+        {
+          "period": "AM",
+          "feelings": null,
+          "feelings_label": null,
+          "score": null,
+          "feelings_detail": null,
+          "session_notes": null,
+          "activity_count": 8,
+          "walk_minutes": 0.0,
+          "timed_exercise_minutes": 0.0,
+          "strength_reps": 135,
+          "activities": [
+            {
+              "name": "cow neutral",
+              "duration": null,
+              "sets": 2,
+              "reps": 10,
+              "reps_per_side": null,
+              "notes": null
+            },
+            {
+              "name": "single hip drops",
+              "duration": null,
+              "sets": 2,
+              "reps": 10,
+              "reps_per_side": null,
+              "notes": null
+            },
+            {
+              "name": "thread the needle",
+              "duration": null,
+              "sets": 1,
+              "reps": 5,
+              "reps_per_side": null,
+              "notes": null
+            },
+            {
+              "name": "glute bridges",
+              "duration": null,
+              "sets": 3,
+              "reps": 10,
+              "reps_per_side": null,
+              "notes": null
+            },
+            {
+              "name": "3x banded side steps",
+              "duration": null,
+              "sets": null,
+              "reps": null,
+              "reps_per_side": null,
+              "notes": null
+            },
+            {
+              "name": "bird dogs",
+              "duration": null,
+              "sets": 2,
+              "reps": 10,
+              "reps_per_side": null,
+              "notes": null
+            },
+            {
+              "name": "dead bugs",
+              "duration": null,
+              "sets": 3,
+              "reps": 8,
+              "reps_per_side": null,
+              "notes": null
+            },
+            {
+              "name": "hip hikes",
+              "duration": null,
+              "sets": 2,
+              "reps": 8,
+              "reps_per_side": null,
+              "notes": null
+            }
+          ]
+        },
+        {
+          "period": "Evening",
+          "feelings": null,
+          "feelings_label": null,
+          "score": null,
+          "feelings_detail": null,
+          "session_notes": null,
+          "activity_count": 0,
+          "walk_minutes": 0.0,
+          "timed_exercise_minutes": 0.0,
+          "strength_reps": 0,
+          "activities": []
+        },
+        {
+          "period": "PM",
+          "feelings": null,
+          "feelings_label": null,
+          "score": null,
+          "feelings_detail": null,
+          "session_notes": null,
+          "activity_count": 0,
+          "walk_minutes": 0.0,
+          "timed_exercise_minutes": 0.0,
+          "strength_reps": 0,
+          "activities": []
+        }
+      ],
+      "incidents": [],
+      "pm_feelings_label": null,
+      "evening_score": null,
+      "evening_feelings_label": null,
+      "am_feelings_label": null,
+      "am_source_date": null,
+      "day_score_ma2": null,
+      "am_score_ma2": null,
+      "pm_score_ma2": null,
+      "evening_score_ma2": null
     }
   ],
   "totals": {
-    "days_logged": 44,
+    "days_logged": 45,
     "total_walk_minutes": 1488.0,
-    "avg_walk_minutes": 33.8
+    "avg_walk_minutes": 33.1
   }
 }
