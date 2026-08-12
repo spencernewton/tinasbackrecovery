@@ -2,7 +2,7 @@
   "meta": {
     "cortisone_shot_date": "2026-05-13",
     "log_start": "2026-05-23",
-    "log_end": "2026-08-11",
+    "log_end": "2026-08-12",
     "source_file": "Activity_Log_raw",
     "feeling_scale": {
       "GREEN": "No symptoms; felt great without pain",
@@ -4939,6 +4939,62 @@
               "duration": null,
               "sets": null,
               "reps": null,
+              "notes": null
+            }
+          ],
+          "session_notes": null
+        },
+        {
+          "period": "Evening",
+          "feelings": null,
+          "feelings_detail": null,
+          "activities": [],
+          "session_notes": null
+        },
+        {
+          "period": "PM",
+          "feelings": null,
+          "feelings_detail": null,
+          "activities": [],
+          "session_notes": null
+        }
+      ],
+      "incidents": []
+    },
+    {
+      "date": "2026-08-12",
+      "sessions": [
+        {
+          "period": "AM",
+          "feelings": null,
+          "feelings_detail": null,
+          "activities": [
+            {
+              "name": "glute bridges",
+              "duration": null,
+              "sets": 2,
+              "reps": 10,
+              "notes": null
+            },
+            {
+              "name": "2x banded side steps",
+              "duration": null,
+              "sets": null,
+              "reps": null,
+              "notes": null
+            },
+            {
+              "name": "bird dogs",
+              "duration": null,
+              "sets": 2,
+              "reps": 8,
+              "notes": null
+            },
+            {
+              "name": "dead bugs",
+              "duration": null,
+              "sets": 2,
+              "reps": 8,
               "notes": null
             }
           ],
