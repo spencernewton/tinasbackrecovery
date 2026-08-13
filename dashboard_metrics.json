@@ -7147,9 +7147,9 @@
       "pm_score": null,
       "whole_day_score": null,
       "walk_minutes": 0.0,
-      "timed_exercise_minutes": 0.0,
+      "timed_exercise_minutes": 1.5,
       "strength_reps": 78,
-      "activity_count": 4,
+      "activity_count": 5,
       "sessions": [
         {
           "period": "AM",
@@ -7158,9 +7158,9 @@
           "score": null,
           "feelings_detail": null,
           "session_notes": null,
-          "activity_count": 4,
+          "activity_count": 5,
           "walk_minutes": 0.0,
-          "timed_exercise_minutes": 0.0,
+          "timed_exercise_minutes": 1.5,
           "strength_reps": 78,
           "activities": [
             {
@@ -7192,6 +7192,14 @@
               "duration": null,
               "sets": 3,
               "reps": 8,
+              "reps_per_side": null,
+              "notes": null
+            },
+            {
+              "name": "plank",
+              "duration": "30sec",
+              "sets": 3,
+              "reps": null,
               "reps_per_side": null,
               "notes": null
             }
