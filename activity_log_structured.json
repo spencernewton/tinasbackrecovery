@@ -5059,6 +5059,13 @@
               "sets": 3,
               "reps": null,
               "notes": null
+            },
+            {
+              "name": "hip hikes",
+              "duration": null,
+              "sets": 3,
+              "reps": 8,
+              "notes": null
             }
           ],
           "session_notes": null
