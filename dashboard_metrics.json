@@ -1,7 +1,7 @@
 {
   "cortisone_shot_date": "2026-05-13",
   "log_start": "2026-05-23",
-  "log_end": "2026-08-18",
+  "log_end": "2026-08-22",
   "feeling_scale": {
     "GREEN": "No symptoms; felt great without pain",
     "YELLOW": "Some symptoms; somewhat uncomfortable but went away fairly quickly",
@@ -7701,11 +7701,114 @@
       "am_score_ma2": null,
       "pm_score_ma2": null,
       "evening_score_ma2": null
+    },
+    {
+      "date": "2026-08-22",
+      "day_score": null,
+      "am_score": null,
+      "pm_score": null,
+      "whole_day_score": null,
+      "walk_minutes": 0.0,
+      "timed_exercise_minutes": 0.0,
+      "strength_reps": 108,
+      "activity_count": 5,
+      "sessions": [
+        {
+          "period": "AM",
+          "feelings": null,
+          "feelings_label": null,
+          "score": null,
+          "feelings_detail": null,
+          "session_notes": null,
+          "activity_count": 5,
+          "walk_minutes": 0.0,
+          "timed_exercise_minutes": 0.0,
+          "strength_reps": 108,
+          "activities": [
+            {
+              "name": "glute bridges",
+              "duration": null,
+              "sets": 3,
+              "reps": 10,
+              "reps_per_side": null,
+              "notes": null
+            },
+            {
+              "name": "3x banded side steps",
+              "duration": null,
+              "sets": null,
+              "reps": null,
+              "reps_per_side": null,
+              "notes": null
+            },
+            {
+              "name": "bird dogs",
+              "duration": null,
+              "sets": 3,
+              "reps": 10,
+              "reps_per_side": null,
+              "notes": null
+            },
+            {
+              "name": "dead bugs",
+              "duration": null,
+              "sets": 3,
+              "reps": 8,
+              "reps_per_side": null,
+              "notes": null
+            },
+            {
+              "name": "hip hikes",
+              "duration": null,
+              "sets": 3,
+              "reps": 8,
+              "reps_per_side": null,
+              "notes": null
+            }
+          ]
+        },
+        {
+          "period": "Evening",
+          "feelings": null,
+          "feelings_label": null,
+          "score": null,
+          "feelings_detail": null,
+          "session_notes": null,
+          "activity_count": 0,
+          "walk_minutes": 0.0,
+          "timed_exercise_minutes": 0.0,
+          "strength_reps": 0,
+          "activities": []
+        },
+        {
+          "period": "PM",
+          "feelings": null,
+          "feelings_label": null,
+          "score": null,
+          "feelings_detail": null,
+          "session_notes": null,
+          "activity_count": 0,
+          "walk_minutes": 0.0,
+          "timed_exercise_minutes": 0.0,
+          "strength_reps": 0,
+          "activities": []
+        }
+      ],
+      "incidents": [],
+      "pm_feelings_label": null,
+      "evening_score": null,
+      "evening_feelings_label": null,
+      "am_feelings_label": null,
+      "am_source_date": null,
+      "day_score_ma2": null,
+      "am_score_ma2": null,
+      "pm_score_ma2": null,
+      "evening_score_ma2": null
     }
   ],
   "totals": {
-    "days_logged": 54,
+    "days_logged": 55,
     "total_walk_minutes": 1488.0,
-    "avg_walk_minutes": 27.6
+    "avg_walk_minutes": 27.1
   }
 }
