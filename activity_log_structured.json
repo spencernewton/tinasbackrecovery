@@ -2,7 +2,7 @@
   "meta": {
     "cortisone_shot_date": "2026-05-13",
     "log_start": "2026-05-23",
-    "log_end": "2026-09-01",
+    "log_end": "2026-09-03",
     "source_file": "Activity_Log_raw",
     "feeling_scale": {
       "GREEN": "No symptoms; felt great without pain",
@@ -5698,6 +5698,60 @@
               "notes": null
             }
           ],
+          "session_notes": null
+        },
+        {
+          "period": "Evening",
+          "feelings": null,
+          "feelings_detail": null,
+          "activities": [],
+          "session_notes": null
+        },
+        {
+          "period": "PM",
+          "feelings": null,
+          "feelings_detail": null,
+          "activities": [],
+          "session_notes": null
+        }
+      ],
+      "incidents": []
+    },
+    {
+      "date": "2026-09-02",
+      "sessions": [
+        {
+          "period": "AM",
+          "feelings": null,
+          "feelings_detail": null,
+          "activities": [],
+          "session_notes": null
+        },
+        {
+          "period": "Evening",
+          "feelings": null,
+          "feelings_detail": null,
+          "activities": [],
+          "session_notes": null
+        },
+        {
+          "period": "PM",
+          "feelings": null,
+          "feelings_detail": null,
+          "activities": [],
+          "session_notes": null
+        }
+      ],
+      "incidents": []
+    },
+    {
+      "date": "2026-09-03",
+      "sessions": [
+        {
+          "period": "AM",
+          "feelings": null,
+          "feelings_detail": null,
+          "activities": [],
           "session_notes": null
         },
         {
